@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import requests
 
 class attack_inter(ABC):
     @abstractmethod
