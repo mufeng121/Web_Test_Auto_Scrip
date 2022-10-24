@@ -42,5 +42,5 @@ class SQL_injector(a.attack_inter):
         cookies, headers, json_data = self.generator()
 
         response = a.requests.post('http://localhost:3000/rest/user/login', cookies=cookies, headers=headers, json=json_data, verify=False)
-
-        print("run")
+        
+        print(response.json())
