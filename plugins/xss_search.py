@@ -1,6 +1,4 @@
 from . import attack as a
-from .header_config import *
-from urllib.request import urlopen
 
 class xss_search(a.attack_inter):
     def __init__(self, script=None):

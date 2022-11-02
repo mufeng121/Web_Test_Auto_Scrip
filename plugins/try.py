@@ -1,4 +1,3 @@
-f = open("SQL_injection_payloads.txt", "r")
-for line in f:
-    line = line.rstrip()
-    print(line)
+from header_config import *
+
+HEADER['authentication'] = "try"

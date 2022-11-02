@@ -1,5 +1,8 @@
 from abc import ABC, abstractmethod
 import requests
+from .header_config import *
+import http.cookiejar as cookielib
+from .cookie_handler import *
 
 class attack_inter(ABC):
 

