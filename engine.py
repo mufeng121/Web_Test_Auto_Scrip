@@ -15,6 +15,7 @@ def main():
 
     myAttack = xss.xss_search()
     myAttack.run()
+    
 
     myAttack = gc.test_get_coupon_class()
     myAttack.run()
