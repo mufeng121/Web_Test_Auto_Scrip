@@ -22,7 +22,7 @@ class test_repetitive_registration(a.attack_inter):
         headers = HEADER
 
         json_data = {
-            'email': 'testeee@gmail.com', # remark: you need to creat a new email each time!!
+            'email': 'test888e@gmail.com', # remark: you need to creat a new email each time!!
             'password': '123456',
             'passwordRepeat': '12345',
             'securityQuestion': {
@@ -36,7 +36,7 @@ class test_repetitive_registration(a.attack_inter):
 
     def run(self):
         headers, json_data = self.generator()
-        response = a.requests.post(self.url, headers=headers, json=json_data, verify=False)
+        response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
         ## ensure the email is not login
         email_list = ['test8100e@gmail.com', 'test8e99@gmail.com', 'test8e98@gmail.com'

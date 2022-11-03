@@ -21,11 +21,12 @@ def main():
 
     #myAttack = ad.admin_section()
 
-    #myAttack = rr.test_repetitive_registration()
+    myAttack = rr.test_repetitive_registration()
 
-    myAttack = vb.test_view_basket_class()
+    #myAttack = vb.test_view_basket_class()
 
     #myAttack = ul.test_user_login_class()
+    #response = myAttack.run()
 
     myAttack.run()
 

@@ -20,3 +20,4 @@ class attack_inter(ABC):
     @abstractmethod
     def run(self):
         pass
+

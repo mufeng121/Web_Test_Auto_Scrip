@@ -12,13 +12,17 @@ class test_user_login_class(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
+        self.email = 'testeee@gmail.com'
 
-    def generator(self):
+    def change_email(self, new_email):
+        self.email = new_email
+
+    def generator(self,):
         #cookies = COOKIE
         headers = a.HEADER
 
         json_data = {
-            'email': 'testeee@gmail.com' ,
+            'email': self.email ,
             'password': '123456',
         }
 
@@ -40,3 +44,4 @@ class test_user_login_class(a.attack_inter):
             print(new_cookie)
             print("end write")
             print(a.load_cookie('newuser'))
+        return response.status_code
