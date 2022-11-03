@@ -7,6 +7,7 @@ from plugins import admin_section as ad
 from plugins import test_repetitive_registration as rr
 from plugins import test_get_coupon as gc
 from plugins import test_view_basket as vb
+from plugins import test_user_login as ul
 
 def main():
     #SQL injection
@@ -23,6 +24,8 @@ def main():
     #myAttack = rr.test_repetitive_registration()
 
     myAttack = vb.test_view_basket_class()
+
+    #myAttack = ul.test_user_login_class()
 
     myAttack.run()
 

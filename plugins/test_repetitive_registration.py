@@ -17,7 +17,7 @@ class test_repetitive_registration(a.attack_inter):
         self.url = a.URL + '/api/Users'
 
     def generator(self):
-        cookies = a.load_cookie()
+        #cookies = a.load_cookie()
 
         headers = HEADER
 
@@ -32,28 +32,35 @@ class test_repetitive_registration(a.attack_inter):
             'securityAnswer': 'test',
         }
 
-        return cookies, headers, json_data
+        return headers, json_data
 
     def run(self):
-        cookies, headers, json_data = self.generator()
-        response = a.requests.post(self.url, cookies=cookies, headers=headers, json=json_data, verify=False)
+        headers, json_data = self.generator()
+        response = a.requests.post(self.url, headers=headers, json=json_data, verify=False)
         print(response.status_code)
         ## ensure the email is not login
-        email_list = ['test8100e@gmail.com', 'test8e99@gmail.com', 'test8e98@gmail.com']
+        email_list = ['test8100e@gmail.com', 'test8e99@gmail.com', 'test8e98@gmail.com'
+                      ,'test77777@gmail.com']
         idx = 0
         while ( (response.status_code != 201) and (idx < len(email_list)) ):
             idx += 1
             json_data['email'] = email_list[idx]
-            response = a.requests.post(self.url, cookies=cookies, headers=headers, json=json_data, verify=False)
+            response = a.requests.post(self.url, headers=headers, json=json_data, verify=False)
         print(response.status_code)
         ## load cookie
         if response.status_code == 201:
             res_payload_dict = response.json()
+            print("response begin")
+            print(response.text)
+            print("response end")
+            """
             new_token = res_payload_dict["authentication"]['token']
             print(new_token)
             new_cookie = a.COOKIE
             new_cookie["token"] = new_token
             a.write_cookie(new_cookie)
+            """
+
 
 
 

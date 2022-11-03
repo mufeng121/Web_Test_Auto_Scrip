@@ -17,16 +17,22 @@ class test_view_basket_class(a.attack_inter):
         self.url = a.URL + '/rest/basket/3'
 
     def generator(self):
-        cookies = a.load_cookie()
-        headers = HEADER
-        return cookies, headers
+        header = a.TEST_HEADER
+        cookie = a.load_cookie('newuser')
+        json_data = {
+            'bid': '3' ,
+        }
+
+
+        return cookie, header,json_data
 
     def run(self):
-        cookie, header = self.generator()
+        print("begin run")
+        cookie, header, json_data = self.generator()
         if cookie:
-            response = self.juice_session.get(self.url, cookies=cookie, headers=header)
+            response = self.juice_session.get(self.url, cookies=cookie, headers=header, json = json_data)
             print(response.text)
-            if response.status_code == 304:
+            if response.status_code == 200:
                 print("successfully get admin dashboard")
                 print(response.text)
             print(response.status_code)
