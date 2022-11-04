@@ -4,7 +4,8 @@ from .header_config import *
 import http.cookiejar as cookielib
 from .cookie_handler import *
 
-URL = "http://localhost:3000" 
+#URL = "http://localhost:3000"
+URL = "https://juice-shop.herokuapp.com/"
 
 class attack_inter(ABC):
 
@@ -19,3 +20,4 @@ class attack_inter(ABC):
     @abstractmethod
     def run(self):
         pass
+

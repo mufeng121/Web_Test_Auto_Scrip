@@ -4,8 +4,12 @@ from plugins import SQL_injection as s
 from plugins import xss_search as xss
 from plugins import admin_section as ad
 # from plugins import test_encoding_website as ew
-# from plugins import test_repetitive_registration as rr
+from plugins import test_repetitive_registration as rr
 from plugins import test_get_coupon as gc
+from plugins import test_view_basket as vb
+from plugins import test_user_login as ul
+from plugins import test_user_generate as usrGen
+from plugins import test_admin_registration as regAdm
 
 def main():
     # SQL injection
@@ -35,8 +39,23 @@ def main():
     # myAttack = gc.test_get_coupon_class()
     # myAttack.run()
 
-    # myAttack = ad.admin_section()
-    # myAttack.run()
+
+    #myAttack = ad.admin_section()
+
+    #myAttack = rr.test_repetitive_registration()
+
+    #myAttack = regAdm.admin_registration()
+
+    #myAttack = vb.test_view_basket_class()
+
+    myAttack = ul.test_user_login_class()
+    #response = myAttack.run()
+
+
+    myAttack.run()
+
+    #newUsr = usrGen.new_user_generate()
+    #print(newUsr.generate_email())
 
 if __name__ == "__main__":
     main()

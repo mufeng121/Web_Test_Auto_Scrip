@@ -9,13 +9,11 @@ class admin_section(a.attack_inter):
         self.url = a.URL + '/rest/user/authentication-details'
 
     def generator(self):
-        header = a.HEADER
-
+        header = a.TEST_HEADER
         cookie = a.load_cookie('admin')
         return cookie, header
 
     def run(self):
-
         cookie,header = self.generator()
         print("1")
         if cookie:
