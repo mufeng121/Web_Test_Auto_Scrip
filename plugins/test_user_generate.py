@@ -7,7 +7,10 @@ Possible TASKs that require new user each time:
 2.ADMIN REGISTRATION
 """
 
-import SQL_injection as sqlin
+from plugins import SQL_injection as sqlin
+import random
+MAX_TEST = 20
+MAX_LENGTH = 400
 
 class new_user_generate():
 
@@ -21,15 +24,14 @@ class new_user_generate():
         return: TRUE if not registried
         """
         test_LoginStatus = sqlin.SQL_injector()
-        test_LoginStatus.run(username, new_script)
-        new_script = email + "'--"
-
-
-        test_LoginStatus.change_script(new_script)
-        response = test_Login.run()
+        new_script = email + "\'--"
+        response = test_LoginStatus.run(new_script, 'use{}'.format(email))
         if response == 200:
-
-
+            print("User exists! You need to generate a new User")
+            return False
+        else:
+            print("User not exits! you can use this email")
+            return True
 
     def generate_email(self):
         """
@@ -37,12 +39,14 @@ class new_user_generate():
         We may use some random function to do this.
         And we will call check function to verify if the email is registried or not
         """
-        email_list = ['test8100e@gmail.com', 'test8e99@gmail.com', 'test8e98@gmail.com'
-                      ,'test77777@gmail.com']
+        num = random.randint(0, MAX_LENGTH)
+        email = 'test{}@gmail.com'.format(num)
         idx = 0
-        while ( idx < len(email_list) ):
-            if self.check(email_list[idx]):
-                return email_list[idx]
+        while ( idx < MAX_TEST ):
+            print("This is {} time try with email".format(idx) )
+            print(email)
+            if self.check(email):
+                return email
             else:
                 idx += 1
         print("Sorry, we cannot find new user")

@@ -12,36 +12,24 @@ class test_user_login_class(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
-        self.email = 'testeee@gmail.com'
+        self.email = 'test121@gmail.com'
+        self.password = '123456'
 
     def change_email(self, new_email):
         self.email = new_email
 
     def generator(self,):
-        #cookies = COOKIE
-        headers = a.HEADER
-
         json_data = {
             'email': self.email ,
-            'password': '123456',
+            'password': self.password,
         }
 
-        return headers, json_data
+        return json_data
 
     def run(self):
-        headers, json_data = self.generator()
+        json_data = self.generator()
         response = self.juice_session.post(self.url, json=json_data)
         print(response.status_code)
         if response.status_code == 200:
-            print(response.text)
-            res_payload_dict = response.json()
-            print("Valid script: ", json_data['email'])
-            new_token = res_payload_dict["authentication"]['token']
             print(response.headers)
-            new_cookie = a.COOKIE
-            new_cookie["token"] = new_token
-            a.write_cookie('newuser', new_cookie)
-            print(new_cookie)
-            print("end write")
-            print(a.load_cookie('newuser'))
         return response.status_code

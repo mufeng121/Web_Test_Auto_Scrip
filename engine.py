@@ -8,27 +8,54 @@ from plugins import test_repetitive_registration as rr
 from plugins import test_get_coupon as gc
 from plugins import test_view_basket as vb
 from plugins import test_user_login as ul
+from plugins import test_user_generate as usrGen
+from plugins import test_admin_registration as regAdm
 
 def main():
-    #SQL injection
-    #print('Enter your dictionary:')
-    #x = input()
-    #myAttack = s.SQL_injector(x)
+    # SQL injection
+    # with dictionary
+    # print('Enter your dictionary:')
+    # x = input()
+    # myAttack = s.SQL_injector()
+    # myAttack.run(x)
 
-    #myAttack = xss.xss_search()
+    # with nothing
+    # myAttack = s.SQL_injector()
+    # myAttack.run()
+
+    # with specific user email
+    # myAttack = s.SQL_injector()
+    # myAttack.run('jim@juice-sh.op\' --', 'jim')
+
+    # with no-exist email
+    # myAttack = s.SQL_injector()
+    # code = myAttack.run('hugh@juice-sh.op\' --', 'hugh')
+    # if code !=200:
+    #     print("user not exist")
+
+    # myAttack = xss.xss_search()
+    # myAttack.run()
     
-    #myAttack = gc.test_get_coupon_class()
+    # myAttack = gc.test_get_coupon_class()
+    # myAttack.run()
+
 
     #myAttack = ad.admin_section()
 
-    myAttack = rr.test_repetitive_registration()
+    #myAttack = rr.test_repetitive_registration()
+
+    #myAttack = regAdm.admin_registration()
 
     #myAttack = vb.test_view_basket_class()
 
-    #myAttack = ul.test_user_login_class()
+    myAttack = ul.test_user_login_class()
     #response = myAttack.run()
 
+
     myAttack.run()
+
+    #newUsr = usrGen.new_user_generate()
+    #print(newUsr.generate_email())
 
 if __name__ == "__main__":
     main()
