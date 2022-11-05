@@ -7,6 +7,7 @@ Principle: Use POST request and set the role from customer to admin
 from plugins import attack as a
 from plugins import test_user_generate as usrGen
 import urllib3
+from plugins import header_config
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class admin_registration(a.attack_inter):
@@ -42,6 +43,6 @@ class admin_registration(a.attack_inter):
             print(response.text)
             print("response end")
             print("Congratulations! You have successfully solve a challenge Admin Registration")
-            print("Now you can login with admin email "+ self.email+" and password "+self.password)
+            print("Now you can login with admin email " + self.email +" and password " + self.password)
 
 
