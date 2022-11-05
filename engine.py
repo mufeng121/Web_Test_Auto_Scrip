@@ -45,17 +45,19 @@ def main():
     #myAttack = rr.test_repetitive_registration()
 
     #myAttack = regAdm.admin_registration()
+    #myAttack.run()
 
     #myAttack = vb.test_view_basket_class()
 
     myAttack = ul.test_user_login_class()
-    #response = myAttack.run()
 
+    response, new_cookie, new_header = myAttack.run()
 
-    myAttack.run()
+    myAttack.second_login(new_cookie, new_header)
 
     #newUsr = usrGen.new_user_generate()
     #print(newUsr.generate_email())
+
 
 if __name__ == "__main__":
     main()

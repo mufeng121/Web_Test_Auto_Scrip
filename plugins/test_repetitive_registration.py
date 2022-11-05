@@ -24,6 +24,7 @@ class test_repetitive_registration(a.attack_inter):
             'email': self.email,
             'password': self.password,
             'passwordRepeat': '12345',
+            'role': 'user',
             'securityQuestion': {
                 'id': 2,
                 'question': 'Mother\'s maiden name?',
