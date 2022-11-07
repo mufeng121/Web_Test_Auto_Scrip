@@ -3,6 +3,7 @@ from tkinter import X
 from plugins import SQL_injection as s
 from plugins import xss_search as xss
 from plugins import admin_section as ad
+from plugins import captcha_bypass as tcb
 # from plugins import test_encoding_website as ew
 # from plugins import test_repetitive_registration as rr
 from plugins import test_get_coupon as gc
@@ -20,8 +21,8 @@ def main():
     # myAttack.run()
 
     # with specific user email
-    # myAttack = s.SQL_injector()
-    # myAttack.run('jim@juice-sh.op\' --', 'jim')
+    myAttack = s.SQL_injector()
+    myAttack.run('jim@juice-sh.op\' --', 'jim')
 
     # with no-exist email
     # myAttack = s.SQL_injector()
@@ -30,6 +31,9 @@ def main():
     #     print("user not exist")
 
     # myAttack = xss.xss_search()
+    # myAttack.run()
+
+    # myAttack = tcb.test_captcha_bypass()
     # myAttack.run()
     
     # myAttack = gc.test_get_coupon_class()
