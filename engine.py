@@ -25,8 +25,8 @@ def main():
     # myAttack.run()
 
     # with specific user email
-    myAttack = s.SQL_injector()
-    myAttack.run('jim@juice-sh.op\' --', 'jim')
+    # myAttack = s.SQL_injector()
+    # myAttack.run('jim@juice-sh.op\' --', 'jim')
 
     # with no-exist email
     # myAttack = s.SQL_injector()
@@ -43,8 +43,8 @@ def main():
     # myAttack = gc.test_get_coupon_class()
     # myAttack.run()
 
-
-    #myAttack = ad.admin_section()
+    myAttack = ad.admin_section()
+    myAttack.run()
 
     #myAttack = rr.test_repetitive_registration()
 
@@ -53,11 +53,11 @@ def main():
 
     #myAttack = vb.test_view_basket_class()
 
-    myAttack = ul.test_user_login_class()
+    # myAttack = ul.test_user_login_class()
 
-    response, new_cookie, new_header = myAttack.run()
+    # response, new_cookie, new_header = myAttack.run()
 
-    myAttack.second_login(new_cookie, new_header)
+    # myAttack.second_login(new_cookie, new_header)
 
     #newUsr = usrGen.new_user_generate()
     #print(newUsr.generate_email())
