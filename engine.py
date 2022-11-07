@@ -40,11 +40,11 @@ def main():
     # myAttack = tcb.test_captcha_bypass()
     # myAttack.run()
     
-    myAttack = gc.test_get_coupon_class()
+    # myAttack = gc.test_get_coupon_class()
+    # myAttack.run()
+
+    myAttack = ad.admin_section()
     myAttack.run()
-
-
-    #myAttack = ad.admin_section()
 
     #myAttack = rr.test_repetitive_registration()
 
