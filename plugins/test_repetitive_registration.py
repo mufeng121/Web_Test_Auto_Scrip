@@ -24,7 +24,6 @@ class test_repetitive_registration(a.attack_inter):
             'email': self.email,
             'password': self.password,
             'passwordRepeat': '12345',
-            'role': 'user',
             'securityQuestion': {
                 'id': 2,
                 'question': 'Mother\'s maiden name?',
@@ -37,11 +36,12 @@ class test_repetitive_registration(a.attack_inter):
         json_data = self.generator()
         response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
-
+        print(response.text)
         if response.status_code == 201:
-            res_payload_dict = response.json()
             print("Congratulations! You have successfully finished task Repetitive Registration")
             print("Now you can login with user email " + self.email + " and password " + self.password)
+            userid = response.json()["data"]["id"]
+            return self.email, self.password, userid
 
 
 

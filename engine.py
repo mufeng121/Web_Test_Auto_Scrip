@@ -10,6 +10,8 @@ from plugins import test_view_basket as vb
 from plugins import test_user_login as ul
 from plugins import test_user_generate as usrGen
 from plugins import test_admin_registration as regAdm
+from plugins import test_forged_feedback_review as forGe
+
 
 def main():
     # SQL injection
@@ -38,22 +40,23 @@ def main():
     
     # myAttack = gc.test_get_coupon_class()
     # myAttack.run()
-
-
     #myAttack = ad.admin_section()
 
-    #myAttack = rr.test_repetitive_registration()
+
+    myAttack = vb.test_view_basket_class()
+
+    #myAttack = forGe.forged()
+    myAttack.run()
 
     #myAttack = regAdm.admin_registration()
-    #myAttack.run()
 
-    #myAttack = vb.test_view_basket_class()
+    #
 
-    myAttack = ul.test_user_login_class()
 
-    response, new_cookie, new_header = myAttack.run()
 
-    myAttack.second_login(new_cookie, new_header)
+    #response, new_cookie, new_header = myAttack.run()
+
+    #myAttack.second_login(new_cookie, new_header)
 
     #newUsr = usrGen.new_user_generate()
     #print(newUsr.generate_email())

@@ -9,7 +9,7 @@ Possible TASKs that require new user each time:
 
 from plugins import SQL_injection as sqlin
 import random
-MAX_TEST = 20
+MAX_TEST = 40
 MAX_LENGTH = 400
 
 class new_user_generate():
@@ -30,7 +30,7 @@ class new_user_generate():
             print("User exists! You need to generate a new User")
             return False
         else:
-            print("User not exits! you can use this email")
+            print("User not exits! Email is available for registration")
             return True
 
     def generate_email(self):
@@ -43,10 +43,15 @@ class new_user_generate():
         email = 'test{}@gmail.com'.format(num)
         idx = 0
         while ( idx < MAX_TEST ):
-            print("This is {} time try with email".format(idx) )
-            print(email)
+            #print("This is {} time try with email".format(idx) )
+            #print(email)
             if self.check(email):
+                print("----------------------------")
+                print("We generate new user with email")
+                print(email)
                 return email
             else:
                 idx += 1
+                num = random.randint(0, MAX_LENGTH)
+                email = 'test{}@gmail.com'.format(num)
         print("Sorry, we cannot find new user")
