@@ -10,16 +10,16 @@ class test_get_coupon_class(a.attack_inter):
         self.url = a.URL + '/rest/chatbot/respond'
 
     def generator(self):
-        cookie = a.load_cookie('admin')
+        cookie, header= a.load_cookie('admin')
         json_data = {
             'action': 'query',
             'query': 'coupon',
         }
 
-        return json_data, cookie
+        return json_data, cookie,header
 
     def run(self):
-        json_data, cookie = self.generator()
+        json_data, cookie,header = self.generator()
         if cookie:
             response = self.juice_session.post(self.url, json=json_data, cookies=cookie)
             while (response.text.find("pes[Cga+jm") == -1 ):

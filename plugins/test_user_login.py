@@ -38,13 +38,12 @@ class test_user_login_class(a.attack_inter):
             print(response.request.headers)
             print(response.headers)
             new_token = response.json()["authentication"]['token']
-            print(new_token)
             new_header = a.TEST_HEADER
             new_header["Authorization"] = "Bearer "+new_token
-            print(new_header)
+
             new_cookie = a.TEST_COOKIE
             new_cookie["token"] = new_token
-            print(new_cookie)
+
             a.write_cookie(self.email, new_cookie)
             print("1")
             print(new_cookie["token"] == new_token)
