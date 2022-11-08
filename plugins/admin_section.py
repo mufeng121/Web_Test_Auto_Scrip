@@ -9,7 +9,7 @@ class admin_section(a.attack_inter):
         self.url = a.URL + '/rest/user/authentication-details'
 
     def generator(self):
-        cookie, header = a.load_cookie('admin')
+        cookie, header = a.auth_loader('admin')
         return cookie, header
 
     def run(self):
