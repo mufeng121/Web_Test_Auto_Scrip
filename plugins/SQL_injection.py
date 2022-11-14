@@ -33,7 +33,7 @@ class SQL_injector(a.attack_inter):
                     # new_cookie = a.COOKIE
                     # new_cookie["token"] = new_token
                     newCookie, newHeader = a.modify_cookie_header(response)
-                    a.write_cookie('admin',newCookie,newHeader)
+                    a.auth_writer('admin',newCookie,newHeader)
                     break
         else:
             headers, json_data = self.generator(userInput)
@@ -43,5 +43,5 @@ class SQL_injector(a.attack_inter):
                 print(response.text)
                 print("Valid script: ", json_data['email'])
                 newCookie, newHeader = a.modify_cookie_header(response)
-                a.write_cookie(username,newCookie,newHeader)
+                a.auth_writer(username,newCookie,newHeader)
             return response.status_code

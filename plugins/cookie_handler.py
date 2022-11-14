@@ -1,7 +1,7 @@
 import json
 from .header_config import *
 
-def write_cookie(user, cookie, header):
+def auth_writer(user, cookie, header):
     cookies = None
     headers = None
     try:
@@ -28,7 +28,7 @@ def write_cookie(user, cookie, header):
             headers = {user:header}
             fh.write(json.dumps(headers)) 
 
-def load_cookie(user):
+def auth_writer(user):
     try:
         with open('cookies.json', 'r', encoding='utf-8') as fc:
             cookies = json.loads(fc.read())

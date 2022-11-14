@@ -10,7 +10,7 @@ class test_get_coupon_class(a.attack_inter):
         self.url = a.URL + '/rest/chatbot/respond'
 
     def generator(self):
-        cookie, header= a.load_cookie('admin')
+        cookie, header= a.auth_loader('admin')
         json_data = {
             'action': 'query',
             'query': 'coupon',
