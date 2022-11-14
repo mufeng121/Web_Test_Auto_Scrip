@@ -1,5 +1,6 @@
-from . import attack as a
-from .header_config import *
+#from . import attack as a
+from plugins import attack as a
+from plugins.header_config import *
 import http.cookiejar as cookielib
 
 class admin_section(a.attack_inter):
@@ -28,3 +29,7 @@ class admin_section(a.attack_inter):
         else:
             print("Not have authentification yet, please try SQL injection first")
             print("2.1")
+
+
+
+

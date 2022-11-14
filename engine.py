@@ -17,10 +17,10 @@ from plugins import test_forged_feedback_review as forGe
 def main():
     # SQL injection
     # with dictionary
-    # print('Enter your dictionary:')
-    # x = input()
-    # myAttack = s.SQL_injector()
-    # myAttack.run(x)
+    #print('Enter your dictionary:')
+    #x = input()
+    #myAttack = s.SQL_injector()
+    #myAttack.run(x)
 
     # with nothing
     # myAttack = s.SQL_injector()
