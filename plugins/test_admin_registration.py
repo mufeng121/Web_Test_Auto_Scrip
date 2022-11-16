@@ -44,5 +44,7 @@ class admin_registration(a.attack_inter):
             print("response end")
             print("Congratulations! You have successfully solve a challenge Admin Registration")
             print("Now you can login with admin email " + self.email +" and password " + self.password)
+            userid = response.json()["data"]["id"]
+            return self.email, self.password, userid
 
 
