@@ -1,7 +1,7 @@
 import json
-from .header_config import *
+from plugins.header_config import *
 
-def auth_writer(user, cookie, header):
+def auth_write(user, cookie, header):
     cookies = None
     headers = None
     try:
@@ -48,3 +48,39 @@ def modify_cookie_header(response):
     new_cookie["token"] = new_token
 
     return new_cookie, new_header
+
+def auth_load(user):
+    try:
+        with open('cookies.json', 'r', encoding='utf-8') as f:
+            cookies = json.loads(f.read())[user]
+        with open('headers.json', 'r', encoding='utf-8') as f:
+            headers = json.loads(f.read())[user]
+        return cookies, headers
+    except:
+        return None
+
+def bid_write(user, bid):
+    try:
+        with open('bids.json', 'r', encoding='utf-8') as fc:
+            bids = json.loads(fc.read())
+
+        with open('bids.json', 'w') as fh:
+            bids[user] = bid
+            fh.write(json.dumps(bids))
+
+    except:
+        with open('bids.json', 'w') as fc:
+            bids = {user:bid}
+            fc.write(json.dumps(bids))
+
+
+def get_bid(response):
+    return response.json()["authentication"]["bid"]
+
+def bid_load(user):
+    try:
+        with open('bids.json', 'r', encoding='utf-8') as f:
+            bid = json.loads(f.read())[user]
+        return bid
+    except:
+        return None

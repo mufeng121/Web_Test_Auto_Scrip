@@ -6,7 +6,7 @@ The basic idea behind is to give a feedback/review in the name of other people
 We will use user A's header and cookie to send post with username B
 """
 
-from plugins import test_user_login as usrLogin
+from plugins import login as usrLogin
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
