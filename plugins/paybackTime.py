@@ -24,7 +24,7 @@ class paybackTime(a.attack_inter):
         response, self.cookie, self.header = usr.run()
         self.userid = usr.id
 
-    def manage_basekt
+    #def manage_basekt
 
     def generator(self):
         pass
