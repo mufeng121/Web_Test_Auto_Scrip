@@ -12,7 +12,7 @@ class upload_size(a.attack_inter):
         # with open('./plugins/payload.txt', 'r') as fc:
         #     data = fc.read()
         end = '-----------------------------134099573913955476812541892000--\r\n'
-        cookie, header = a.auth_load('admin')
+        cookie, header = a.get_auth('admin')
         header['Content-Type']= 'multipart/form-data; boundary=---------------------------134099573913955476812541892000'
         return cookie,header, start+data+end
 

