@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import requests
 from .header_config import *
 import http.cookiejar as cookielib
-from plugins.cookie_handler import *
+from .user_handler import *
 URL = "http://localhost:3000"
 #URL = "https://juice-shop.herokuapp.com"
 

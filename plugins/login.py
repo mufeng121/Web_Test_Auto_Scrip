@@ -47,10 +47,8 @@ class login(a.attack_inter):
         response = self.juice_session.post(self.url, json=json_data)
         print(response.status_code)
         if response.status_code == 200:
-            newCookie, newHeader = a.modify_cookie_header(response)
-            a.auth_write(self.email, newCookie, newHeader)
-            bid = a.get_bid(response)
-            a.bid_write(self.email,bid)
+            a.set_auth(self.email,response)
+            a.set_basket_id(self.email,response)
         print(response.text)
         return response
 
@@ -58,7 +56,8 @@ class login(a.attack_inter):
         print("---------------------------------------------")
         print("Now let us login using cookie and header")
         print("Who am i")
-        new_cookie, new_header = a.auth_load(email)
+        new_cookie, new_header = a.get_auth(email)
+
         response = self.juice_session.get(a.URL + '/rest/user/whoami',
                                           cookies=new_cookie, headers=new_header, verify=False)
         print("We can thus get our ID")
@@ -75,7 +74,7 @@ class login(a.attack_inter):
         self.credential_login(email=self.email)
 
     def delete_fiveStar(self):
-        new_cookie, new_header = a.auth_load(self.email)
+        new_cookie, new_header = a.get_auth(self.email)
         response = self.juice_session.get(a.URL + '/api/Feedbacks/',
                                           cookies=new_cookie, headers=new_header, verify=False)
         print(response.text)
