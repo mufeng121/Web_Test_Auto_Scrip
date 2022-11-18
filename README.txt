@@ -18,4 +18,5 @@ All automatically created json file should be outside of "plugins" folder
 
 Git Push Rule:
     1. Please DO NOT add/commit/push any automatically created json file.
+        (uncomment "clear_up()" in the last line of engine.py to clean up)
 
