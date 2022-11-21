@@ -23,7 +23,7 @@ class test_repetitive_registration(a.attack_inter):
         json_data = {
             'email': self.email,
             'password': self.password,
-            'passwordRepeat': '12345',
+            'passwordRepeat': self.password,
             'securityQuestion': {
                 'id': 2,
                 'question': 'Mother\'s maiden name?',

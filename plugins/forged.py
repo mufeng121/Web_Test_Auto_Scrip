@@ -1,13 +1,10 @@
 """
-This is OLD VERSION --------------------------
 This file is to automate the OWASP JUICESHOP TASK
 FORGED FEEDBACK
 FORGED REVIEW
 The basic idea behind is to give a feedback/review in the name of other people
 We will use user A's header and cookie to send post with username B
 """
-
-from plugins import login as usrLogin
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -16,8 +13,8 @@ class forged(a.attack_inter):
 
     def __init__(self):
         self.juice_session = a.requests.session()
-        usr = usrLogin.login()
-        response, self.cookie, self.header = usr.run()
+        self.email = 'test66@gmail.com'
+        self.cookie, self.header = a.auth_load(self.email)
         self.userid = usr.id
         self.author = usr.email
         self.captchaId, self.captcha, self.captchaAns = self.load_captcha()
@@ -69,8 +66,6 @@ class forged(a.attack_inter):
     def run(self):
         self.forged_feedback()
         self.forged_review()
-
-
 
 
 

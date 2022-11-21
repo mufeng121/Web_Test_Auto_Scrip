@@ -7,7 +7,6 @@ Hint: You can use TASK REPETITIVE REGISTRATION
 """
 
 from plugins import attack as a
-
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 from plugins import test_repetitive_registration as usrReg
