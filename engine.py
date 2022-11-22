@@ -16,6 +16,9 @@ from plugins import basket as mb
 from plugins import fivestar_delete as deStar
 from plugins import upload_size as uz
 from plugins import forged as forGe
+from plugins import login_bjoern as bjLogin
+from plugins import Product_Tampering as temPdt
+from plugins import Christmas_Special as chrSpe
 
 
 
@@ -53,19 +56,26 @@ def main():
 
     # myAttack = gc.test_get_coupon_class()
 
-    # myAttack = ad.admin_section()
-
+    #myAttack = ad.admin_section()
+    #response = myAttack.run()
+    #print(response)
 
     myAttack = ul.login()
     myAttack.run()
-    myAttack = ul.login()
-    myAttack.run()
+    #myAttack = ul.login()
+    #myAttack.run()
     #myAttack.credential_login()
 
     #myAttack = deStar.delete_fiveStar()
-    myAttack = mb.manipulate_basket()
-    myAttack.run()
-    myAttack = forGe.forged()
+    #myAttack = mb.manipulate_basket()
+    #myAttack.run()
+    #myAttack = forGe.forged()
+    #myAttack.run()
+    #myAttack = bjLogin.login_bjoern()
+    #myAttack.run()
+    #myAttack = temPdt.temper()
+    #myAttack.run()
+    myAttack = chrSpe.Chrismas_special()
     myAttack.run()
 
     #myAttack = uz.upload_size()

@@ -20,7 +20,6 @@ class login(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
-        #self.email = 'test368@gmail.com' #test327@gmail.com'
         self.password = '123456'
 
     def set_user(self):

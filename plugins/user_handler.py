@@ -92,3 +92,16 @@ def set_userId(username, response):
         with open('user.json', 'w') as fh:
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
+
+def set_password(username, response, password):
+    user = {}
+    try:
+        with open('user.json', 'r', encoding='utf-8') as fc:
+            user = json.loads(fc.read())
+        with open('user.json', 'w') as fh:
+            user[username]["password"] = password
+            fh.write(json.dumps(user,indent=4, sort_keys=True))
+    except:
+        with open('user.json', 'w') as fh:
+            fh.write(json.dumps(user,indent=4, sort_keys=True))
+        print("user no found")
