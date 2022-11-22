@@ -22,6 +22,7 @@ from plugins import forged as forGe
 def clean_up():
     try:
         os.system("rm user.json")
+        os.system("rm -r ./plugins/__pycache__")
     except:
         print("file already deleted!")
 
@@ -34,8 +35,8 @@ def main():
     # myAttack = s.SQL_injector()
 
     #with nothing
-    # myAttack = s.SQL_injector()
-    # myAttack.run()
+    myAttack = s.SQL_injector()
+    myAttack.run()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -51,10 +52,10 @@ def main():
 
     # myAttack = tcb.test_captcha_bypass()
 
-    myAttack = gc.test_get_coupon_class()
+    # myAttack = gc.test_get_coupon_class()
 
-    # myAttack = ad.admin_section()
-    # # myAttack = ul.login()
+    myAttack = ad.admin_section()
+    # myAttack = ul.login()
     myAttack.run()
     # myAttack = ul.login()
     # myAttack.run()
@@ -68,7 +69,7 @@ def main():
     #myAttack.credential_login()
 
     # myAttack = deStar.delete_fiveStar()
-    # myAttack = mb.manipulate_basket()
+    # # myAttack = mb.manipulate_basket()
     # myAttack.run()
     # myAttack = forGe.forged()
     # myAttack.run()
@@ -81,5 +82,5 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    #clean_up()
-    main()
+    clean_up()
+    # main()
