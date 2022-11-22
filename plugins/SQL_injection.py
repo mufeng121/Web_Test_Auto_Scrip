@@ -15,8 +15,7 @@ class SQL_injector(a.attack_inter):
         return  json_data
 
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
-                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.basicConfig(filename='./test_logging_info.log', level=a.logging.INFO, format='%(asctime)s %(message)s')
         logger = a.logging.getLogger("SQL_injection")
         a.logging.info(logger)
         a.logging.info('Started')

@@ -3,8 +3,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from logging.handlers import RotatingFileHandler
 
-logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
-                            level=logging.INFO, format='%(asctime)s %(message)s')
+logging.basicConfig(filename='./test_logging_info.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
 #using naming loggers to ouput module-level's name
 logger = logging.getLogger("attack1")
