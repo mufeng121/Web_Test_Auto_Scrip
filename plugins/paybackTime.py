@@ -30,5 +30,11 @@ class paybackTime(a.attack_inter):
         pass
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Payback Time")
+        a.logging.info(logger)
+        a.logging.info('Started')
         self.forged_feedback()
         self.forged_review()
+        a.logging.info('Finished')

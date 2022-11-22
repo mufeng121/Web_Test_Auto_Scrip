@@ -1,0 +1,32 @@
+{
+    "admin": {
+        "cookie": {
+            "cookieconsent_status": "dismiss",
+            "language": "en",
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjItMTEtMTggMDI6MTU6MzguNDg4ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjItMTEtMTggMDI6MTU6MzguNDg4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTY2OTE0MjI4MSwiZXhwIjoxNjY5MTYwMjgxfQ.Afi4M5QP5jt_RMECWHm8ofQrd1teTaqKULV2AmU5lrsCHqVUV3VgPUrkZV4rbrVR87YivQAHtuBtueFFvK_wbgbcqHaeMYcPV2fLQrv_jJB4M5X0NeJhsUSrad3qvscjALt8qS2R_YyjZxY_N_Oq6JZkxF13m86j8Nr9QqlMtDA",
+            "welcomebanner_status": "dismiss"
+        },
+        "header": {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImFkbWluQGp1aWNlLXNoLm9wIiwicGFzc3dvcmQiOiIwMTkyMDIzYTdiYmQ3MzI1MDUxNmYwNjlkZjE4YjUwMCIsInJvbGUiOiJhZG1pbiIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIiLCJwcm9maWxlSW1hZ2UiOiJhc3NldHMvcHVibGljL2ltYWdlcy91cGxvYWRzL2RlZmF1bHRBZG1pbi5wbmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjItMTEtMTggMDI6MTU6MzguNDg4ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjItMTEtMTggMDI6MTU6MzguNDg4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTY2OTE0MjI4MSwiZXhwIjoxNjY5MTYwMjgxfQ.Afi4M5QP5jt_RMECWHm8ofQrd1teTaqKULV2AmU5lrsCHqVUV3VgPUrkZV4rbrVR87YivQAHtuBtueFFvK_wbgbcqHaeMYcPV2fLQrv_jJB4M5X0NeJhsUSrad3qvscjALt8qS2R_YyjZxY_N_Oq6JZkxF13m86j8Nr9QqlMtDA",
+            "Host": "localhost:3000",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+        }
+    },
+    "jim": {
+        "cookie": {
+            "cookieconsent_status": "dismiss",
+            "language": "en",
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MiwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImppbUBqdWljZS1zaC5vcCIsInBhc3N3b3JkIjoiZTU0MWNhN2VjZjcyYjhkMTI4NjQ3NGZjNjEzZTVlNDUiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMi0xMS0xOCAwMjoxNTozOC40ODggKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyMi0xMS0xOCAwMjoxNTozOC40ODggKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiaWF0IjoxNjY5MTQyMTc5LCJleHAiOjE2NjkxNjAxNzl9.ChoBPbKvFLNCZdwnkDJz6T3Tz2jUklHx8Rh05eC4uIhSF46GEJEIaKQMgviZ5eUN9vujWJ0gCv3gUHYqxGqF4MhNVlbT7APdDpbnuWfQ6IVK3oBTIhGgLMVAeYa9zWK0SkBbGW3aGqyYelpg9kQnjM7wAreO0_KcGIZIsTXusV0",
+            "welcomebanner_status": "dismiss"
+        },
+        "header": {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MiwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImppbUBqdWljZS1zaC5vcCIsInBhc3N3b3JkIjoiZTU0MWNhN2VjZjcyYjhkMTI4NjQ3NGZjNjEzZTVlNDUiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiYXNzZXRzL3B1YmxpYy9pbWFnZXMvdXBsb2Fkcy9kZWZhdWx0LnN2ZyIsInRvdHBTZWNyZXQiOiIiLCJpc0FjdGl2ZSI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMi0xMS0xOCAwMjoxNTozOC40ODggKzAwOjAwIiwidXBkYXRlZEF0IjoiMjAyMi0xMS0xOCAwMjoxNTozOC40ODggKzAwOjAwIiwiZGVsZXRlZEF0IjpudWxsfSwiaWF0IjoxNjY5MTQyMTc5LCJleHAiOjE2NjkxNjAxNzl9.ChoBPbKvFLNCZdwnkDJz6T3Tz2jUklHx8Rh05eC4uIhSF46GEJEIaKQMgviZ5eUN9vujWJ0gCv3gUHYqxGqF4MhNVlbT7APdDpbnuWfQ6IVK3oBTIhGgLMVAeYa9zWK0SkBbGW3aGqyYelpg9kQnjM7wAreO0_KcGIZIsTXusV0",
+            "Host": "localhost:3000",
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+        }
+    }
+}

@@ -33,6 +33,11 @@ class test_repetitive_registration(a.attack_inter):
         return json_data
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Repetitive Registration")
+        a.logging.info(logger)
+        a.logging.info('Started')
         json_data = self.generator()
         response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
@@ -42,6 +47,7 @@ class test_repetitive_registration(a.attack_inter):
             print("Now you can login with user email " + self.email + " and password " + self.password)
             userid = response.json()["data"]["id"]
             return self.email, self.password, userid
+        a.logging.info('Finished')
 
 
 

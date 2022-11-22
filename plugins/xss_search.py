@@ -14,6 +14,12 @@ class xss_search(a.attack_inter):
         return self.url, params
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("XSS Search")
+        a.logging.info(logger)
+        a.logging.info('Started')
+
         if self.script:
             myURL,myparams = self.generator(self.script)
         else:
@@ -28,8 +34,9 @@ class xss_search(a.attack_inter):
         p.url += myparams
         resp = s.send(p, allow_redirects=False)
 
-        print(response.request.url)
-        print(response.status_code)
+        print(resp.url)
+        print(resp.status_code)
+        a.logging.info('Finished')
 
 
 

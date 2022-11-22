@@ -14,6 +14,11 @@ class admin_section(a.attack_inter):
         return cookie, header
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Admin_Section")
+        a.logging.info(logger)
+        a.logging.info('Started')
         cookie,header = self.generator()
         if cookie:
             response = self.juice_session.get(self.url, cookies=cookie, headers=header ,verify=False)
@@ -22,8 +27,10 @@ class admin_section(a.attack_inter):
                 print("successfully get admin dashboard")
                 print(response.text)
             print(response.status_code)
+            a.logging.info('Finished')
         else:
             print("Not have authentification yet, please try SQL injection first")
+            a.logging.info('Finished')
 
 
 

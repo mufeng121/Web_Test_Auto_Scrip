@@ -53,8 +53,9 @@ def set_basket_id(username, response):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-# bid_load --> get_bid
-def get_bid(username):
+# bid_write --> set_basket_id
+# only can add bid for existing user
+def get_basket_id(username):
     user = {}
     try:
         with open('user.json', 'r', encoding='utf-8') as f:
@@ -62,5 +63,32 @@ def get_bid(username):
             bid = user[username]["bid"]
         return bid
     except:
-        print("Cannot find user or user bid!")
+        print("Cannot find user or basket Id!")
         return None
+
+
+# bid_load --> get_bid
+def get_userId(username):
+    user = {}
+    try:
+        with open('user.json', 'r', encoding='utf-8') as f:
+            user = json.loads(f.read())
+            userId = user[username]["userId"]
+        return userId
+    except:
+        print("Cannot find user or user Id!")
+        return None
+
+def set_userId(username, response):
+    userId = response.json()["user"]["id"]
+    user = {}
+    try:
+        with open('user.json', 'r', encoding='utf-8') as fc:
+            user = json.loads(fc.read())
+        with open('user.json', 'w') as fh:
+            user[username]["userId"] = userId
+            fh.write(json.dumps(user,indent=4, sort_keys=True))
+    except:
+        with open('user.json', 'w') as fh:
+            fh.write(json.dumps(user,indent=4, sort_keys=True))
+        print("user no found")
