@@ -68,7 +68,7 @@ class login(a.attack_inter):
     def run(self):
         a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
-        logger = a.logging.getLogger("SQL_injection")
+        logger = a.logging.getLogger("create a login session using user")
         a.logging.info(logger)
         a.logging.info('Started')
         self.set_user()  ## this is need if we do not have records of existing users.
