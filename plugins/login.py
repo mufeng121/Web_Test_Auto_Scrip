@@ -1,9 +1,13 @@
 """
-This file will create a login session using user that is not admin
-It will then save the cookie to cookies.json
-#################################################################3
-Remark: You need to register a user before you run this code
-Hint: You can use TASK REPETITIVE REGISTRATION
+This file will create a login session using user
+#################################################################
+You can choose to generate user using the following three ways:
+1. load existing user from json
+2. run REPETITIVE_REGISTRATION to register a customer user
+3. run ADMIN_REGISTRATION to register a admin user
+RE: if you choose to pick user from 2,3. You need to run set_user, set_info
+otherwise, you can set self.email = "YOU PICK FROM Json"
+#################################################################
 """
 
 from plugins import attack as a
@@ -16,7 +20,7 @@ class login(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
-        self.email = 'test368@gmail.com' #test327@gmail.com'
+        #self.email = 'test368@gmail.com' #test327@gmail.com'
         self.password = '123456'
 
     def set_user(self):
@@ -46,10 +50,8 @@ class login(a.attack_inter):
         response = self.juice_session.post(self.url, json=json_data)
         print(response.status_code)
         if response.status_code == 200:
-            newCookie, newHeader = a.modify_cookie_header(response)
-            a.auth_write(self.email, newCookie, newHeader)
-            bid = a.get_bid(response)
-            a.bid_write(self.email,bid)
+            a.set_auth(self.email,response)
+            a.set_basket_id(self.email,response)
         print(response.text)
         return response
 
@@ -57,15 +59,11 @@ class login(a.attack_inter):
         print("---------------------------------------------")
         print("Now let us login using cookie and header")
         print("Who am i")
-        new_cookie, new_header = a.auth_load(email)
+        new_cookie, new_header = a.get_auth(email)
         response = self.juice_session.get(a.URL + '/rest/user/whoami',
-                                          cookies=new_cookie, headers=new_header, verify=False)
-        print("We can thus get our ID")
-        userId = response.json()["user"]["id"]
-        print(userId)
-        print(response.status_code)
-        print(response.text)
-        return userId
+                                             cookies=new_cookie, headers=new_header, verify=False)
+        print("Now let us load our UserId to json ----")
+        a.set_userId(email,response)
 
     def run(self):
         self.set_user()  ## this is need if we do not have records of existing users.
@@ -73,31 +71,4 @@ class login(a.attack_inter):
         self.password_login()
         self.credential_login(email=self.email)
 
-    def delete_fiveStar(self):
-        new_cookie, new_header = a.auth_load(self.email)
-        response = self.juice_session.get(a.URL + '/api/Feedbacks/',
-                                          cookies=new_cookie, headers=new_header, verify=False)
-        print(response.text)
-        delete_list = []
-        for i in range(len(response.json()["data"])):
-            item = response.json()["data"]
-            if item[i]["rating"] == 5:
-                delete_list.append(item[i]["id"])
-        print(delete_list)
-
-        for j in range(len(delete_list)):
-            print(delete_list[j])
-            res = self.juice_session.delete(a.URL + '/api/Feedbacks/{}'.format( str(delete_list[j]) ),
-                                              cookies=new_cookie, headers=new_header, verify=False)
-            print(res)
-
-        ####check deleting
-        response = self.juice_session.get(a.URL + '/api/Feedbacks/',
-                                          cookies=new_cookie, headers=new_header, verify=False)
-        fiveStar_list = []
-        for i in range(len(response.json()["data"])):
-            item = response.json()["data"]
-            if item[i]["rating"] == 5:
-                fiveStar_list.append(item[i]["id"])
-        print( len(fiveStar_list) == 0)
 
