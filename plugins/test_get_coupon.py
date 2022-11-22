@@ -19,6 +19,11 @@ class test_get_coupon_class(a.attack_inter):
         return json_data, cookie,header
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Get Coupon")
+        a.logging.info(logger)
+        a.logging.info('Started')
         json_data, cookie,header = self.generator()
         if cookie:
             response = self.juice_session.post(self.url, json=json_data, headers=header)
@@ -29,5 +34,7 @@ class test_get_coupon_class(a.attack_inter):
 
             print("we found coupon:")
             print(response.text)
+            a.logging.info('Finished')
         else:
             print("Not have authentification yet, please try SQL injection first")
+            a.logging.info('Finished')

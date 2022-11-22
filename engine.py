@@ -28,7 +28,7 @@ def main():
     # with dictionary
     #print('Enter your dictionary:')
     #x = input()
-    #myAttack = s.SQL_injector()
+    myAttack = s.SQL_injector()
 
     # with nothing
     # myAttack = s.SQL_injector()
@@ -69,12 +69,12 @@ def main():
     # newUsr = usrGen.new_user_generate()
     # print(newUsr.generate_email())
 
-    myAttack = uz.upload_size()
+    # myAttack = uz.upload_size()
 
     myAttack.run()
     
 
 
 if __name__ == "__main__":
-    # main()
-    clean_up()
+    main()
+    # clean_up()

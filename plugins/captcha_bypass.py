@@ -18,6 +18,11 @@ class test_captcha_bypass(a.attack_inter):
         return data
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Captcha Bypass")
+        a.logging.info(logger)
+        a.logging.info('Started')
         for i in range(0,10):
             response = self.juice_session.get(self.getUrl)
             token = [0,0]
@@ -25,3 +30,4 @@ class test_captcha_bypass(a.attack_inter):
             token[1] = response.json()["captchaId"]
             mydata = self.generator(token)
             response = self.juice_session.post(self.postUrl, data=mydata)
+        a.logging.info('Finished')

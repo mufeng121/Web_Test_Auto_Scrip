@@ -68,10 +68,16 @@ class login(a.attack_inter):
         return userId
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("SQL_injection")
+        a.logging.info(logger)
+        a.logging.info('Started')
         self.set_user()  ## this is need if we do not have records of existing users.
         self.set_info()
         self.password_login()
         self.credential_login(email=self.email)
+        a.logging.info('Finished')
 
     def delete_fiveStar(self):
         new_cookie, new_header = a.get_auth(self.email)

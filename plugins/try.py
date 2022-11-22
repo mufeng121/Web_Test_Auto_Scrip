@@ -1,43 +1,17 @@
-import json
-def set_auth(username, cookie, header):
-    user = {}
+import logging
 
-    try:
-        with open('user.json', 'r', encoding='utf-8') as fc:
-            user = json.loads(fc.read())
+from logging.handlers import TimedRotatingFileHandler
+from logging.handlers import RotatingFileHandler
 
-        if user[username] == None:
-            print("no usersssss")
-        
-        with open('user.json', 'w') as fc:
-            user[username]["cookie"] = cookie
-            user[username]["header"] = header
-            fc.write(json.dumps(user))
+logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=logging.INFO, format='%(asctime)s %(message)s')
 
-    except:
-        with open('user.json', 'w') as fc:
-            user[username] = {"cookie":cookie, "header" : header}
-            fc.write(json.dumps(user))
-       
+#using naming loggers to ouput module-level's name
+logger = logging.getLogger("attack1")
+logging.info(logger)
 
-def set_basket_id(username, bid):
-    user = None
-    try:
-        with open('user.json', 'r', encoding='utf-8') as fc:
-            user = json.loads(fc.read())
-        
-        with open('user.json', 'w') as fh:
-            user[username]["bid"] = bid
-            fh.write(json.dumps(user))
+#logging the start_time and finish_time of attack
+logging.info('Started')
 
-    except:
-        # with open('bids.json', 'w') as fc:
-        #     bids = {user:bid}
-        #     fc.write(json.dumps(bids))
-        with open('user.json', 'w') as fh:
-            fh.write(json.dumps(user))
-        print("user no found")
 
-set_auth("aa","hah","www")
-#set_basket_id("Hugh", 12)
-#set_basket_id("dd", 12)
+logging.info('Finished')

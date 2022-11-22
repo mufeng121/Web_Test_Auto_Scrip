@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import requests
+import logging
 from .header_config import *
 import http.cookiejar as cookielib
 from .user_handler import *
