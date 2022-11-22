@@ -32,13 +32,13 @@ def clean_up():
 def main():
     # SQL injection
     # with dictionary
-    #print('Enter your dictionary:')
-    #x = input()
-    #myAttack = s.SQL_injector()
+    # print('Enter your dictionary:')
+    # x = input()
+    # myAttack = s.SQL_injector()
 
     #with nothing
-    myAttack = s.SQL_injector()
-    myAttack.run()
+    # myAttack = s.SQL_injector()
+    # myAttack.run()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -50,11 +50,12 @@ def main():
     # if code !=200:
     #     print("user not exist")
 
-    # myAttack = xss.xss_search()
+    #myAttack = xss.xss_search()
 
     # myAttack = tcb.test_captcha_bypass()
 
-    # myAttack = gc.test_get_coupon_class()
+    #myAttack = gc.test_get_coupon_class()
+    #myAttack.run()
 
     #myAttack = ad.admin_section()
     #response = myAttack.run()
@@ -78,12 +79,13 @@ def main():
     myAttack = chrSpe.Chrismas_special()
     myAttack.run()
 
-    #myAttack = uz.upload_size()
+    # myAttack = uz.upload_size()
+    # myAttack.run()
 
     
 
 
 if __name__ == "__main__":
     # main()
-    clean_up()
+    #clean_up()
     main()

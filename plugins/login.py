@@ -24,7 +24,7 @@ class login(a.attack_inter):
 
     def set_user(self):
         self.usr = usrReg.test_repetitive_registration()  ## this user is a normal user
-        #self.usr = admReg.admin_registration()
+        #self.usr = admReg.admin_registration()  ## this user is an admin
 
     def set_info(self):
         self.email, self.password, self.id = self.usr.run()
@@ -65,9 +65,15 @@ class login(a.attack_inter):
         a.set_userId(email,response)
 
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        logger = a.logging.getLogger("SQL_injection")
+        a.logging.info(logger)
+        a.logging.info('Started')
         self.set_user()  ## this is need if we do not have records of existing users.
-        self.set_info()
+        self.set_info()  ## this is need if we do not have records of existing users.
         self.password_login()
         self.credential_login(email=self.email)
+        a.logging.info('Finished')
 
 
