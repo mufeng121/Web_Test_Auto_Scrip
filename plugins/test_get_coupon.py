@@ -7,6 +7,7 @@ from plugins import attack as a
 class test_get_coupon_class(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
+        self.url_who = a.URL + '/rest/user/whoami'
         self.url = a.URL + '/rest/chatbot/respond'
 
     def generator(self):
@@ -24,9 +25,16 @@ class test_get_coupon_class(a.attack_inter):
         logger = a.logging.getLogger("Get Coupon")
         a.logging.info(logger)
         a.logging.info('Started')
+
         json_data, cookie,header = self.generator()
+        response_who = self.juice_session.get(self.url_who, cookies= cookie, headers=header)
+        auth = {
+            'action' : 'setname',
+            'query' : response_who.json()['user']['email']
+        }
+        response = self.juice_session.post(self.url, json=auth, headers=response_who.headers,cookies=response_who.cookies)
         if cookie:
-            response = self.juice_session.post(self.url, json=json_data, headers=header)
+            response = self.juice_session.post(self.url, json=json_data, headers=response.headers, cookies=response.cookies)
             while (response.text.find("pes[Cga+jm") == -1 ):
                 # cookies, headers, json_data = self.generator(json_data, new_cookie)
                 response = self.juice_session.post(self.url, json=json_data, headers=header)

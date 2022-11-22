@@ -34,8 +34,8 @@ class xss_search(a.attack_inter):
         p.url += myparams
         resp = s.send(p, allow_redirects=False)
 
-        print(response.request.url)
-        print(response.status_code)
+        print(resp.url)
+        print(resp.status_code)
         a.logging.info('Finished')
 
 

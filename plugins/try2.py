@@ -20,20 +20,3 @@ print(a.TEST_COOKIE)
 
 from urllib import parse
 
-data = [
-    ('ProductId', 2),
-    ('BasketId', "6"),
-    ('BasketId', "5"),
-    ('quantity', 1),
-]
-
-data_byte = parse.urlencode(data).encode("utf-8")
-
-url = a.URL + '/api/BasketItems/'
-email = 'test257@gmail.com'
-cookie, header = a.auth_load(email)
-response = requests.post(url, cookies=cookie, headers=header, data=data_byte)
-print(response.text)
-
-
-print(data_byte)
