@@ -28,10 +28,10 @@ def main():
     # with dictionary
     #print('Enter your dictionary:')
     #x = input()
-    myAttack = s.SQL_injector()
+    # myAttack = s.SQL_injector()
 
     # with nothing
-    # myAttack = s.SQL_injector()
+    myAttack = s.SQL_injector()
 
     # with specific user email
     # myAttack = s.SQL_injector()
