@@ -1,3 +1,4 @@
+import time
 from . import attack as a
 
 class upload_size(a.attack_inter):
@@ -17,8 +18,9 @@ class upload_size(a.attack_inter):
         return cookie,header, start+data+end
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Upload size")
         a.logging.info(logger)
         a.logging.info('Started')

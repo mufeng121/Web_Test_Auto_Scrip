@@ -5,6 +5,7 @@ VIEW BASKET
 GOAL: to view or manipulate on other people's basket
 """
 
+import time
 from plugins import attack as a
 from plugins import login as usrLogin
 import urllib3
@@ -76,8 +77,9 @@ class manipulate_basket(a.attack_inter):
         pass
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Manipulate Basket")
         a.logging.info(logger)
         a.logging.info('Started')

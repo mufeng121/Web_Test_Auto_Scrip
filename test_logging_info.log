@@ -24,3 +24,12 @@
 2022-11-22 18:01:18,575 <Logger Admin_Section (INFO)>
 2022-11-22 18:01:18,575 Started
 2022-11-22 18:01:18,604 Finished
+2022-11-23 05:25:53,531 <Logger SQL_injection (INFO)>
+2022-11-23 05:25:53,531 Started
+2022-11-23 05:25:53,635 Finished
+2022-11-23 00:27:04,512 <Logger SQL_injection (INFO)>
+2022-11-23 00:27:04,514 Started
+2022-11-23 00:27:04,572 Finished
+2022-11-23 00:35:17,890 <Logger Captcha Bypass (INFO)>
+2022-11-23 00:35:17,895 Started
+2022-11-23 00:35:18,976 Finished

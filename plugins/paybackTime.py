@@ -11,6 +11,7 @@ step2. Set the quantity of sth in your basket to be -1000000
 setp3. Set address and checkout
 """
 
+import time
 from plugins import login as usrLogin
 from plugins import attack as a
 import urllib3
@@ -30,8 +31,9 @@ class paybackTime(a.attack_inter):
         pass
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Payback Time")
         a.logging.info(logger)
         a.logging.info('Started')

@@ -10,6 +10,7 @@ otherwise, you can set self.email = "YOU PICK FROM Json"
 #################################################################
 """
 
+import time
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -66,8 +67,9 @@ class login(a.attack_inter):
         a.set_userId(email,response)
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("create a login session using user")
         a.logging.info(logger)
         a.logging.info('Started')
