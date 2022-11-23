@@ -65,7 +65,7 @@ class login(a.attack_inter):
         a.set_userId(email,response)
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         logger = a.logging.getLogger("SQL_injection")
         a.logging.info(logger)

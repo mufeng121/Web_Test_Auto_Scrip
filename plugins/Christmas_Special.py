@@ -10,8 +10,9 @@ Steps:
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+from plugins.basket import manipulate_basket
 
-class Chrismas_special():
+class Chrismas_special(manipulate_basket):
 
     def __init__(self):
         self.juice_session = a.requests.session()

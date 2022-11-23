@@ -19,6 +19,7 @@ from plugins import forged as forGe
 from plugins import login_bjoern as bjLogin
 from plugins import Product_Tampering as temPdt
 from plugins import Christmas_Special as chrSpe
+#from plugins import access_log as acsFile
 
 
 
@@ -37,8 +38,8 @@ def main():
     # myAttack = s.SQL_injector()
 
     #with nothing
-    # myAttack = s.SQL_injector()
-    # myAttack.run()
+    myAttack = s.SQL_injector()
+    myAttack.run()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -63,21 +64,23 @@ def main():
 
     myAttack = ul.login()
     myAttack.run()
-    #myAttack = ul.login()
-    #myAttack.run()
+    myAttack = ul.login()
+    myAttack.run()
     #myAttack.credential_login()
 
     #myAttack = deStar.delete_fiveStar()
-    #myAttack = mb.manipulate_basket()
-    #myAttack.run()
+    myAttack = mb.manipulate_basket()
+    myAttack.run()
     #myAttack = forGe.forged()
     #myAttack.run()
     #myAttack = bjLogin.login_bjoern()
     #myAttack.run()
     #myAttack = temPdt.temper()
     #myAttack.run()
-    myAttack = chrSpe.Chrismas_special()
-    myAttack.run()
+    #myAttack = chrSpe.Chrismas_special()
+    #myAttack.run()
+    #myAttack = acsFile.access_file()
+    #myAttack.run()
 
     # myAttack = uz.upload_size()
     # myAttack.run()

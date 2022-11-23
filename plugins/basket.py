@@ -76,7 +76,7 @@ class manipulate_basket(a.attack_inter):
         pass
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         logger = a.logging.getLogger("Manipulate Basket")
         a.logging.info(logger)

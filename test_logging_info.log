@@ -77,3 +77,95 @@
 2022-11-22 14:01:18,694 Started
 2022-11-22 14:01:24,835 <Logger Get Coupon (INFO)>
 2022-11-22 14:01:24,835 Started
+2022-11-22 14:55:45,809 <Logger SQL_injection (INFO)>
+2022-11-22 14:55:45,810 Started
+2022-11-22 14:55:45,810 <Logger SQL_injection (INFO)>
+2022-11-22 14:55:45,810 Started
+2022-11-22 14:55:45,840 Finished
+2022-11-22 14:55:45,840 <Logger Repetitive Registration (INFO)>
+2022-11-22 14:55:45,840 Started
+2022-11-22 14:55:45,953 Finished
+2022-11-22 14:56:08,469 <Logger SQL_injection (INFO)>
+2022-11-22 14:56:08,469 Started
+2022-11-22 14:56:08,469 <Logger SQL_injection (INFO)>
+2022-11-22 14:56:08,469 Started
+2022-11-22 14:56:08,508 Finished
+2022-11-22 14:56:08,509 <Logger SQL_injection (INFO)>
+2022-11-22 14:56:08,509 Started
+2022-11-22 14:56:08,540 Finished
+2022-11-22 14:56:08,541 <Logger Repetitive Registration (INFO)>
+2022-11-22 14:56:08,541 Started
+2022-11-22 14:56:08,644 Finished
+2022-11-22 14:57:11,628 <Logger SQL_injection (INFO)>
+2022-11-22 14:57:11,629 Started
+2022-11-22 14:57:11,692 Finished
+2022-11-22 14:57:24,152 <Logger SQL_injection (INFO)>
+2022-11-22 14:57:24,152 Started
+2022-11-22 14:57:24,199 Finished
+2022-11-22 14:57:29,686 <Logger SQL_injection (INFO)>
+2022-11-22 14:57:29,686 Started
+2022-11-22 14:57:29,732 Finished
+2022-11-22 14:57:47,969 <Logger SQL_injection (INFO)>
+2022-11-22 14:57:47,970 Started
+2022-11-22 14:57:48,025 Finished
+2022-11-22 14:57:48,026 <Logger Manipulate Basket (INFO)>
+2022-11-22 14:57:48,026 Started
+2022-11-22 15:03:05,938 <Logger SQL_injection (INFO)>
+2022-11-22 15:03:05,938 Started
+2022-11-22 15:03:05,975 Finished
+2022-11-22 15:03:47,502 <Logger SQL_injection (INFO)>
+2022-11-22 15:03:47,502 Started
+2022-11-22 15:03:47,549 Finished
+2022-11-22 15:04:08,422 <Logger SQL_injection (INFO)>
+2022-11-22 15:04:08,422 Started
+2022-11-22 15:04:08,463 Finished
+2022-11-22 15:16:14,998 <Logger SQL_injection (INFO)>
+2022-11-22 15:16:14,998 Started
+2022-11-22 15:16:15,037 Finished
+2022-11-22 15:16:26,541 <Logger SQL_injection (INFO)>
+2022-11-22 15:16:26,541 Started
+2022-11-22 15:16:26,582 Finished
+2022-11-22 15:42:40,650 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,650 Started
+2022-11-22 15:42:40,691 Finished
+2022-11-22 15:42:40,691 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,692 Started
+2022-11-22 15:42:40,692 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,692 Started
+2022-11-22 15:42:40,729 Finished
+2022-11-22 15:42:40,730 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,730 Started
+2022-11-22 15:42:40,759 Finished
+2022-11-22 15:42:40,759 <Logger Repetitive Registration (INFO)>
+2022-11-22 15:42:40,759 Started
+2022-11-22 15:42:40,866 Finished
+2022-11-22 15:42:40,867 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,867 Started
+2022-11-22 15:42:40,867 <Logger SQL_injection (INFO)>
+2022-11-22 15:42:40,867 Started
+2022-11-22 15:42:40,905 Finished
+2022-11-22 15:42:40,905 <Logger Repetitive Registration (INFO)>
+2022-11-22 15:42:40,905 Started
+2022-11-22 15:42:41,019 Finished
+2022-11-22 15:44:34,454 <Logger SQL_injection (INFO)>
+2022-11-22 15:44:34,455 Started
+2022-11-22 15:44:34,499 Finished
+2022-11-22 15:44:34,499 <Logger SQL_injection (INFO)>
+2022-11-22 15:44:34,500 Started
+2022-11-22 15:44:34,500 <Logger SQL_injection (INFO)>
+2022-11-22 15:44:34,500 Started
+2022-11-22 15:44:34,540 Finished
+2022-11-22 15:44:34,540 <Logger Repetitive Registration (INFO)>
+2022-11-22 15:44:34,540 Started
+2022-11-22 15:44:34,640 Finished
+2022-11-22 15:44:34,640 <Logger SQL_injection (INFO)>
+2022-11-22 15:44:34,640 Started
+2022-11-22 15:44:34,640 <Logger SQL_injection (INFO)>
+2022-11-22 15:44:34,640 Started
+2022-11-22 15:44:34,680 Finished
+2022-11-22 15:44:34,680 <Logger Repetitive Registration (INFO)>
+2022-11-22 15:44:34,680 Started
+2022-11-22 15:44:34,803 Finished
+2022-11-22 15:44:34,803 <Logger Manipulate Basket (INFO)>
+2022-11-22 15:44:34,804 Started
+2022-11-22 15:44:46,205 Finished
