@@ -11,6 +11,7 @@ from plugins import test_get_coupon as gc
 #from plugins import test_user_generate as usrGen
 #from plugins import test_admin_registration as regAdm
 #from plugins import test_forged_feedback_review as forGe
+from plugins import paybackTime as pt
 from plugins import login as ul
 from plugins import basket as mb
 from plugins import fivestar_delete as deStar
@@ -35,8 +36,8 @@ def main():
     # myAttack = s.SQL_injector()
 
     #with nothing
-    myAttack = s.SQL_injector()
-    myAttack.run()
+    # myAttack = s.SQL_injector()
+    # myAttack.run()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -54,9 +55,9 @@ def main():
 
     # myAttack = gc.test_get_coupon_class()
 
-    myAttack = ad.admin_section()
+    # myAttack = ad.admin_section()
     # myAttack = ul.login()
-    myAttack.run()
+    # myAttack.run()
     # myAttack = ul.login()
     # myAttack.run()
     # #myAttack.credential_login()
@@ -75,7 +76,8 @@ def main():
     # myAttack.run()
 
     # myAttack = uz.upload_size()
-    # myAttack.run()
+    myAttack = pt.paybackTime()
+    myAttack.run()
 
     
 
@@ -83,4 +85,3 @@ def main():
 if __name__ == "__main__":
     # main()
     clean_up()
-    # main()

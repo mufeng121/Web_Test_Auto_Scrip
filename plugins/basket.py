@@ -74,7 +74,7 @@ class manipulate_basket(a.attack_inter):
             print("2")
 
     def generator(self):
-        pass
+        return self.basketId
 
     def run(self):
         a.logging.basicConfig(filename='./test_logging_info.log', 
