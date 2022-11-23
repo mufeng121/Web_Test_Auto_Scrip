@@ -1,3 +1,4 @@
+import time
 from plugins import attack as a
 
 class test_captcha_bypass(a.attack_inter):
@@ -18,8 +19,9 @@ class test_captcha_bypass(a.attack_inter):
         return data
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Captcha Bypass")
         a.logging.info(logger)
         a.logging.info('Started')

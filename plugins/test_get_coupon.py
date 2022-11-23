@@ -2,6 +2,7 @@
 This file is used to solve the OWASP Juice-shop Task BULLY CHATBOT
 Methodology: We can send the COUPON message to the supporter machine several times, until it gives us COUPON
 """
+import time
 from plugins import attack as a
 
 class test_get_coupon_class(a.attack_inter):
@@ -20,8 +21,9 @@ class test_get_coupon_class(a.attack_inter):
         return json_data, cookie,header
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Get Coupon")
         a.logging.info(logger)
         a.logging.info('Started')
