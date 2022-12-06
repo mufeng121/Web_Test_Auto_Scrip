@@ -95,5 +95,5 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    #clean_up()
-    main()
+    clean_up()
+    # main()
