@@ -29,7 +29,6 @@ def get_auth(username):
     try:
         with open('user.json', 'r', encoding='utf-8') as f:
             user = json.loads(f.read())
-
             cookies = user[username]["cookie"]
             headers = user[username]["header"]
         return cookies, headers
@@ -94,12 +93,36 @@ def set_userId(username, response):
         print("user no found")
 
 def set_password(username, response, password):
-    user = {}
     try:
         with open('user.json', 'r', encoding='utf-8') as fc:
             user = json.loads(fc.read())
         with open('user.json', 'w') as fh:
             user[username]["password"] = password
+            fh.write(json.dumps(user, indent=4, sort_keys=True))
+    except:
+        with open('user.json', 'w') as fh:
+            fh.write(json.dumps(user,indent=4, sort_keys=True))
+        print("user no found")
+
+
+def get_userAddressId(username):
+    user = {}
+    try:
+        with open('user.json', 'r', encoding='utf-8') as f:
+            user = json.loads(f.read())
+            addressId = user[username]["userAddressId"]
+        return addressId
+    except:
+        print("Cannot find user or user Id!")
+        return None
+
+def set_userAddressId(username, id):
+    user = {}
+    try:
+        with open('user.json', 'r', encoding='utf-8') as fc:
+            user = json.loads(fc.read())
+        with open('user.json', 'w') as fh:
+            user[username]["userAddressId"] = id
             fh.write(json.dumps(user,indent=4, sort_keys=True))
     except:
         with open('user.json', 'w') as fh:

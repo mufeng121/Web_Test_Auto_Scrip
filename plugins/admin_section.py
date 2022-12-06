@@ -1,4 +1,5 @@
 #from . import attack as a
+import time
 from plugins import attack as a
 from plugins.header_config import *
 import http.cookiejar as cookielib
@@ -14,8 +15,9 @@ class admin_section(a.attack_inter):
         return cookie, header
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Admin_Section")
         a.logging.info(logger)
         a.logging.info('Started')

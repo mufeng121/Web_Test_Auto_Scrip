@@ -11,6 +11,7 @@ from plugins import test_get_coupon as gc
 #from plugins import test_user_generate as usrGen
 #from plugins import test_admin_registration as regAdm
 #from plugins import test_forged_feedback_review as forGe
+from plugins import paybackTime as pt
 from plugins import login as ul
 from plugins import basket as mb
 from plugins import fivestar_delete as deStar
@@ -23,9 +24,11 @@ from plugins import Christmas_Special as chrSpe
 
 
 
+
 def clean_up():
     try:
         os.system("rm user.json")
+        os.system("rm -r ./plugins/__pycache__")
     except:
         print("file already deleted!")
 
@@ -64,31 +67,32 @@ def main():
 
     myAttack = ul.login()
     myAttack.run()
-    myAttack = ul.login()
-    myAttack.run()
+    #myAttack = ul.login()
+    #myAttack.run()
     #myAttack.credential_login()
 
     #myAttack = deStar.delete_fiveStar()
-    myAttack = mb.manipulate_basket()
-    myAttack.run()
+    #myAttack = mb.manipulate_basket()
+    #myAttack.run()
     #myAttack = forGe.forged()
     #myAttack.run()
     #myAttack = bjLogin.login_bjoern()
     #myAttack.run()
     #myAttack = temPdt.temper()
     #myAttack.run()
-    #myAttack = chrSpe.Chrismas_special()
-    #myAttack.run()
+    myAttack = chrSpe.Chrismas_special()
+    myAttack.run()
     #myAttack = acsFile.access_file()
     #myAttack.run()
 
     # myAttack = uz.upload_size()
-    # myAttack.run()
+    #myAttack = pt.paybackTime()
+    #myAttack.run()
 
     
 
 
 if __name__ == "__main__":
     # main()
-    #clean_up()
+    clean_up()
     main()

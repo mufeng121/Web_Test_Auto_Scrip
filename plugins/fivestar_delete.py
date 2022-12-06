@@ -8,6 +8,7 @@ If not, please run SQL injection
 """
 
 
+import time
 from plugins import attack as a
 
 class delete_fiveStar():
@@ -47,8 +48,15 @@ class delete_fiveStar():
     def run(self):
         print("--------------------------------------------------------------")
         print("Now let us solve the challenge five star deleting ------------")
+        a.logging.basicConfig(filename='./test_logging_info.log', 
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
+        logger = a.logging.getLogger("Delete five star")
+        a.logging.info(logger)
+        a.logging.info('Started')
         delete_list = self.show_5StarList()
         self.delete_allList(delete_list)
         ##check deleting
         fiveStar_list = self.show_5StarList()
         print( len(fiveStar_list)==0 )
+        a.logging.info('Finished')

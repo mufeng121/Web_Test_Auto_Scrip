@@ -4,6 +4,8 @@ GOAL: Register a new user and set to be admin
 Principle: Use POST request and set the role from customer to admin
 """
 
+import logging
+import time
 from plugins import attack as a
 from plugins import test_user_generate as usrGen
 import urllib3
@@ -33,8 +35,9 @@ class admin_registration(a.attack_inter):
         return json_data
 
     def run(self):
-        logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
+        logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Admin Registration")
         a.logging.info(logger)
         a.logging.info('Started')
