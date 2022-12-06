@@ -24,11 +24,12 @@ class admin_section(a.attack_inter):
         cookie,header = self.generator()
         if cookie:
             response = self.juice_session.get(self.url, cookies=cookie, headers=header ,verify=False)
-            #print(response.text)
+            print(response.text)
             if response.status_code == 304 or response.status_code == 200:
                 print("successfully get admin dashboard")
                 print(response.text)
             print(response.status_code)
+            return response
             a.logging.info('Finished')
         else:
             print("Not have authentification yet, please try SQL injection first")

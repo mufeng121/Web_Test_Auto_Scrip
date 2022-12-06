@@ -21,12 +21,11 @@ class login(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
-        #self.email = 'test368@gmail.com' #test327@gmail.com'
         self.password = '123456'
 
     def set_user(self):
         self.usr = usrReg.test_repetitive_registration()  ## this user is a normal user
-        #self.usr = admReg.admin_registration()
+        #self.usr = admReg.admin_registration()  ## this user is an admin
 
     def set_info(self):
         self.email, self.password, self.id = self.usr.run()
@@ -67,14 +66,14 @@ class login(a.attack_inter):
         a.set_userId(email,response)
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', 
+        a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("create a login session using user")
         a.logging.info(logger)
         a.logging.info('Started')
         self.set_user()  ## this is need if we do not have records of existing users.
-        self.set_info()
+        self.set_info()  ## this is need if we do not have records of existing users.
         self.password_login()
         self.credential_login(email=self.email)
         a.logging.info('Finished')

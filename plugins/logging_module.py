@@ -12,8 +12,8 @@ class logging_module():
     #logging.basicConfig(filename='./test_logging_debug.log',  level=logging.DEBUG)
 
     # change filename to set where the log file stored
-    # default format for date/time display (shown above) is in ISO8601 
-    logging.basicConfig(filename='./test_logging_info.log', 
+    # default format for date/time display (shown above) is in ISO8601
+    logging.basicConfig(filename='./test_logging_info.log',
                             level=logging.INFO, format='%(asctime)s %(message)s')
 
     #using naming loggers to ouput module-level's name

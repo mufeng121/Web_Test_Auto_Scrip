@@ -17,6 +17,11 @@ from plugins import basket as mb
 from plugins import fivestar_delete as deStar
 from plugins import upload_size as uz
 from plugins import forged as forGe
+from plugins import login_bjoern as bjLogin
+from plugins import Product_Tampering as temPdt
+from plugins import Christmas_Special as chrSpe
+from plugins import access_log as acsFile
+
 
 
 
@@ -36,8 +41,8 @@ def main():
     # myAttack = s.SQL_injector()
 
     #with nothing
-    # myAttack = s.SQL_injector()
-    # myAttack.run()
+    myAttack = s.SQL_injector()
+    myAttack.run()
 
     # with specific user email
     # myAttack = s.SQL_injector()
@@ -53,35 +58,42 @@ def main():
 
     # myAttack = tcb.test_captcha_bypass()
 
-    # myAttack = gc.test_get_coupon_class()
+    #myAttack = ul.login()
+    #myAttack.run()
+    #myAttack = ul.login()
+    #myAttack.run()
 
-    # myAttack = ad.admin_section()
-    # myAttack = ul.login()
-    # myAttack.run()
-    # myAttack = ul.login()
-    # myAttack.run()
-    # #myAttack.credential_login()
+    #myAttack = gc.test_get_coupon_class()
+    #myAttack.run()
 
+    #myAttack = ad.admin_section()
+    #response = myAttack.run()
+    #print(response)
 
-    # myAttack = ul.login()
-    # myAttack.run()
-    # myAttack = ul.login()
-    # myAttack.run()
     #myAttack.credential_login()
 
-    # myAttack = deStar.delete_fiveStar()
-    # # myAttack = mb.manipulate_basket()
-    # myAttack.run()
-    # myAttack = forGe.forged()
-    # myAttack.run()
+    #myAttack = deStar.delete_fiveStar()
+    #myAttack = mb.manipulate_basket()
+    #myAttack.run()
+    #myAttack = forGe.forged()
+    #myAttack.run()
+    #myAttack = bjLogin.login_bjoern()
+    #myAttack.run()
+    #myAttack = temPdt.temper()
+    #myAttack.run()
+    #myAttack = chrSpe.Chrismas_special()
+    #myAttack.run()
+    myAttack = acsFile.access_file()
+    myAttack.run()
 
     # myAttack = uz.upload_size()
-    myAttack = pt.paybackTime()
-    myAttack.run()
+    #myAttack = pt.paybackTime()
+    #myAttack.run()
 
     
 
 
 if __name__ == "__main__":
     # main()
-    clean_up()
+    #clean_up()
+    main()

