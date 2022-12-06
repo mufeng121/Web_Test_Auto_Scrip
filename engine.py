@@ -20,7 +20,7 @@ from plugins import forged as forGe
 from plugins import login_bjoern as bjLogin
 from plugins import Product_Tampering as temPdt
 from plugins import Christmas_Special as chrSpe
-#from plugins import access_log as acsFile
+from plugins import access_log as acsFile
 
 
 
@@ -58,6 +58,11 @@ def main():
 
     # myAttack = tcb.test_captcha_bypass()
 
+    #myAttack = ul.login()
+    #myAttack.run()
+    #myAttack = ul.login()
+    #myAttack.run()
+
     #myAttack = gc.test_get_coupon_class()
     #myAttack.run()
 
@@ -65,10 +70,6 @@ def main():
     #response = myAttack.run()
     #print(response)
 
-    myAttack = ul.login()
-    myAttack.run()
-    #myAttack = ul.login()
-    #myAttack.run()
     #myAttack.credential_login()
 
     #myAttack = deStar.delete_fiveStar()
@@ -80,10 +81,10 @@ def main():
     #myAttack.run()
     #myAttack = temPdt.temper()
     #myAttack.run()
-    myAttack = chrSpe.Chrismas_special()
-    myAttack.run()
-    #myAttack = acsFile.access_file()
+    #myAttack = chrSpe.Chrismas_special()
     #myAttack.run()
+    myAttack = acsFile.access_file()
+    myAttack.run()
 
     # myAttack = uz.upload_size()
     #myAttack = pt.paybackTime()
@@ -94,5 +95,5 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    clean_up()
+    #clean_up()
     main()

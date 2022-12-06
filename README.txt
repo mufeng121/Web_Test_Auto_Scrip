@@ -10,11 +10,12 @@ Attack plugin running flow:
     3. (Optional) other SQL injections
     5. admin_section
     5. test_captcha_bypass()
-    5. test_get_coupon_class()
+    5. test_get_coupon_class() || You MUST need admin record
     5. upload_size()
     5. fivestar_delet() || You MUST need admin record
     5. basket() || You MUST need two customer user record
     5. forged() || You MUST need two customer user record
+    5. Christmas_Special() || You MUST need one customer record
 
 
 

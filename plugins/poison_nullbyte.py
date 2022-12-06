@@ -1,10 +1,18 @@
 """
-This file is used to solve the OWASP Juice-shop Task POISON NULLBYTE
+This file is to automate the OWASP JUICESHOP TASK
 EASTER EGG
+ACCESS LOG
 FORGETTEN DEVELOPER Backup
 MISPLACED SIGNATURE FILE
+-------------------------------------------------
 NullByte Injection is to inject on URI to download files besides extension with "md" and "pdf"checking.
+METHODOLOGY:
+1. scan the subnet to find ftp, using brute force
+2.1. find easter.egg in response
+2.2.
+3.1. scan the subnet using %25xx.md using brute force
 """
+
 import time
 from . import attack as a
 
