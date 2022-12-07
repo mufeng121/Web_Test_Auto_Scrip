@@ -30,7 +30,7 @@ class manipulate_basket(a.attack_inter):
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#--------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         print("please enter attacker's email")
