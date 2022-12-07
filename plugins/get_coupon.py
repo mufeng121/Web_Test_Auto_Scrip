@@ -1,11 +1,11 @@
 # SOURCE FILE:    get_coupon.py
 # PROGRAM:        JuiceShop automating attack application -- Plugin
-# FUNCTIONS:      Doing BULLY CHATBOT challenge
+# FUNCTIONS:      Doing BULLY CHATBOT challenge (NOT WORKING YET)
 #                 We can send the COUPON message to the supporter machine several times, until it gives us COUPON
 #          
 # DATE:           Dec 6, 2022
 # REVISIONS:      N/A
-# PROGRAMMER:     Hugh Song
+# PROGRAMMER:     Hugh Song, Yoyo Wang
 #
 # NOTES:
 # Has some bug
