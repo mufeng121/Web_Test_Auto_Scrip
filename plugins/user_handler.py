@@ -95,7 +95,7 @@ def set_basket_id(username, response):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION get_basket_id
 #ARGUMENTS: username --> username/email
 #           
@@ -115,7 +115,7 @@ def get_basket_id(username):
         print("Cannot find user or basket Id!")
         return None
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION get_userId
 #ARGUMENTS: username --> username/email
 #           
@@ -135,7 +135,7 @@ def get_userId(username):
         print("Cannot find user or user Id!")
         return None
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION set_userId
 #ARGUMENTS: username --> username/email
 #           response --> response for POST request
@@ -159,7 +159,7 @@ def set_userId(username, response):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION: set_password
 #ARGUMENTS: username --> username/email
 #           response --> response for POST request
@@ -181,7 +181,7 @@ def set_password(username, response, password):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION get_userAddressId
 #ARGUMENTS: username --> username/email
 #           
@@ -201,7 +201,7 @@ def get_userAddressId(username):
         print("Cannot find user or user Id!")
         return None
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION set_userAddressId
 #ARGUMENTS: username --> username/email
 #           id --> user's shipping address id

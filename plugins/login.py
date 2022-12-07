@@ -25,15 +25,15 @@ from plugins import admin_registration as admReg
 #---------------------------------------------------------------------------------------
 #Class: login
 #Inherit: Attack
-#----------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------
 class login(a.attack_inter):
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         # REST session
         self.juice_session = a.requests.session()
@@ -42,27 +42,27 @@ class login(a.attack_inter):
         # moke user password
         self.password = '123456'
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION set_user
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: create and register a new user
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def set_user(self):
         self.usr = usrReg.repetitive_registration()  ## this user is a normal user
         #self.usr = admReg.admin_registration()  ## this user is an admin
         self.email, self.password, self.id = self.usr.run()
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: json_data  --> will be embedded into POST request json field. 
 #Description: This function is used to generate needed data from REST requests
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self,):
         json_data = {
             'email': self.email,
@@ -70,7 +70,7 @@ class login(a.attack_inter):
         }
         return json_data
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION password_login
 #ARGUMENTS: N/A
 #RETURNS: response  --> response for POST request. 
@@ -79,7 +79,7 @@ class login(a.attack_inter):
 #             Then, in the following cases, we can bypass authentication using cookies and headers.
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def password_login(self):
         print("--------------------------------------")
         print("Now let us login using username " + self.email + " and password " + self.password)
@@ -92,14 +92,14 @@ class login(a.attack_inter):
         print(response.text)
         return response
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION credential_login
 #ARGUMENTS: email --> existing user's email
 #RETURNS: N/A
 #Description: bypass authentication using cookies and headers.
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def credential_login(self, email):
         print("---------------------------------------------")
         print("Now let us login using cookie and header")
@@ -110,7 +110,7 @@ class login(a.attack_inter):
         print("Now let us load our UserId to json ----")
         a.set_userId(email,response)
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
@@ -121,7 +121,7 @@ class login(a.attack_inter):
 #             4. bypass login by using credentials
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')

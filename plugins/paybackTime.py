@@ -20,18 +20,17 @@ from plugins import basket as bt
 #-----------------------------------------------------------------------------------------------
 class paybackTime(bt.manipulate_basket):
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#-----------------------------------------------------------------------------------------------
-    def __init__(self):
+#--------------------------------------------------------------------------------------
+    def __init__(self, user):
         # REST session
         self.juice_session = bt.a.requests.session()
-        print("please enter your email")
         # user's email: get from command line, and it must exist in user.json)
-        self.email = input()
+        self.email = user
         # user id: get through user_handle
         self.userid = bt.a.get_userId(self.email)
         # cookie and header for this user: get through user_handle
@@ -46,7 +45,7 @@ class paybackTime(bt.manipulate_basket):
         self.productId = super().generate_productID(self.basketId)
         
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION get_address
 #ARGUMENTS: N/A
 #RETURNS: addressId  --> user's shipping address ID. 
@@ -54,7 +53,7 @@ class paybackTime(bt.manipulate_basket):
 #             If the user already has shipping address --> directly get ID through user_handler
 #             else invoke set_address function to set a shipping address for this user
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def get_address(self):
         addressId = bt.a.get_userAddressId(self.email)
         if addressId:
@@ -63,14 +62,14 @@ class paybackTime(bt.manipulate_basket):
             addressId = self.set_address()
             return addressId
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION set_address
 #ARGUMENTS: N/A
 #RETURNS: addressId  --> user's shipping address ID. 
 #Description: This funtions used to set a shipping address for this user
 #             Craft a json data and send POST request to address_url
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def set_address(self):
         json_data = {
             'country': 'canada',
@@ -86,14 +85,14 @@ class paybackTime(bt.manipulate_basket):
         bt.a.set_userAddressId(self.email,address_id)
         return address_id
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: json_data  --> will be embedded into POST request json field. 
 #Description: This function is used to generate needed data from REST requests
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self):
         addressId = self.get_address()
         json_data = {
@@ -106,14 +105,14 @@ class paybackTime(bt.manipulate_basket):
         }
         return json_data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         super().view_basket(self.basketId)
         super().addto_basket(quantity=-5, productId=self.productId)

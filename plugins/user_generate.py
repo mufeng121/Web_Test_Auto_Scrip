@@ -17,13 +17,13 @@ MAX_LENGTH = 400
 #---------------------------------------------------------------------------------------
 #Class: new_user_generate
 #Inherit: N/A
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class new_user_generate():
 
     def __init__(self):
         pass
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION check
 #ARGUMENTS: email --> randomly generated new user email address
 #RETURNS: boolean --> whether this email is already registered 
@@ -32,7 +32,7 @@ class new_user_generate():
 #NOTES:
 # return True: User not exits! Email is available for registration
 # return False: User exists! You need to generate new User email again
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def check(self, email):
         """
         This function is used to check whether the email of
@@ -49,7 +49,7 @@ class new_user_generate():
             print("User not exits! Email is available for registration")
             return True
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION check
 #ARGUMENTS: N/A
 #RETURNS: email --> a new user email which is never registered
@@ -58,7 +58,7 @@ class new_user_generate():
 #NOTES:
 # Generated email address pattern: test{dd}@gmail.com   dd are 2 digits random number.
 # Eg: test56@gmail.com
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generate_email(self):
         """
         This function is used to generate a new user email with some terminology.

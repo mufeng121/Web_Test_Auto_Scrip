@@ -15,23 +15,24 @@
 import time
 from plugins import attack as a
 
-#---------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #Class: get_coupon
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class get_coupon(a.attack_inter):
-#-----------------------------------------
+
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables(REST session; url_who, URL).
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url_who = a.URL + '/rest/user/whoami'
         self.url = a.URL + '/rest/chatbot/respond'
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: json_data, cookie, header
@@ -39,7 +40,7 @@ class get_coupon(a.attack_inter):
 #             
 #NOTES:
 # ALL REST requests needed data like json_data, header, and cookie must generated through this function
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self):
         cookie, header= a.get_auth('admin')
         json_data = {
@@ -49,14 +50,14 @@ class get_coupon(a.attack_inter):
 
         return json_data, cookie,header
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         #a.logging.basicConfig(filename='./test_logging_info.log',
          #                   level=a.logging.INFO, format='%(asctime)s %(message)s')
