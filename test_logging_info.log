@@ -1067,3 +1067,59 @@
 2022-12-06 11:48:43,326 <Logger SQL_injection (INFO)>
 2022-12-06 11:48:43,326 Started
 2022-12-06 11:48:43,361 Finished
+2022-12-07 06:31:56,859 <Logger SQL_injection (INFO)>
+2022-12-07 06:31:56,862 Started
+2022-12-07 06:31:57,722 Finished
+2022-12-07 06:36:28,131 <Logger SQL_injection (INFO)>
+2022-12-07 06:36:28,133 Started
+2022-12-07 06:36:29,147 Finished
+2022-12-07 06:40:00,023 <Logger SQL_injection (INFO)>
+2022-12-07 06:40:00,025 Started
+2022-12-07 06:40:30,372 <Logger SQL_injection (INFO)>
+2022-12-07 06:40:30,373 Started
+2022-12-07 06:41:36,575 <Logger SQL_injection (INFO)>
+2022-12-07 06:41:36,578 Started
+2022-12-07 06:41:40,887 Finished
+2022-12-07 07:39:03,606 <Logger SQL_injection (INFO)>
+2022-12-07 07:39:03,607 Started
+2022-12-07 07:39:06,808 Finished
+2022-12-07 07:40:55,784 <Logger SQL_injection (INFO)>
+2022-12-07 07:40:55,785 Started
+2022-12-07 07:40:56,913 Finished
+2022-12-07 07:42:16,315 <Logger SQL_injection (INFO)>
+2022-12-07 07:42:16,316 Started
+2022-12-07 07:42:21,350 Finished
+2022-12-07 07:46:36,655 <Logger SQL_injection (INFO)>
+2022-12-07 07:46:36,656 Started
+2022-12-07 07:46:37,783 Finished
+2022-12-07 07:46:53,693 <Logger SQL_injection (INFO)>
+2022-12-07 07:46:53,694 Started
+2022-12-07 07:46:54,985 Finished
+2022-12-07 07:53:36,353 <Logger Admin_Section (INFO)>
+2022-12-07 07:53:36,354 Started
+2022-12-07 07:53:37,266 Finished
+2022-12-07 07:55:31,661 <Logger SQL_injection (INFO)>
+2022-12-07 07:55:31,662 Started
+2022-12-07 07:55:32,624 Finished
+2022-12-07 07:55:59,558 <Logger Admin_Section (INFO)>
+2022-12-07 07:55:59,559 Started
+2022-12-07 07:56:00,526 Finished
+2022-12-07 08:00:01,732 <Logger SQL_injection (INFO)>
+2022-12-07 08:00:01,739 Started
+2022-12-07 08:00:02,750 Finished
+2022-12-07 08:00:02,751 <Logger Repetitive Registration (INFO)>
+2022-12-07 08:00:02,752 Started
+2022-12-07 08:08:31,555 <Logger SQL_injection (INFO)>
+2022-12-07 08:08:31,556 Started
+2022-12-07 08:08:32,619 Finished
+2022-12-07 08:08:32,622 <Logger Admin Registration (INFO)>
+2022-12-07 08:08:32,622 Started
+2022-12-07 08:08:35,077 Finished
+2022-12-07 08:11:11,297 <Logger create a login session using user (INFO)>
+2022-12-07 08:11:11,298 Started
+2022-12-07 08:11:11,299 <Logger SQL_injection (INFO)>
+2022-12-07 08:11:11,299 Started
+2022-12-07 08:11:22,811 Finished
+2022-12-07 08:11:22,814 <Logger Repetitive Registration (INFO)>
+2022-12-07 08:11:22,815 Started
+2022-12-07 08:11:53,838 Finished

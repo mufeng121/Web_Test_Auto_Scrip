@@ -71,6 +71,7 @@ class admin_registration(a.attack_inter):
 #NOTES: None
 #-----------------------------------------------------------------------------------------------
     def run(self):
+        print("================Start register a new admin user==============")
         logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
@@ -89,7 +90,9 @@ class admin_registration(a.attack_inter):
             print("Congratulations! You have successfully solve a challenge Admin Registration")
             print("Now you can login with admin email " + self.email +" and password " + self.password)
             userid = response.json()["data"]["id"]
-            return self.email, self.password, userid
             a.logging.info('Finished')
+            print("================registration finished==============")
+            return self.email, self.password, userid
+            
 
 

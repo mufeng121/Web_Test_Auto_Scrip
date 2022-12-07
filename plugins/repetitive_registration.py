@@ -70,6 +70,7 @@ class repetitive_registration(a.attack_inter):
 #NOTES: None
 #-----------------------------------------------------------------------------------------------
     def run(self):
+        print("================Start register a new user==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
@@ -86,6 +87,7 @@ class repetitive_registration(a.attack_inter):
             userid = response.json()["data"]["id"]
             return self.email, self.password, userid
         a.logging.info('Finished')
+        print("================registration finished==============")
 
 
 

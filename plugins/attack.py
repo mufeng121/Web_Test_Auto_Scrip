@@ -25,8 +25,8 @@ from .user_handler import *
 #       Option 2: using online public server; uncomment second URL
 #       Option 2 is unstable, Option 1 need some installation on your local machine. 
 #--------------------------------------------------------------------------------------
-URL = "http://localhost:3000"
-#URL = "https://juice-shop.herokuapp.com"
+# URL = "http://localhost:3000"
+URL = "https://juice-shop.herokuapp.com"
 
 class attack_inter(ABC):
     # Used to generate all REST requests needed data like json, header, and cookie

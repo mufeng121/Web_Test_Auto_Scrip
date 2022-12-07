@@ -10,14 +10,18 @@
 #
 # PROGRAMMER:     Hugh Song, Yoyo Wang
 #
-# NOTES
-# encode mode -c [cover image name] -s [secret image name] -st [name for new image]
-# decode mode -st [steganographed image]
-# eg: python3 -encode -c c1.png -s s1.png -st r1.png 
-#     python3 -decode -st r1.png
+# NOTES: valid command example
+#     python3 engine.py -s
+#     python3 engine.py -s -p "jim@juice-sh.op' --" -u jim
+#     python3 engine.py -s -p ./plugins/SQL_injection_payloads.txt
+#     python3 engine.py -ad
+#     python3 engine.py -adduser
+#     python3 engine.py -addAdminUser
+#     python3 engine.py -adduser
 #---------------------------------------------------------------------------------
 import os, sys
 from tkinter import X
+import argparse
 from plugins import SQL_injection as s
 from plugins import xss_search as xss
 from plugins import admin_section as ad
@@ -27,7 +31,7 @@ from plugins import repetitive_registration as rr
 from plugins import get_coupon as gc
 
 #from plugins import test_user_generate as usrGen
-#from plugins import admin_registration as regAdm
+from plugins import admin_registration as regAdm
 #from plugins import forged_feedback_review as forGe
 from plugins import paybackTime as pt
 from plugins import login as ul
@@ -68,25 +72,44 @@ def clean_up():
 #2.determine using which plugin
 #-----------------------------------------------------------------------------------------------
 def main():
-    # SQL injection
-    # with dictionary
-    # print('Enter your dictionary:')
-    # x = input()
-    # myAttack = s.SQL_injector()
-
-    #with nothing
-    myAttack = s.SQL_injector()
-    myAttack.run()
-
-    # with specific user email
-    # myAttack = s.SQL_injector()
-    # myAttack.run('jim@juice-sh.op\' --', 'jim')
-
-    # with no-exist email
-    # myAttack = s.SQL_injector()
-    # code = myAttack.run('hugh@juice-sh.op\' --', 'hugh')
-    # if code !=200:
-    #     print("user not exist")
+    #command line argument setting
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--s", help="Login through sql injection -s -p[SQL payload, dictionary name (Optional)] -c[username (optional)]", action="store_true")
+    parser.add_argument("-p", "--p", help="associated with flag -s, to provide specific SQL injection payload", action="store")
+    parser.add_argument("-u", "--u", help="associated with flag -s, to provide specific username", action="store")
+    parser.add_argument("-ad", "--ad", help="admin setion attack", action="store_true")
+    parser.add_argument("-addUser", "--addUser", help="repetitive registration attack", action="store_true")
+    parser.add_argument("-addAdminUser", "--addAdminUser", help="repetitive registration attack", action="store_true")
+    parser.add_argument("-login", "--login", help="login and collect user credential", action="store_true")
+    # parser.add_argument("-decode", "--decode", help="decode mode -st [steganographed image]", action="store")
+    # parser.add_argument("-c", "--c", help="cover image include extension", action="store")
+    # parser.add_argument("-s", "--s", help="secret image include extension", action="store")
+    # parser.add_argument("-st", "--st", help="steganography image include extension", action="store")
+    # parser.parse_args(['-h'])
+    args = parser.parse_args()
+    myAttack = None
+    if args.s:
+        myAttack = s.SQL_injector()
+        if args.p and args.u:
+            myAttack.run(args.p, args.u)
+        elif args.p:
+            myAttack.run(args.p)
+        else:
+            myAttack.run()
+    elif args.ad:
+        myAttack = ad.admin_section()
+        myAttack.run()
+    elif args.login:
+        myAttack = ul.login()
+        myAttack.run()
+    elif args.addUser:
+        myAttack = rr.repetitive_registration()
+        myAttack.run()
+    elif args.addAdminUser:
+        myAttack = regAdm.admin_registration()
+        myAttack.run()
+    else:
+        parser.parse_args(['-h'])
 
     #myAttack = xss.xss_search()
 
@@ -117,8 +140,8 @@ def main():
     #myAttack.run()
     #myAttack = chrSpe.Chrismas_special()
     #myAttack.run()
-    myAttack = acsFile.access_file()
-    myAttack.run()
+    # myAttack = acsFile.access_file()
+    # myAttack.run()
 
     # myAttack = uz.upload_size()
     #myAttack = pt.paybackTime()

@@ -52,6 +52,7 @@ class admin_section(a.attack_inter):
 #NOTES: None
 #-----------------------------------------------------------------------------------------------
     def run(self):
+        print("================Start loading admin section==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
@@ -66,11 +67,13 @@ class admin_section(a.attack_inter):
                 print("successfully get admin dashboard")
                 print(response.json()["data"])
             print(response.status_code)
-            return response.status_code
+            print("================admin section finished==============")
             a.logging.info('Finished')
+            return response.status_code
         else:
             print("Not have authentification yet, please try SQL injection first")
             a.logging.info('Finished')
+            print("================admin section finished==============")
             return response.status_code
 
 

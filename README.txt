@@ -1,6 +1,6 @@
 Preparation:   
-    1. According to which web server you use, uncomment line 6 or 7 in attack.py
-    2. According to which web server you use, uncomment line 10 or 11 in header_config.py
+    1. According to which web server you use, uncomment line 28 or 29 in attack.py
+    2. According to which web server you use, uncomment line 21 or 22 in header_config.py
     3. recommend give '777' permission to all files
 
 Attack plugin running flow:
