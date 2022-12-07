@@ -8,7 +8,7 @@
 # REVISIONS:      N/A
 # DESIGNER:       Hugh Song, Yoyo Wang, River Chen
 #
-# PROGRAMMER:     Hugh Song, Yoyo Wang
+# PROGRAMMER:     Hugh Song
 #
 # NOTES: valid command example
 #     python3 engine.py -s
@@ -18,6 +18,13 @@
 #     python3 engine.py -adduser
 #     python3 engine.py -addAdminUser
 #     python3 engine.py -adduser
+#     python3 engine.py -login
+#     python3 engine.py -captcha
+#     python3 engine.py -uploadF
+#     python3 engine.py -payback -u test195@gmail.com
+#     python3 engine.py -deFStar
+#     python3 engine.py -bjLogin
+#     python3 engine.py -forGe -attacker test195@gmail.com -victim bjoern.kimminich@gmail.com
 #---------------------------------------------------------------------------------
 import os, sys
 from tkinter import X
@@ -45,7 +52,7 @@ from plugins import Christmas_Special as chrSpe
 from plugins import access_log as acsFile
 
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION clean_up
 #ARGUMENTS: N/A
 #RETURNS: void
@@ -62,7 +69,7 @@ def clean_up():
         print("file already deleted!")
 
 
-#-----------------------------------------
+#-----------------------------------------------------------------------------------------------
 #FUNCTION main
 #ARGUMENTS: void
 #RETURNS: void
@@ -76,15 +83,22 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--s", help="Login through sql injection -s -p[SQL payload, dictionary name (Optional)] -c[username (optional)]", action="store_true")
     parser.add_argument("-p", "--p", help="associated with flag -s, to provide specific SQL injection payload", action="store")
-    parser.add_argument("-u", "--u", help="associated with flag -s, to provide specific username", action="store")
+    parser.add_argument("-u", "--u", help="associated with flag -s or -payback, to provide specific username", action="store")
     parser.add_argument("-ad", "--ad", help="admin setion attack", action="store_true")
     parser.add_argument("-addUser", "--addUser", help="repetitive registration attack", action="store_true")
     parser.add_argument("-addAdminUser", "--addAdminUser", help="repetitive registration attack", action="store_true")
     parser.add_argument("-login", "--login", help="login and collect user credential", action="store_true")
-    # parser.add_argument("-decode", "--decode", help="decode mode -st [steganographed image]", action="store")
-    # parser.add_argument("-c", "--c", help="cover image include extension", action="store")
-    # parser.add_argument("-s", "--s", help="secret image include extension", action="store")
-    # parser.add_argument("-st", "--st", help="steganography image include extension", action="store")
+    parser.add_argument("-captcha", "--captcha", help="captcha bypass attack", action="store_true")
+    parser.add_argument("-uploadF", "--uploadF", help="upload big pdf file", action="store_true")
+    parser.add_argument("-xss", "--xss", help="xss injection", action="store_true")
+    parser.add_argument("-coupon", "--coupon", help="BULLY CHATBOT attack (has BUG)", action="store_true")
+    parser.add_argument("-payback", "--payback", help="payback time attack", action="store_true")
+    parser.add_argument("-deFStar", "--deFStar", help="delete all five star feedbacks", action="store_true")
+    parser.add_argument("-bjLogin", "--bjLogin", help="login BJOERN Challenge", action="store_true")
+    parser.add_argument("-forGe", "--forGe", help="FORGED FEEDBACK & FORGED REVIEW", action="store_true")
+    parser.add_argument("-attacker", "--attacker", help="associated with flag -forGe, to provide attacker's email", action="store")
+    parser.add_argument("-victim", "--victim", help="associated with flag -forGe, to provide victim's email", action="store")
+    parser.add_argument("-temPdt", "--temPdt", help="PRODUCT TAMPERING", action="store_true")
     # parser.parse_args(['-h'])
     args = parser.parse_args()
     myAttack = None
@@ -108,33 +122,43 @@ def main():
     elif args.addAdminUser:
         myAttack = regAdm.admin_registration()
         myAttack.run()
+    elif args.captcha:
+        myAttack = tcb.captcha_bypass()
+        myAttack.run()
+    elif args.uploadF:
+        myAttack = uz.upload_size()
+        myAttack.run()
+    elif args.xss:
+        myAttack = xss.xss_search()
+        myAttack.run()
+    elif args.coupon:
+        myAttack = gc.get_coupon()
+        myAttack.run()
+    elif args.payback and args.u:
+        myAttack = pt.paybackTime(args.u)
+        myAttack.run()
+    elif args.deFStar:
+        myAttack = deStar.delete_fiveStar()
+        myAttack.run()
+    elif args.bjLogin:
+        myAttack = bjLogin.login_bjoern()
+        myAttack.run()
+    elif args.bjLogin:
+        myAttack = bjLogin.login_bjoern()
+        myAttack.run()
+    elif args.forGe and args.attacker and args.victim:
+        myAttack = forGe.forged(args.attacker, args.victim)
+        myAttack.run()
+    elif args.temPdt:
+        myAttack = temPdt.temper()
+        # myAttack = chrSpe.Chrismas_special()
+        myAttack.run()
+
     else:
         parser.parse_args(['-h'])
 
-    #myAttack = xss.xss_search()
-
-    # myAttack = tcb.test_captcha_bypass()
-
-    #myAttack = ul.login()
-    #myAttack.run()
-    #myAttack = ul.login()
-    #myAttack.run()
-
-    #myAttack = gc.get_coupon()
-    #myAttack.run()
-
-    #myAttack = ad.admin_section()
-    #response = myAttack.run()
-    #print(response)
-
     #myAttack.credential_login()
-
-    #myAttack = deStar.delete_fiveStar()
     #myAttack = mb.manipulate_basket()
-    #myAttack.run()
-    #myAttack = forGe.forged()
-    #myAttack.run()
-    #myAttack = bjLogin.login_bjoern()
     #myAttack.run()
     #myAttack = temPdt.temper()
     #myAttack.run()
@@ -143,14 +167,7 @@ def main():
     # myAttack = acsFile.access_file()
     # myAttack.run()
 
-    # myAttack = uz.upload_size()
-    #myAttack = pt.paybackTime()
-    #myAttack.run()
-
-    
-
 
 if __name__ == "__main__":
-    # main()
     clean_up()
     # main()

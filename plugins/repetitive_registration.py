@@ -19,15 +19,15 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 #---------------------------------------------------------------------------------------
 #Class: repetitive_registration
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class repetitive_registration(a.attack_inter):
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         # REST session
         self.juice_session = a.requests.session()
@@ -40,14 +40,14 @@ class repetitive_registration(a.attack_inter):
         # moke user password
         self.password = '123456'
 
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: N/A
 #RETURNS: json_data  --> will be embedded into POST request json field. 
 #Description: This function is used to generate needed data from REST requests
 #             
 #NOTES:
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self):
         json_data = {
             'email': self.email,
@@ -61,14 +61,14 @@ class repetitive_registration(a.attack_inter):
         }
         return json_data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         print("================Start register a new user==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
@@ -85,9 +85,10 @@ class repetitive_registration(a.attack_inter):
             print("Congratulations! You have successfully finished task Repetitive Registration")
             print("Now you can login with user email " + self.email + " and password " + self.password)
             userid = response.json()["data"]["id"]
+            a.logging.info('Finished')
+            print("================registration finished==============")
             return self.email, self.password, userid
         a.logging.info('Finished')
-        print("================registration finished==============")
 
 
 

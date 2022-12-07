@@ -57,6 +57,7 @@ class upload_size(a.attack_inter):
 #NOTES: None
 #-----------------------------------------------------------------------------------------------
     def run(self):
+        print("================Start uploading a big pdf file==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
@@ -71,3 +72,4 @@ class upload_size(a.attack_inter):
         else:
             print("Not have authentification yet, please try SQL injection first")
             a.logging.info('Finished')
+        print("================uploading end==============")

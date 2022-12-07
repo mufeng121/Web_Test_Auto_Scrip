@@ -1123,3 +1123,63 @@
 2022-12-07 08:11:22,814 <Logger Repetitive Registration (INFO)>
 2022-12-07 08:11:22,815 Started
 2022-12-07 08:11:53,838 Finished
+2022-12-07 08:23:55,587 <Logger SQL_injection (INFO)>
+2022-12-07 08:23:55,587 Started
+2022-12-07 08:23:55,646 Finished
+2022-12-07 08:24:12,129 <Logger create a login session using user (INFO)>
+2022-12-07 08:24:12,129 Started
+2022-12-07 08:24:12,130 <Logger SQL_injection (INFO)>
+2022-12-07 08:24:12,130 Started
+2022-12-07 08:24:12,144 Finished
+2022-12-07 08:24:12,145 <Logger Repetitive Registration (INFO)>
+2022-12-07 08:24:12,145 Started
+2022-12-07 08:24:12,280 Finished
+2022-12-07 08:31:52,406 <Logger Captcha Bypass (INFO)>
+2022-12-07 08:31:52,406 Started
+2022-12-07 08:31:52,775 Finished
+2022-12-07 08:35:33,310 <Logger SQL_injection (INFO)>
+2022-12-07 08:35:33,310 Started
+2022-12-07 08:35:33,344 Finished
+2022-12-07 08:36:03,227 <Logger Upload size (INFO)>
+2022-12-07 08:36:03,227 Started
+2022-12-07 08:36:03,240 Finished
+2022-12-07 08:39:00,343 <Logger XSS Search (INFO)>
+2022-12-07 08:39:00,344 Started
+2022-12-07 08:39:00,347 Finished
+2022-12-07 08:44:01,729 <Logger create a login session using user (INFO)>
+2022-12-07 08:44:01,729 Started
+2022-12-07 08:44:01,729 <Logger SQL_injection (INFO)>
+2022-12-07 08:44:01,729 Started
+2022-12-07 08:44:01,748 Finished
+2022-12-07 08:44:01,749 <Logger Repetitive Registration (INFO)>
+2022-12-07 08:44:01,749 Started
+2022-12-07 08:44:01,826 Finished
+2022-12-07 08:44:01,910 Finished
+2022-12-07 08:44:05,211 <Logger create a login session using user (INFO)>
+2022-12-07 08:44:05,211 Started
+2022-12-07 08:44:05,211 <Logger SQL_injection (INFO)>
+2022-12-07 08:44:05,211 Started
+2022-12-07 08:44:05,221 Finished
+2022-12-07 08:44:05,221 <Logger Repetitive Registration (INFO)>
+2022-12-07 08:44:05,221 Started
+2022-12-07 08:44:05,288 Finished
+2022-12-07 08:44:05,349 Finished
+2022-12-07 09:04:20,126 <Logger Delete five star (INFO)>
+2022-12-07 09:04:20,126 Started
+2022-12-07 09:04:20,190 Finished
+2022-12-07 09:07:47,956 <Logger Admin_Section (INFO)>
+2022-12-07 09:07:47,956 Started
+2022-12-07 09:07:47,975 Finished
+2022-12-07 09:11:24,054 <Logger Admin_Section (INFO)>
+2022-12-07 09:11:24,054 Started
+2022-12-07 09:11:24,082 Finished
+2022-12-07 09:15:11,341 <Logger Forged Feedback (INFO)>
+2022-12-07 09:15:11,341 Started
+2022-12-07 09:15:11,377 Finshed
+2022-12-07 09:15:11,377 <Logger Forged Review (INFO)>
+2022-12-07 09:15:11,386 Finshed
+2022-12-07 09:21:40,837 <Logger Forged Feedback (INFO)>
+2022-12-07 09:21:40,837 Started
+2022-12-07 09:21:40,873 Finshed
+2022-12-07 09:21:40,873 <Logger Forged Review (INFO)>
+2022-12-07 09:21:40,901 Finshed

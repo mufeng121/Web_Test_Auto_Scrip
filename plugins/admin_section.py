@@ -13,10 +13,10 @@ from plugins import attack as a
 from plugins.header_config import *
 import http.cookiejar as cookielib
 
-#---------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #Class: admin_section
 #Inherit: Attack
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 class admin_section(a.attack_inter):
 
 #-----------------------------------------
@@ -24,7 +24,7 @@ class admin_section(a.attack_inter):
 #ARGUMENTS: N/A
 #RETURNS: void
 #Description: Initial class variables(REST session; URL).
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def __init__(self):
         self.juice_session = a.requests.session()
         self.url = a.URL + '/rest/user/authentication-details'
@@ -38,19 +38,19 @@ class admin_section(a.attack_inter):
 #       
 #NOTES:
 # ALL REST requests needed data like json_data, header, and cookie must generated through this function
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def generator(self):
         cookie, header = a.get_auth('admin')
         return cookie, header
 
-#-----------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 #FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: response.status_code  --> indicate attack is success or not
 #Description: This is the main function for plugin to send REST requests.
 #             
 #NOTES: None
-#-----------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
     def run(self):
         print("================Start loading admin section==============")
         a.logging.basicConfig(filename='./test_logging_info.log', 
@@ -69,7 +69,7 @@ class admin_section(a.attack_inter):
             print(response.status_code)
             print("================admin section finished==============")
             a.logging.info('Finished')
-            return response.status_code
+            return response
         else:
             print("Not have authentification yet, please try SQL injection first")
             a.logging.info('Finished')
