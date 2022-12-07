@@ -1,3 +1,14 @@
+# SOURCE FILE:    header_config.py
+# PROGRAM:        JuiceShop automating attack application -- token tamplate
+# Description:    Provide very basic Cookie and Header tamplate  
+#                  
+# DATE:           Dec 6, 2022
+# REVISIONS:      N/A
+# PROGRAMMER:     Hugh Song
+#
+# NOTES
+#--------------------------------------------------------------------------------------
+
 TEST_COOKIE = {
     'language': 'en',
     'welcomebanner_status': 'dismiss',

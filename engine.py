@@ -1,3 +1,21 @@
+# SOURCE FILE:    engine.py
+# PROGRAM:        JuiceShop automating attack application
+# FUNCTIONS:      application's main entrance.
+#                 Flag system: user need to use flag in terminal to invoke corresponding plugin
+#                 Clean up function: clean all pycache and json file
+#
+# DATE:           Dec 6, 2022
+# REVISIONS:      N/A
+# DESIGNER:       Hugh Song, Yoyo Wang, River Chen
+#
+# PROGRAMMER:     Hugh Song, Yoyo Wang
+#
+# NOTES
+# encode mode -c [cover image name] -s [secret image name] -st [name for new image]
+# decode mode -st [steganographed image]
+# eg: python3 -encode -c c1.png -s s1.png -st r1.png 
+#     python3 -decode -st r1.png
+#---------------------------------------------------------------------------------
 import os, sys
 from tkinter import X
 from plugins import SQL_injection as s
@@ -5,12 +23,12 @@ from plugins import xss_search as xss
 from plugins import admin_section as ad
 from plugins import captcha_bypass as tcb
 # from plugins import test_encoding_website as ew
-from plugins import test_repetitive_registration as rr
-from plugins import test_get_coupon as gc
+from plugins import repetitive_registration as rr
+from plugins import get_coupon as gc
 
 #from plugins import test_user_generate as usrGen
-#from plugins import test_admin_registration as regAdm
-#from plugins import test_forged_feedback_review as forGe
+#from plugins import admin_registration as regAdm
+#from plugins import forged_feedback_review as forGe
 from plugins import paybackTime as pt
 from plugins import login as ul
 from plugins import basket as mb
@@ -23,8 +41,15 @@ from plugins import Christmas_Special as chrSpe
 from plugins import access_log as acsFile
 
 
-
-
+#-----------------------------------------
+#FUNCTION clean_up
+#ARGUMENTS: N/A
+#RETURNS: void
+#Description: clean all pycache and json file.
+#          
+#NOTES:
+# Developer need to run this function every time before push to Git repo. 
+#-----------------------------------------------------------------------------------------------
 def clean_up():
     try:
         os.system("rm user.json")
@@ -33,6 +58,15 @@ def clean_up():
         print("file already deleted!")
 
 
+#-----------------------------------------
+#FUNCTION main
+#ARGUMENTS: void
+#RETURNS: void
+#Description: main thread
+#NOTES:
+#1.read command line arguments
+#2.determine using which plugin
+#-----------------------------------------------------------------------------------------------
 def main():
     # SQL injection
     # with dictionary
@@ -63,7 +97,7 @@ def main():
     #myAttack = ul.login()
     #myAttack.run()
 
-    #myAttack = gc.test_get_coupon_class()
+    #myAttack = gc.get_coupon()
     #myAttack.run()
 
     #myAttack = ad.admin_section()

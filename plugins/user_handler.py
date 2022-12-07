@@ -1,7 +1,32 @@
+# SOURCE FILE:    user_handler.py
+# PROGRAM:        JuiceShop automating attack application -- Handler
+# FUNCTIONS:      Setter and Getter of user data from user.json
+# USER DATA:      auth (cookie, header)     
+#                 user id
+#                 user's basket id
+#                 user's password
+#                 user's shipping address id
+#
+# DATE:           Dec 6, 2022
+# REVISIONS:      N/A
+# PROGRAMMER:     Hugh Song
+#
+# NOTES
+#--------------------------------------------------------------------------------------
 import json
 from plugins.header_config import *
 
-# auth_write --> set_auth
+#-----------------------------------------
+#FUNCTION set_auth
+#ARGUMENTS: username --> username/email
+#           response --> response for POST request
+#RETURNS: N/A
+#Description: 1. extract authentication token from response
+#             2. insert authentication token into header and cookie
+#             3. rewrite user's header and cookie in user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def set_auth(username, response):
     new_token = response.json()["authentication"]['token']
     header = TEST_HEADER
@@ -23,7 +48,16 @@ def set_auth(username, response):
         with open('user.json', 'w') as fc:
             user[username] = {"cookie":cookie, "header" : header}
             fc.write(json.dumps(user,indent=4, sort_keys=True))
-# auth_load --> get_auth
+
+#-----------------------------------------
+#FUNCTION get_auth
+#ARGUMENTS: username --> username/email
+#           
+#RETURNS: N/A
+#Description: get user's cookie and header from user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def get_auth(username):
     user = {}
     try:
@@ -36,8 +70,17 @@ def get_auth(username):
         print("User is not found in user.json!")
         return None
 
-# bid_write --> set_basket_id
+#-----------------------------------------
+#FUNCTION set_basket_id
+#ARGUMENTS: username --> username/email
+#           response --> response for POST request
+#RETURNS: N/A
+#Description: 1. extract user's basket id from respond 
+#             2. insert user's basket id in user.json
+#     
+#NOTES:
 # only can add bid for existing user
+#-----------------------------------------------------------------------------------------------
 def set_basket_id(username, response):
     bid = response.json()["authentication"]["bid"]
     user = {}
@@ -52,8 +95,15 @@ def set_basket_id(username, response):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-# bid_write --> set_basket_id
-# only can add bid for existing user
+#-----------------------------------------
+#FUNCTION get_basket_id
+#ARGUMENTS: username --> username/email
+#           
+#RETURNS: N/A
+#Description: get user's basket id from user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def get_basket_id(username):
     user = {}
     try:
@@ -65,8 +115,15 @@ def get_basket_id(username):
         print("Cannot find user or basket Id!")
         return None
 
-
-# bid_load --> get_bid
+#-----------------------------------------
+#FUNCTION get_userId
+#ARGUMENTS: username --> username/email
+#           
+#RETURNS: N/A
+#Description: get user id from user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def get_userId(username):
     user = {}
     try:
@@ -78,6 +135,16 @@ def get_userId(username):
         print("Cannot find user or user Id!")
         return None
 
+#-----------------------------------------
+#FUNCTION set_userId
+#ARGUMENTS: username --> username/email
+#           response --> response for POST request
+#RETURNS: N/A
+#Description: 1. extract user id from respond 
+#             2. insert user id in user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def set_userId(username, response):
     userId = response.json()["user"]["id"]
     user = {}
@@ -92,6 +159,16 @@ def set_userId(username, response):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
+#-----------------------------------------
+#FUNCTION: set_password
+#ARGUMENTS: username --> username/email
+#           response --> response for POST request
+#           password --> user password
+#RETURNS: N/A
+#Description:  insert user password in user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def set_password(username, response, password):
     try:
         with open('user.json', 'r', encoding='utf-8') as fc:
@@ -104,7 +181,15 @@ def set_password(username, response, password):
             fh.write(json.dumps(user,indent=4, sort_keys=True))
         print("user no found")
 
-
+#-----------------------------------------
+#FUNCTION get_userAddressId
+#ARGUMENTS: username --> username/email
+#           
+#RETURNS: N/A
+#Description: get user's shipping address id from user.json
+#     
+#NOTES:
+#-----------------------------------------------------------------------------------------------
 def get_userAddressId(username):
     user = {}
     try:
@@ -116,6 +201,16 @@ def get_userAddressId(username):
         print("Cannot find user or user Id!")
         return None
 
+#-----------------------------------------
+#FUNCTION set_userAddressId
+#ARGUMENTS: username --> username/email
+#           id --> user's shipping address id
+#RETURNS: N/A
+#Description: 1. insert user's basket id in user.json
+#     
+#NOTES:
+# only can add bid for existing user
+#-----------------------------------------------------------------------------------------------
 def set_userAddressId(username, id):
     user = {}
     try:

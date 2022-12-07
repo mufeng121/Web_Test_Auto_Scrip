@@ -1,25 +1,53 @@
-"""
-This file is used to solve OWASP JUICESHOP challange ADMIN REGISTRATION
-GOAL: Register a new user and set to be admin
-Principle: Use POST request and set the role from customer to admin
-"""
-
+# SOURCE FILE:    admin_registration.py
+# PROGRAM:        JuiceShop automating attack application -- Plugin
+# FUNCTIONS:      Solve ADMIN REGISTRATION Challenge
+#                 Register a new user with admin role (by changing the role from customer to admin)
+#          
+# DATE:           Dec 6, 2022
+# REVISIONS:      N/A
+# PROGRAMMER:     Yoyo Wang
+#
+# NOTES
+#--------------------------------------------------------------------------------------
 import logging
 import time
 from plugins import attack as a
-from plugins import test_user_generate as usrGen
+from plugins import user_generate as usrGen
 import urllib3
-from plugins import header_config
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+#---------------------------------------------------------------------------------------
+#Class: admin_registration
+#Inherit: Attack
+#----------------------------------------------------------------------------------------
 class admin_registration(a.attack_inter):
+
+#-----------------------------------------
+#FUNCTION: __init__ 
+#ARGUMENTS: N/A
+#RETURNS: void
+#Description: Initial class variables
+#-----------------------------------------------------------------------------------------------
     def __init__(self):
+        # REST session
         self.juice_session = a.requests.session()
+        # url to registrate a new user
         self.url = a.URL + '/api/Users'
+        # moke password
         self.password = '123456'
+        # class used to generate a new user email
         usr = usrGen.new_user_generate()
+        # new user email
         self.email = usr.generate_email()
 
+#-----------------------------------------
+#FUNCTION generator
+#ARGUMENTS: N/A
+#RETURNS: json_data  --> will be embedded into POST request json field. 
+#Description: This function is used to generate needed data from REST requests
+#             
+#NOTES:
+#-----------------------------------------------------------------------------------------------
     def generator(self):
         json_data = {
             'email': self.email,
@@ -34,6 +62,14 @@ class admin_registration(a.attack_inter):
         }
         return json_data
 
+#-----------------------------------------------------------------------
+#FUNCTION run
+#ARGUMENTS: N/A
+#RETURNS: N/A
+#Description: This is the main function for plugin to send REST requests.
+#             
+#NOTES: None
+#-----------------------------------------------------------------------------------------------
     def run(self):
         logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
