@@ -16,6 +16,7 @@ Attack plugin running flow:
     5. basket() || You MUST need two customer user record
     5. forged() || You MUST need two customer user record
     5. Christmas_Special() || You MUST need one customer record
+    5. access_log()
 
 
 
