@@ -21,7 +21,7 @@ from urllib import parse
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-class access_file():
+class access_file(a.attack_inter):
 
     def __init__(self):
         #self.url = a.URL+ "/ftp" ## you need to write brute force command to obtain this ftp

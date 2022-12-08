@@ -1183,3 +1183,32 @@
 2022-12-07 09:21:40,873 Finshed
 2022-12-07 09:21:40,873 <Logger Forged Review (INFO)>
 2022-12-07 09:21:40,901 Finshed
+2022-12-07 23:55:25,335 <Logger SQL_injection (INFO)>
+2022-12-07 23:55:25,335 Started
+2022-12-07 23:55:25,351 Finished
+2022-12-08 00:01:00,488 <Logger create a login session using user (INFO)>
+2022-12-08 00:01:00,488 Started
+2022-12-08 00:01:00,488 <Logger SQL_injection (INFO)>
+2022-12-08 00:01:00,488 Started
+2022-12-08 00:01:00,498 Finished
+2022-12-08 00:01:00,500 <Logger Repetitive Registration (INFO)>
+2022-12-08 00:01:00,500 Started
+2022-12-08 00:01:00,523 Finished
+2022-12-08 00:01:00,545 Finished
+2022-12-08 00:08:51,010 <Logger create a login session using user (INFO)>
+2022-12-08 00:08:51,011 Started
+2022-12-08 00:08:51,011 <Logger SQL_injection (INFO)>
+2022-12-08 00:08:51,011 Started
+2022-12-08 00:08:51,023 Finished
+2022-12-08 00:08:51,024 <Logger Repetitive Registration (INFO)>
+2022-12-08 00:08:51,024 Started
+2022-12-08 00:08:51,052 Finished
+2022-12-08 00:08:51,076 Finished
+2022-12-08 00:09:36,107 <Logger Manipulate Basket (INFO)>
+2022-12-08 00:09:36,107 Started
+2022-12-08 00:09:36,196 Finished
+2022-12-08 00:37:07,074 <Logger Forged Feedback (INFO)>
+2022-12-08 00:37:07,075 Started
+2022-12-08 00:37:07,103 Finshed
+2022-12-08 00:37:07,103 <Logger Forged Review (INFO)>
+2022-12-08 00:37:07,114 Finshed

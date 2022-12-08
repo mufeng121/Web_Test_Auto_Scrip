@@ -31,17 +31,20 @@ class manipulate_basket(a.attack_inter):
 #RETURNS: void
 #Description: Initial class variables
 #-----------------------------------------------------------------------------------------------
-    def __init__(self):
+    def __init__(self, attacker, victim):
+        # REST session
         self.juice_session = a.requests.session()
-        print("please enter attacker's email")
-        email = input()
-        print("please enter victim's email")
-        victimEmail = input()
-        self.email = email
-        self.victimEmail = victimEmail
+        # attacker's email
+        self.email = attacker
+        # victim's email
+        self.victimEmail = victim
+        # attacker's basket ID
         self.basketId = a.get_basket_id(self.email)
+        # victim's basket ID
         self.victimBid = a.get_basket_id(self.victimEmail)
+        # attacker's crediencial
         self.cookie, self.header = a.get_auth(self.email)
+        # a randomly generated product ID
         self.productId = self.generate_productID(self.basketId)
 
 #-----------------------------------------
