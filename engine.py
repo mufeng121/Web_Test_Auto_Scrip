@@ -16,6 +16,7 @@
 #     python3 engine.py -s -p ./plugins/SQL_injection_payloads.txt
 #     python3 engine.py -ad
 #     python3 engine.py -adduser
+#     python3 engine.py -xss
 #     python3 engine.py -addAdminUser
 #     python3 engine.py -adduser
 #     python3 engine.py -login
@@ -26,6 +27,7 @@
 #     python3 engine.py -bjLogin
 #     python3 engine.py -forGe -attacker test195@gmail.com -victim bjoern.kimminich@gmail.com
 #     python3 engine.py -chrSpe -u test23@gmail.com
+#     python3 engine.py -temPdt
 #     python3 engine.py -acsFile 
 #     python3 engine.py -basket -attacker test23@gmail.com -victim test259@gmail.com
 #---------------------------------------------------------------------------------
@@ -141,9 +143,6 @@ def main():
         myAttack.run()
     elif args.deFStar:
         myAttack = deStar.delete_fiveStar()
-        myAttack.run()
-    elif args.bjLogin:
-        myAttack = bjLogin.login_bjoern()
         myAttack.run()
     elif args.bjLogin:
         myAttack = bjLogin.login_bjoern()
