@@ -166,5 +166,5 @@ def main():
         parser.parse_args(['-h'])
 
 if __name__ == "__main__":
-    clean_up()
-    # main()
+    #clean_up()
+    main()
