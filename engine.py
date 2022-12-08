@@ -25,6 +25,9 @@
 #     python3 engine.py -deFStar
 #     python3 engine.py -bjLogin
 #     python3 engine.py -forGe -attacker test195@gmail.com -victim bjoern.kimminich@gmail.com
+#     python3 engine.py -chrSpe -u test23@gmail.com
+#     python3 engine.py -acsFile 
+#     python3 engine.py -basket -attacker test23@gmail.com -victim test259@gmail.com
 #---------------------------------------------------------------------------------
 import os, sys
 from tkinter import X
@@ -33,13 +36,9 @@ from plugins import SQL_injection as s
 from plugins import xss_search as xss
 from plugins import admin_section as ad
 from plugins import captcha_bypass as tcb
-# from plugins import test_encoding_website as ew
 from plugins import repetitive_registration as rr
 from plugins import get_coupon as gc
-
-#from plugins import test_user_generate as usrGen
 from plugins import admin_registration as regAdm
-#from plugins import forged_feedback_review as forGe
 from plugins import paybackTime as pt
 from plugins import login as ul
 from plugins import basket as mb
@@ -83,7 +82,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--s", help="Login through sql injection -s -p[SQL payload, dictionary name (Optional)] -c[username (optional)]", action="store_true")
     parser.add_argument("-p", "--p", help="associated with flag -s, to provide specific SQL injection payload", action="store")
-    parser.add_argument("-u", "--u", help="associated with flag -s or -payback, to provide specific username", action="store")
+    parser.add_argument("-u", "--u", help="associated with flag -s, -payback, -chrSpe to provide specific username", action="store")
     parser.add_argument("-ad", "--ad", help="admin setion attack", action="store_true")
     parser.add_argument("-addUser", "--addUser", help="repetitive registration attack", action="store_true")
     parser.add_argument("-addAdminUser", "--addAdminUser", help="repetitive registration attack", action="store_true")
@@ -99,6 +98,9 @@ def main():
     parser.add_argument("-attacker", "--attacker", help="associated with flag -forGe, to provide attacker's email", action="store")
     parser.add_argument("-victim", "--victim", help="associated with flag -forGe, to provide victim's email", action="store")
     parser.add_argument("-temPdt", "--temPdt", help="PRODUCT TAMPERING", action="store_true")
+    parser.add_argument("-acsFile", "--acsFile", help="access sensitive files: easter, package, suspicious", action="store_true")
+    parser.add_argument("-chrSpe", "--chrSpe", help="buy Chrismas special item", action="store_true")
+    parser.add_argument("-basket", "--basket", help="using attacker's crediential to view victim's basket and add items into it", action="store_true")
     # parser.parse_args(['-h'])
     args = parser.parse_args()
     myAttack = None
@@ -151,22 +153,18 @@ def main():
         myAttack.run()
     elif args.temPdt:
         myAttack = temPdt.temper()
-        # myAttack = chrSpe.Chrismas_special()
         myAttack.run()
-
+    elif args.acsFile:
+        myAttack = acsFile.access_file()
+        myAttack.run()
+    elif args.chrSpe and args.u:
+        myAttack = chrSpe.Chrismas_special(args.u)
+        myAttack.run()
+    elif args.basket and args.attacker and args.victim:
+        myAttack = mb.manipulate_basket(args.attacker, args.victim)
+        myAttack.run()
     else:
         parser.parse_args(['-h'])
-
-    #myAttack.credential_login()
-    #myAttack = mb.manipulate_basket()
-    #myAttack.run()
-    #myAttack = temPdt.temper()
-    #myAttack.run()
-    #myAttack = chrSpe.Chrismas_special()
-    #myAttack.run()
-    # myAttack = acsFile.access_file()
-    # myAttack.run()
-
 
 if __name__ == "__main__":
     clean_up()
