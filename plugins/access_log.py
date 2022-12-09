@@ -46,6 +46,7 @@ class access_file(a.attack_inter):
 #             Special cases are extracted according to the length of the response text.
 #NOTES: scan the subnet is very slow, may take several minutes.
 #--------------------------------------------------------------------------------------
+
     def subnet_scan(self):
         len_dict = {}
         f = open('plugins/common.txt', 'r')
@@ -56,6 +57,7 @@ class access_file(a.attack_inter):
                 response = self.juice_session.get(payload)
                 if response.status_code == 200:
                     len_dict[str(len(json.dumps(response.text)))] = line[:-1]
+                len_dict[str(len(json.dumps(response.text)))] = line[:-1]
             else:
                 break
         return len_dict
@@ -121,10 +123,6 @@ class access_file(a.attack_inter):
         print('Now you can choose to find the confidential files. Here are three options:')
         show_dict = {'1':'easter', '2':'package', '3':'suspicious'}
         print(show_dict)
-        self.find_confidential(subnet='ftp',confidential_tag=show_dict[str(input())]) ## challenge" Easter's egg
-        #self.find_confidential(subnet='ftp',confidential_tag='package') ## challenge FORGETTEN DEVELOPER Backup
-        #self.find_confidential(subnet='ftp',confidential_tag='suspicious') ## challenge MISPLACED SIGNATURE FILE
-
-
+        self.find_confidential(subnet='ftp',confidential_tag=show_dict[str(input())]) 
 
 
