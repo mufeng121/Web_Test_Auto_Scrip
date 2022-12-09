@@ -1,4 +1,4 @@
-# SOURCE FILE:    admin_registration.py
+# SOURCE FILE:    login_bjoern.py
 # PROGRAM:        JuiceShop automating attack application -- Plugin
 # FUNCTIONS:      Solve login BJOERN Challenge
 #                 login BJOERN's account without using SQL injection, repetitive registration, etc.
