@@ -16,8 +16,8 @@ Attack plugin running flow:
     5. basket() || You MUST need two customer user record
     5. forged() || You MUST need two customer user record
     5. Christmas_Special() || You MUST need one customer record
-
-
+    5. access_log() || This function needs interaction between the user, user can specify which confidential file they want to access
+    5. product_tempering || You MUST need admin record
 
 Note: after decided which plugin is used, please execute 'engine.py' under "Web_Test_Auto_Scrip" directory (Especially when using IDE like VSCode)
 All automatically created json file should be outside of "plugins" folder
