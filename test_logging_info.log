@@ -1212,3 +1212,48 @@
 2022-12-08 00:37:07,103 Finshed
 2022-12-08 00:37:07,103 <Logger Forged Review (INFO)>
 2022-12-08 00:37:07,114 Finshed
+2022-12-09 01:38:18,512 <Logger SQL_injection (INFO)>
+2022-12-09 01:38:18,513 Started
+2022-12-09 01:38:18,542 Finished
+2022-12-09 01:58:21,963 <Logger SQL_injection (INFO)>
+2022-12-09 01:58:21,963 Started
+2022-12-09 01:58:22,289 Finished
+2022-12-09 02:10:53,947 <Logger Admin_Section (INFO)>
+2022-12-09 02:10:53,947 Started
+2022-12-09 02:10:53,988 Finished
+2022-12-09 02:13:25,883 <Logger Admin_Section (INFO)>
+2022-12-09 02:13:25,883 Started
+2022-12-09 02:13:25,908 Finished
+2022-12-09 02:13:37,731 <Logger Admin_Section (INFO)>
+2022-12-09 02:13:37,732 Started
+2022-12-09 02:13:37,754 Finished
+2022-12-09 02:26:27,702 <Logger SQL_injection (INFO)>
+2022-12-09 02:26:27,702 Started
+2022-12-09 02:26:27,719 Finished
+2022-12-09 02:33:34,490 <Logger SQL_injection (INFO)>
+2022-12-09 02:33:34,491 Started
+2022-12-09 02:33:34,502 Finished
+2022-12-09 02:34:06,932 <Logger SQL_injection (INFO)>
+2022-12-09 02:34:06,932 Started
+2022-12-09 02:34:06,947 Finished
+2022-12-09 02:40:47,298 <Logger SQL_injection (INFO)>
+2022-12-09 02:40:47,298 Started
+2022-12-09 02:40:47,316 Finished
+2022-12-09 02:54:19,278 <Logger create a login session using user (INFO)>
+2022-12-09 02:54:19,278 Started
+2022-12-09 02:54:19,279 <Logger SQL_injection (INFO)>
+2022-12-09 02:54:19,279 Started
+2022-12-09 02:54:19,292 Finished
+2022-12-09 02:54:19,293 <Logger Repetitive Registration (INFO)>
+2022-12-09 02:54:19,293 Started
+2022-12-09 02:54:19,386 Finished
+2022-12-09 02:54:19,429 Finished
+2022-12-09 03:08:41,991 <Logger create a login session using user (INFO)>
+2022-12-09 03:08:41,991 Started
+2022-12-09 03:08:41,992 <Logger SQL_injection (INFO)>
+2022-12-09 03:08:41,992 Started
+2022-12-09 03:08:42,015 Finished
+2022-12-09 03:08:42,016 <Logger Admin Registration (INFO)>
+2022-12-09 03:08:42,016 Started
+2022-12-09 03:08:42,174 Finished
+2022-12-09 03:08:42,235 Finished

@@ -18,8 +18,8 @@
 #     python3 engine.py -adduser
 #     python3 engine.py -xss
 #     python3 engine.py -addAdminUser
-#     python3 engine.py -adduser
-#     python3 engine.py -login
+#     python3 engine.py -login -role admin
+#     python3 engine.py -login -role normal
 #     python3 engine.py -captcha
 #     python3 engine.py -uploadF
 #     python3 engine.py -payback -u test195@gmail.com
@@ -89,6 +89,7 @@ def main():
     parser.add_argument("-addUser", "--addUser", help="repetitive registration attack", action="store_true")
     parser.add_argument("-addAdminUser", "--addAdminUser", help="repetitive registration attack", action="store_true")
     parser.add_argument("-login", "--login", help="login and collect user credential", action="store_true")
+    parser.add_argument("-role", "--role", help="associated with flag -login, indicate the role of registrated user", action="store")
     parser.add_argument("-captcha", "--captcha", help="captcha bypass attack", action="store_true")
     parser.add_argument("-uploadF", "--uploadF", help="upload big pdf file", action="store_true")
     parser.add_argument("-xss", "--xss", help="xss injection", action="store_true")
@@ -117,8 +118,8 @@ def main():
     elif args.ad:
         myAttack = ad.admin_section()
         myAttack.run()
-    elif args.login:
-        myAttack = ul.login()
+    elif args.login and args.role:
+        myAttack = ul.login(args.role)
         myAttack.run()
     elif args.addUser:
         myAttack = rr.repetitive_registration()
