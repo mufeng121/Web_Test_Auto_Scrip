@@ -34,13 +34,15 @@ class login(a.attack_inter):
 #RETURNS: void
 #Description: Initial class variables
 #--------------------------------------------------------------------------------------
-    def __init__(self):
+    def __init__(self, role):
         # REST session
         self.juice_session = a.requests.session()
         # url to registrate a new user
         self.url = a.URL + '/rest/user/login'
         # moke user password
         self.password = '123456'
+        # user's role (normal or admin)
+        self.role = role
 
 #--------------------------------------------------------------------------------------
 #FUNCTION set_user
@@ -51,8 +53,10 @@ class login(a.attack_inter):
 #NOTES:
 #--------------------------------------------------------------------------------------
     def set_user(self):
-        self.usr = usrReg.repetitive_registration()  ## this user is a normal user
-        #self.usr = admReg.admin_registration()  ## this user is an admin
+        if self.role == "admin":
+            self.usr = admReg.admin_registration()  ## this user is an admin
+        else:
+            self.usr = usrReg.repetitive_registration()  ## this user is a normal user
         self.email, self.password, self.id = self.usr.run()
 
 #--------------------------------------------------------------------------------------
