@@ -101,12 +101,10 @@ class delete_fiveStar():
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Delete five star")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Delete five star Started')
         delete_list = self.show_5StarList()
         self.delete_allList(delete_list)
         ##check deleting
         fiveStar_list = self.show_5StarList()
         print( len(fiveStar_list)==0 )
-        a.logging.info('Finished')
+        a.logging.info('#Delete five star Finished')

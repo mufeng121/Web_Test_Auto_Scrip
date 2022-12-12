@@ -61,15 +61,13 @@ class upload_size(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Upload size")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Upload size Started')
         cookie,header,data = self.generator()
         if cookie:
             response = self.juice_session.post(self.url, cookies=cookie, headers=header,data=data,verify=False)
             print(response.status_code)
-            a.logging.info('Finished')
+            a.logging.info('#Upload size Finished')
         else:
             print("Not have authentification yet, please try SQL injection first")
-            a.logging.info('Finished')
+            a.logging.info('#Upload size Finished')
         print("================uploading end==============")

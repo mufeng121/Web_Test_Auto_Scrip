@@ -13,6 +13,7 @@
 # NOTES
 #--------------------------------------------------------------------------------------
 
+import time
 from plugins import basket as bt
 #---------------------------------------------------------------------------------------
 #Class: paybackTime
@@ -114,18 +115,19 @@ class paybackTime(bt.manipulate_basket):
 #NOTES: None
 #--------------------------------------------------------------------------------------
     def run(self):
+        bt.a.logging.basicConfig(filename='./test_logging_info.log', 
+                            level=bt.a.logging.INFO, format='%(asctime)s %(message)s')
+        bt.a.logging.Formatter.converter = time.gmtime
+        bt.a.logging.info('#Payback Time Started')
         super().view_basket(self.basketId)
         super().addto_basket(quantity=-5, productId=self.productId)
         json_data = self.generator()
         response = self.juice_session.post(self.checkout_url, cookies=self.cookie, headers=self.header, json=json_data, verify=False)
         if response.status_code == 200:
+            bt.a.logging.info('#Payback Time Finished')
             print("You have become richer!")
+        
 
-        # a.logging.basicConfig(filename='./test_logging_info.log', encoding='utf-8',
-        #                     level=a.logging.INFO, format='%(asctime)s %(message)s')
-        # logger = a.logging.getLogger("Payback Time")
-        # a.logging.info(logger)
-        # a.logging.info('Started')
-        # self.forged_feedback()
-        # self.forged_review()
-        # a.logging.info('Finished')
+        
+        
+      

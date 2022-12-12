@@ -11,6 +11,7 @@
 #
 # NOTES
 #--------------------------------------------------------------------------------------
+import time
 from plugins import attack as a
 from plugins import admin_section as adSec
 import base64
@@ -108,6 +109,23 @@ class login_bjoern():
     def run(self):
         print('---------------------------------')
         print('Now let us to solve the Challenge Login Bjoern')
+        a.logging.basicConfig(filename='./test_logging_info.log', 
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
+
+        #Truncate the last two lines in logging 
+        # as this function calls the Admin Section which caused duplicated logging
+        with open('./test_logging_info.log', 'rb+') as fh:
+            # read an store all lines into list
+            lines = fh.readlines()
+            #move file pointer at the start of a file using the seek() method
+            fh.seek(0)
+            fh.truncate()
+            #write all lines from a file except the last two lines
+            fh.writelines(lines[:-2])
+
+        a.logging.info('#Login Bjoern Started')
+
         json_data = self.generator()
         response = self.juice_session.post(self.url, json=json_data)
         print(response.status_code)
@@ -116,5 +134,6 @@ class login_bjoern():
             a.set_basket_id(self.email,response)
             a.set_password(self.email, response, self.password)
             print("we solve the Challenge login Bjoern")
+        a.logging.info('#Login Bjoern Finished')
         print(response.text)
         return response

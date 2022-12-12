@@ -130,12 +130,22 @@ class login(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("create a login session using user")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Create a login session Started')
         self.set_user()  ## this is need if we do not have records of existing users.
         self.password_login()
         self.credential_login(email=self.email)
-        a.logging.info('Finished')
+        
+        #Truncate the last three lines in logging 
+        # as this function calls the Admin Registration which caused duplicated logging
+        with open('./test_logging_info.log', 'rb+') as fh:
+            # read an store all lines into list
+            lines = fh.readlines()
+            #move file pointer at the start of a file using the seek() method
+            fh.seek(0)
+            fh.truncate()
+            #write all lines from a file except the last two lines
+            fh.writelines(lines[:-2])
+
+        a.logging.info('#Create a login session Finished')
 
 

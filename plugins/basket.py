@@ -150,12 +150,10 @@ class manipulate_basket(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log',
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Manipulate Basket")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Manipulate Basket Started')
         self.view_basket(self.victimBid)
         self.addto_basket(quantity=1, productId=self.productId)
-        a.logging.info('Finished')
+        a.logging.info('#Manipulate Basket Finished')
 
 
 

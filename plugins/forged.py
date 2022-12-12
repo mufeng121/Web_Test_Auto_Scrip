@@ -133,16 +133,13 @@ class forged(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Forged Feedback")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Forged Feedback Started')
         self.forged_feedback()
-        a.logging.info('Finshed')
+        a.logging.info('#Forged Feedback Finshed')
 
-        logger_review = a.logging.getLogger("Forged Review")
-        a.logging.info(logger_review)
+        a.logging.info('#Forged Review Started')
         self.forged_review()
-        a.logging.info('Finshed')
+        a.logging.info('#Forged Review Finshed')
 
 
 
