@@ -15,7 +15,7 @@
 #     python3 engine.py -s -p "jim@juice-sh.op' --" -u jim
 #     python3 engine.py -s -p ./plugins/SQL_injection_payloads.txt
 #     python3 engine.py -ad
-#     python3 engine.py -adduser
+#     python3 engine.py -addUser
 #     python3 engine.py -xss
 #     python3 engine.py -addAdminUser
 #     python3 engine.py -login -role admin
@@ -186,4 +186,4 @@ def main():
 
 if __name__ == "__main__":
     clean_up()
-    #main()
+    # main()

@@ -22,7 +22,7 @@ Excution instruction:
          python3 engine.py -s -p "jim@juice-sh.op' --" -u jim
          python3 engine.py -s -p ./plugins/SQL_injection_payloads.txt
          python3 engine.py -ad
-         python3 engine.py -adduser
+         python3 engine.py -addUser
          python3 engine.py -xss
          python3 engine.py -addAdminUser
          python3 engine.py -login -role admin
@@ -48,7 +48,7 @@ Attack plugin running flow:
     3. (Mandatory) Create some new users and record their crediential info into user.json --> command: python3 engine.py -login -role normal    or    python3 engine.py -login -role admin
                    (command will only create one user each execution, you need run it at least two times.)
     4. Then, you can use your created fake users or existing users (depend on challenges) to rest of attacks. Execution order for rest of attacks does not matter.  
-    5. Create users without recording their credential into user.json --> command: python3 engine.py -adduser   or   python3 engine.py -addAdminUser
+    5. Create users without recording their credential into user.json --> command: python3 engine.py -addUser   or   python3 engine.py -addAdminUser
     5. SQL injection into other users' account --> command: python3 engine.py -s -p "jim@juice-sh.op' --" -u jim
     5. Using attacker's account to change victim's feedback and reviews --> command: python3 engine.py -forGe -attacker test195@gmail.com -victim bjoern.kimminich@gmail.com
     5. test_get_coupon_class() || You MUST need admin record 
@@ -66,14 +66,3 @@ All automatically created json file should be outside of "plugins" folder
 Git Push Rule:
     1. Please DO NOT add/commit/push any automatically created json file.
         (uncomment line 188 and comment 189 in the engine.py  and execute it to clean up)
-
-
-Log Tested:
-    admin sql injection
-    perticular user sql injection
-    dictionary sql injection
-    admin admin_section
-    user login
-    repetitive_registration
-    basket
-    

@@ -70,5 +70,6 @@ class captcha_bypass(a.attack_inter):
             token[1] = response.json()["captchaId"]
             mydata = self.generator(token)
             response = self.juice_session.post(self.postUrl, data=mydata)
+            print("Successfully post a feedback.")
         a.logging.info('#Captcha Bypass Finished')
         print("================captcha bypass END==============")
