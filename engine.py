@@ -107,6 +107,7 @@ def main():
     # parser.parse_args(['-h'])
     args = parser.parse_args()
     myAttack = None
+    # Perform all SQL injection related attacks. 
     if args.s:
         myAttack = s.SQL_injector()
         if args.p and args.u:
@@ -115,54 +116,71 @@ def main():
             myAttack.run(args.p)
         else:
             myAttack.run()
+    # Do admin section challenge
     elif args.ad:
         myAttack = ad.admin_section()
         myAttack.run()
+    # Do repetitive registration challenge and record new user's credentials in user.json
     elif args.login and args.role:
         myAttack = ul.login(args.role)
         myAttack.run()
+    # Do repetitive registration challenge
     elif args.addUser:
         myAttack = rr.repetitive_registration()
         myAttack.run()
+    # Do admin registration challenge
     elif args.addAdminUser:
         myAttack = regAdm.admin_registration()
         myAttack.run()
+    # Do captcha bypass challenge
     elif args.captcha:
         myAttack = tcb.captcha_bypass()
         myAttack.run()
+    # Do upload size challenge
     elif args.uploadF:
         myAttack = uz.upload_size()
         myAttack.run()
+    # Do xss injection challenge
     elif args.xss:
         myAttack = xss.xss_search()
         myAttack.run()
+    # Do Bully Chatbot challenge
     elif args.coupon:
         myAttack = gc.get_coupon()
         myAttack.run()
+    # Do Payback time challenge
     elif args.payback and args.u:
         myAttack = pt.paybackTime(args.u)
         myAttack.run()
+    # Do delete five star challenge
     elif args.deFStar:
         myAttack = deStar.delete_fiveStar()
         myAttack.run()
+    # Do login BJOERN challenge
     elif args.bjLogin:
         myAttack = bjLogin.login_bjoern()
         myAttack.run()
+    # Do FORGED FEEDBACK & FORGED REVIEW Challenge
     elif args.forGe and args.attacker and args.victim:
         myAttack = forGe.forged(args.attacker, args.victim)
         myAttack.run()
+    # Do PRODUCT TAMPERING challenge
     elif args.temPdt:
         myAttack = temPdt.temper()
         myAttack.run()
+    # Do EASTER EGG, FORGETTEN DEVELOPER Backup, MISPLACED SIGNATURE FILE Challenge 
     elif args.acsFile:
         myAttack = acsFile.access_file()
         myAttack.run()
+    # Do CHRISTMAS SPECIAL Challenge
     elif args.chrSpe and args.u:
         myAttack = chrSpe.Chrismas_special(args.u)
         myAttack.run()
+    # Do MANIPULATE BASKET Challenge
     elif args.basket and args.attacker and args.victim:
         myAttack = mb.manipulate_basket(args.attacker, args.victim)
         myAttack.run()
+    # Print usage manu
     else:
         parser.parse_args(['-h'])
 
