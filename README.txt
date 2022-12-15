@@ -40,7 +40,15 @@ Excution instruction:
          (For detail about commands' usage, please check the comments in engine.py or plugins)
     2. "/label/Labeling.py" : After you finish attacking and collecting pcap file, execute this script to label all collected traffics with corresponding attack label. 
          python3 Labeling.py
-         Note: RIVER edit here
+         Note: Use Wireshark to do packet capture when performing attacks.
+            Export the packet capture in CSV format by selecting File -> Export Packet Dissections -> AS CSV.
+            Copy the CSV file to the 'label' folder. 
+            Modify line#25 in 'Labeling.py' to change the 'pcap_file_name' to the packet capture CSV we wanted to label.
+            Move the 'test_logging_info.log' file from the parent folder to the 'label' folder.
+            Then run 'Labeling.py' will get output as a labeled CSV file under the 'label' folder.
+            Make sure only run 'Labeling.py' once to the same set of 'test_logging_info.log' and packet capture CSV.
+            If running twice, the same result will append to the 'labeled.csv' and cause duplication. 
+            If you need to run a new attack round, the attack log will append to the 'test_logging_info.log,' which means logging information in previous attacks will             not be erased. Delete the existing 'test_logging_info.log' if you want a new logging file.
 
 Attack plugin running flow:
     1. (Mandatory) SQL injection into admin account (get admin access) --> command: python3 engine.py -s
