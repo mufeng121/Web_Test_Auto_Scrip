@@ -56,9 +56,7 @@ class admin_section(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Admin_Section")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#Admin Section Started')
         cookie,header = self.generator()
         if cookie:
             response = self.juice_session.get(self.url, cookies=cookie, headers=header ,verify=False)
@@ -68,11 +66,11 @@ class admin_section(a.attack_inter):
                 print(response.json()["data"])
             print(response.status_code)
             print("================admin section finished==============")
-            a.logging.info('Finished')
+            a.logging.info('#Admin Section Finished')
             return response
         else:
             print("Not have authentification yet, please try SQL injection first")
-            a.logging.info('Finished')
+            a.logging.info('#Admin Section Finished')
             print("================admin section finished==============")
             return response.status_code
 

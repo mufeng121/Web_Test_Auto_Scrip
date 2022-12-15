@@ -54,9 +54,7 @@ class xss_search(a.attack_inter):
         a.logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("XSS Search")
-        a.logging.info(logger)
-        a.logging.info('Started')
+        a.logging.info('#XSS Search Started')
 
         if self.script:
             myURL,myparams = self.generator(self.script)
@@ -74,7 +72,7 @@ class xss_search(a.attack_inter):
 
         print(resp.url)
         print(resp.status_code)
-        a.logging.info('Finished')
+        a.logging.info('#XSS Search Finished')
 
 
 

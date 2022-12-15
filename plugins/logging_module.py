@@ -1,3 +1,14 @@
+# SOURCE FILE:    logging_moudule.py
+# PROGRAM:        JuiceShop automating attack application -- Plugin
+# FUNCTIONS:      Record different logging functions
+#                 
+#                  
+# DATE:           Dec 8, 2022
+# REVISIONS:      N/A
+# PROGRAMMER:     River Chen
+#
+# NOTES
+#--------------------------------------------------------------------------------------
 import logging
 import time
 from logging.handlers import TimedRotatingFileHandler

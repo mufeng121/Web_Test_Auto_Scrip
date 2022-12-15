@@ -11,6 +11,7 @@
 #--------------------------------------------------------------------------------------
 
 import re
+import time
 from plugins import attack as a
 import json
 import urllib
@@ -123,6 +124,11 @@ class access_file(a.attack_inter):
         print('Now you can choose to find the confidential files. Here are three options:')
         show_dict = {'1':'easter', '2':'package', '3':'suspicious'}
         print(show_dict)
+        a.logging.basicConfig(filename='./test_logging_info.log', 
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
+        a.logging.info('#Access confidential files Started')
         self.find_confidential(subnet='ftp',confidential_tag=show_dict[str(input())]) 
+        a.logging.info('#Access confidential files Finished')
 
 

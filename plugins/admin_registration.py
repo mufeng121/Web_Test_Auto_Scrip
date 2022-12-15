@@ -75,9 +75,20 @@ class admin_registration(a.attack_inter):
         logging.basicConfig(filename='./test_logging_info.log', 
                             level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Admin Registration")
-        a.logging.info(logger)
-        a.logging.info('Started')
+
+        #Truncate the last two lines in logging 
+        # as this function calls the SQL injection which caused duplicated logging
+        with open('./test_logging_info.log', 'rb+') as fh:
+            # read an store all lines into list
+            lines = fh.readlines()
+            #move file pointer at the start of a file using the seek() method
+            fh.seek(0)
+            fh.truncate()
+            #write all lines from a file except the last two lines
+            fh.writelines(lines[:-2])
+
+
+        a.logging.info('#Admin Registration Started')
         json_data = self.generator()
         response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
@@ -90,7 +101,7 @@ class admin_registration(a.attack_inter):
             print("Congratulations! You have successfully solve a challenge Admin Registration")
             print("Now you can login with admin email " + self.email +" and password " + self.password)
             userid = response.json()["data"]["id"]
-            a.logging.info('Finished')
+            a.logging.info('#Admin Registration Finished')
             print("================registration finished==============")
             return self.email, self.password, userid
             

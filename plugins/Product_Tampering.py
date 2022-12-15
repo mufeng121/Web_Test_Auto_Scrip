@@ -10,6 +10,7 @@
 # NOTES           You MUST need admin record
 #--------------------------------------------------------------------------------------
 
+import time
 from plugins import attack as a
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -73,7 +74,12 @@ class temper(a.attack_inter):
 # NOTES: None
 # --------------------------------------------------------------------------------------
     def run(self):
+        a.logging.basicConfig(filename='./test_logging_info.log',
+                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.Formatter.converter = time.gmtime
+        a.logging.info('#Product Tampering Started')
         self.temper_description()
+        a.logging.info('#Product Tampering Finished')
 
 
 

