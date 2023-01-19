@@ -70,6 +70,8 @@ class get_coupon(a.attack_inter):
             'action': 'query',
             'query': 'coupon',
         }
+        cookie['token'] = response.json()['token']
+        header['Authorization'] = "Bearer" + response.json()['token']
         print(response.text)
         if cookie:
             print('hello')
